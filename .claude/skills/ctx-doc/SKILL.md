@@ -87,6 +87,8 @@ Use this when the user opted in to parallel processing.
 
 In a single message, spawn one `general-purpose` sub-agent per file via the Task tool. Each agent receives a self-contained prompt.
 
+**Model override:** specify `model: "sonnet"` on each spawned agent. Per-document analysis is well within Sonnet's range, and using Sonnet for sub-agents while keeping the main thread on whatever the user has selected (typically Opus for synthesis-heavy work) cuts cost meaningfully without quality loss. Override only — do NOT downgrade to Haiku for this work; political-subtext detection benefits from Sonnet-level reasoning.
+
 **Per-agent prompt template** (substitute placeholders):
 
 > You are analysing a single document for OS-Intelligence context enrichment. Do NOT modify any files in `context/` or `people/`. The main thread will apply those changes after all analyses come back. You MAY add YAML frontmatter to the raw file itself (the file you are analysing) if it lacks one, but do not add `informs` or `enriched` fields yet — the main thread will fill those in.
