@@ -115,12 +115,12 @@ Loaded automatically by `/os-start` at the start of every session. Nothing to re
 
 ## What you get
 
-**16 skills** that handle context end-to-end:
+**15 skills** that handle context end-to-end:
 
 - **Capture** · `ctx-transcript`, `ctx-doc`, `ctx-note`, `ctx-chat`, `ctx-inspiration`
 - **Synthesise** · `ctx-synthesise`, `ctx-timeline`
 - **Retrieve** · `os-welcome`, `os-start`, `os-save`, `os-switch-project`
-- **Scaffold** · `os-new-project`, `os-new-item`, `os-new-person`, `os-project-design`, `new-project`
+- **Scaffold** · `os-new-project`, `os-new-item`, `os-new-person`, `os-project-design`
 
 **7 sub-agents** for second-opinion review: `customer-voice`, `designer-reviewer`, `engineer-reviewer`, `executive-reviewer`, `legal-advisor`, `skeptic`, `uxr-analyst`.
 
@@ -140,6 +140,25 @@ cd ~/Code/os-intelligence
 Open the folder in Claude Code. Run **`/os-welcome`** for a guided first run, or **`/os-start`** if you already know what you want.
 
 Prerequisites: Claude Code installed and authenticated. New to Claude Code? Start at [claude.com/code](https://claude.com/code).
+
+### Keep your context private — clone, don't fork
+
+OS-Intelligence is the framework. Your meetings, documents, notes, and people files are the context, and that context is private. **Don't fork this repo on GitHub** — forks default to public, so anything you add gets indexed.
+
+Recommended setup: clone the upstream, create your own **private** repo, and repoint the remote so commits go to your private repo. Keep upstream tracked separately so you can pull updates.
+
+```bash
+# After the clone above:
+git remote rename origin upstream
+git remote add origin git@github.com:YOUR-USERNAME/YOUR-PRIVATE-REPO.git
+git push -u origin main
+
+# Later, to pull updates from OS-Intelligence:
+git fetch upstream
+git merge upstream/main
+```
+
+**When forking is the right call:** only if you want to PR something back. Fork as a separate workspace, make your change there, open the PR. Never put your private context in a fork.
 
 Full walkthrough: [`MIGRATION.md`](MIGRATION.md).
 
