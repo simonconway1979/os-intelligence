@@ -284,77 +284,173 @@ Run `/os-start`. Welcome ends.
 
 ---
 
-## Step 6 — Hand-off (paths 1, 2, 3 only)
+## Step 6 — Hand-off: walk through the four capture types (paths 1, 2, 3 only)
 
-After `/os-new-project` completes for paths 1–3, print the path-specific instructions:
+After `/os-new-project` completes for paths 1–3, walk the user through what context they might have to bring. Four capture types, asked one at a time. The order varies by path (most relevant first). For each: ask Y/n, give where-to-drop instructions if yes, move to the next.
 
-### For Path 1 (1:1 prep)
+Substitute `[slug]` with the kebab-case slug created by `/os-new-project`. Substitute `[Name]` with the name the user gave (path 1 only).
 
-```
-Project ready at: projects/[slug]/
+### Common opening
 
-Next: drop your past meeting transcripts with [Name] into:
-  projects/[slug]/intelligence/meetings/
-
-On macOS:
-  open projects/[slug]/intelligence/meetings/
-
-Drag the transcript files in. Three is a good number. Then run:
-
-  /ctx-transcript          (run once per transcript)
-  /ctx-synthesise          (cross-cuts the meetings)
-  /os-start                (loads the brief)
-
-Total time from here: about 10 minutes.
-```
-
-### For Path 2 (stalled project)
+Print:
 
 ```
 Project ready at: projects/[slug]/
 
-Next: drop your old project documents into:
-  projects/[slug]/intelligence/docs/raw/
-
-On macOS:
-  open projects/[slug]/intelligence/docs/raw/
-
-Drag in 5–10 docs (briefs, status updates, design specs, anything
-relevant). Then run:
-
-  /ctx-doc                 (run once per doc)
-  /ctx-synthesise          (builds current-state.md)
-  /os-start                (loads the picture)
-
-Total time from here: about 15 minutes.
+Now let's figure out what context to bring. There are four types of
+material OS-Intelligence can capture. I'll ask about each in turn —
+say no to anything you don't have or don't want to bring right now.
 ```
 
-### For Path 3 (research synthesis)
+### The four capture types
+
+For each type, ask the question, wait for Y/n, and respond:
+
+#### Type: Documents → `/ctx-doc`
+
+Question (paths 1, 2, 3 alike):
 
 ```
-Project ready at: projects/[slug]/
+1. Documents
+   Slide decks, briefs, PRDs, strategy docs, org charts, status updates,
+   policies, anything written about the project or its context.
 
-Next: drop your interview transcripts into:
-  projects/[slug]/intelligence/meetings/
-
-On macOS:
-  open projects/[slug]/intelligence/meetings/
-
-Drag in 3–5 transcript files. Then run:
-
-  /ctx-transcript          (run once per transcript)
-  /ctx-synthesise          (cross-cuts the cohort)
-
-Total time from here: about 15 minutes.
+   Got any to bring? (Y/n)
 ```
 
-Substitute `[slug]` with the actual kebab-case slug created by `/os-new-project`. Substitute `[Name]` with the name the user gave.
+If **Y**, print:
+
+```
+   Drop them at:
+     projects/[slug]/intelligence/docs/raw/
+
+   On macOS:
+     open projects/[slug]/intelligence/docs/raw/
+
+   Later you'll run /ctx-doc and it'll process them in parallel.
+```
+
+If **n**, just say `Skipping documents.` and continue.
+
+#### Type: Meeting transcripts → `/ctx-transcript`
+
+Question:
+
+```
+2. Meeting transcripts
+   Kickoffs, 1:1s, customer calls, team meetings, interviews.
+
+   Got any to bring? (Y/n)
+```
+
+If **Y**, print:
+
+```
+   Drop them at:
+     projects/[slug]/intelligence/meetings/
+
+   On macOS:
+     open projects/[slug]/intelligence/meetings/
+
+   Later you'll run /ctx-transcript (or its --batch mode if you have a
+   pile) and it'll synthesise each meeting and update people files.
+```
+
+If **n**, say `Skipping meeting transcripts.` and continue.
+
+#### Type: Chat threads → `/ctx-chat`
+
+Question:
+
+```
+3. Chat threads
+   Slack channels, Teams DMs, WhatsApp groups — anything where the team
+   talks informally and useful context lives.
+
+   Got any to bring? (Y/n)
+```
+
+If **Y**, print:
+
+```
+   Export the thread to a markdown or text file, then drop it at:
+     projects/[slug]/intelligence/chats/
+
+   On macOS:
+     open projects/[slug]/intelligence/chats/
+
+   Later you'll run /ctx-chat. It deduplicates on re-imports, so you
+   can update the same thread over time.
+```
+
+If **n**, say `Skipping chats.` and continue.
+
+#### Type: Notes / observations → `/ctx-note`
+
+Question:
+
+```
+4. Notes and observations
+   Your own field notes, voice memos transcribed, off-the-cuff thoughts,
+   ideas you don't want to lose.
+
+   Got any to bring? (Y/n)
+```
+
+If **Y**, print:
+
+```
+   Drop them at:
+     projects/[slug]/intelligence/notes/
+
+   On macOS:
+     open projects/[slug]/intelligence/notes/
+
+   Later you'll run /ctx-note to capture and link them to people if relevant.
+```
+
+If **n**, say `Skipping notes.` and continue.
+
+### Order by path
+
+Use the priority order most relevant to the user's chosen path. Same four questions, just sequenced differently:
+
+- **Path 1 (1:1 prep):** transcripts → chats → notes → documents
+  (transcripts are central; chats are conversational context; notes are your read of them; documents matter least for 1:1s)
+
+- **Path 2 (stalled project):** documents → transcripts → chats → notes
+  (the formal record matters most; meetings show decisions; chats catch informal threads; notes capture your own)
+
+- **Path 3 (research synthesis):** transcripts → documents → notes → chats
+  (interview transcripts are THE source; research briefs and prior work matter; field notes round it out; chats rarely relevant for research)
+
+### Common closing
+
+After all four questions, print:
+
+```
+Got it. Once you've dropped everything, run these in order — only the
+ones you have material for:
+
+  /ctx-doc                 (processes documents)
+  /ctx-transcript          (processes meetings)
+  /ctx-chat                (processes chat threads)
+  /ctx-note                (processes notes)
+
+Then to bring it together:
+
+  /ctx-synthesise          (cross-cuts everything, updates current-state.md)
+  /os-start                (loads the briefing for your next session)
+
+Total time from here: 10–20 minutes depending on volume. The synthesis
+step is where the picture comes together.
+```
 
 ---
 
 ## Step 7 — Stop
 
-After printing the hand-off, end the welcome flow. Do not chain into `/ctx-transcript` or `/ctx-doc` — the user controls the next move.
+After the hand-off, end the welcome flow. Do not chain into `/ctx-doc`, `/ctx-transcript`, `/ctx-chat`, or `/ctx-note` — the user needs to drop their files first, then run the relevant skills themselves.
 
 ---
 
