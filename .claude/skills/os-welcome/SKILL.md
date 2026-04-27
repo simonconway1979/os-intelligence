@@ -17,14 +17,13 @@ For returning users it offers a quick path to `/os-start`.
 Print this banner exactly, as the first thing in the output:
 
 ```
-  ██████╗ ███████╗      ██╗███╗   ██╗████████╗███████╗██╗     ██╗     ██╗ ██████╗ ███████╗███╗   ██╗ ██████╗███████╗
- ██╔═══██╗██╔════╝      ██║████╗  ██║╚══██╔══╝██╔════╝██║     ██║     ██║██╔════╝ ██╔════╝████╗  ██║██╔════╝██╔════╝
- ██║   ██║███████╗█████╗██║██╔██╗ ██║   ██║   █████╗  ██║     ██║     ██║██║  ███╗█████╗  ██╔██╗ ██║██║     █████╗
- ██║   ██║╚════██║╚════╝██║██║╚██╗██║   ██║   ██╔══╝  ██║     ██║     ██║██║   ██║██╔══╝  ██║╚██╗██║██║     ██╔══╝
- ╚██████╔╝███████║      ██║██║ ╚████║   ██║   ███████╗███████╗███████╗██║╚██████╔╝███████╗██║ ╚████║╚██████╗███████╗
-  ╚═════╝ ╚══════╝      ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝╚══════╝╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝ ╚═════╝╚══════╝
+   ___  ____         ___ _   _ _____ _____ _     _     ___ ____ _____ _   _  ____ _____
+  / _ \/ ___|       |_ _| \ | |_   _| ____| |   | |   |_ _/ ___| ____| \ | |/ ___| ____|
+ | | | \___ \   _    | ||  \| | | | |  _| | |   | |    | | |  _|  _| |  \| | |   |  _|
+ | |_| |___) | (_)   | || |\  | | | | |___| |___| |___ | | |_| | |___| |\  | |___| |___
+  \___/|____/       |___|_| \_| |_| |_____|_____|_____|___|\____|_____|_| \_|\____|_____|
 
-         The intelligence layer for your operating system.
+       The intelligence layer for your operating system.
 ```
 
 A blank line, then continue.
@@ -48,7 +47,111 @@ Save the state for Step 4.
 
 ---
 
-## Step 3 — Show the menu
+## Step 3 — Permissions setup
+
+Check whether `.claude/settings.local.json` at the workspace root already grants OS-Intelligence write access to its managed paths.
+
+**How to detect "already configured":** read the file if it exists. Look for `permissions.allow` containing `"Edit(projects.md)"` or any of the OS-Intelligence-scoped patterns (`Edit(projects/**)`, `Write(projects/**)`, etc.). If found, skip this step silently — proceed to Step 4.
+
+If not configured (file missing, or `permissions.allow` does not contain the OS-Intelligence pattern), show the offer:
+
+```
+Quick check before we get started.
+
+OS-Intelligence creates and updates structural files as you work —
+projects.md, project folders, people files, current-state.md, and so on.
+By default, Claude Code will ask you to approve each edit. That gets
+noisy fast.
+
+Want me to add an auto-approve rule to your local settings so the
+system files can be edited without prompting?
+
+Scope (OS-Intelligence-managed paths only):
+  ✓ projects.md           (your project index)
+  ✓ projects/**           (your project folders)
+  ✓ people/**             (people files)
+  ✓ companies/**          (company files)
+  ✓ .current-session      (which project you're working on)
+
+NOT auto-approved:
+  ✗ .claude/skills/       (skill code stays explicit)
+  ✗ Root CLAUDE.md and settings.json
+  ✗ context-library/
+  ✗ Anything else outside the scoped paths
+
+The rule is written to .claude/settings.local.json which is gitignored —
+stays on this machine, never committed to the repo.
+
+1. Yes, add the rules (recommended)
+2. No, I'll approve each edit manually
+3. Show me the exact JSON first
+```
+
+Wait for selection.
+
+### Selection 1 — Yes
+
+Merge the following into `.claude/settings.local.json` at the workspace root:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Edit(projects.md)",
+      "Edit(projects/**)",
+      "Edit(people/**)",
+      "Edit(companies/**)",
+      "Edit(.current-session)",
+      "Write(projects.md)",
+      "Write(projects/**)",
+      "Write(people/**)",
+      "Write(companies/**)",
+      "Write(.current-session)"
+    ]
+  }
+}
+```
+
+**Merge rules:**
+- If the file does not exist: create it with exactly this content.
+- If the file exists with other top-level keys (e.g. `hooks`, other settings): preserve them. Only add or update `permissions.allow`.
+- If `permissions.allow` already exists: append the OS-Intelligence entries that are not already present. Do not remove any existing entries.
+- Validate the result is valid JSON before saving.
+
+After saving, print:
+
+```
+Done. Permissions added to .claude/settings.local.json.
+You won't be prompted for edits to OS-Intelligence-managed files.
+```
+
+Proceed to Step 4.
+
+### Selection 2 — No
+
+Print:
+
+```
+Got it. You'll be prompted for each edit during this and future sessions.
+Run /os-welcome again later if you change your mind.
+```
+
+Proceed to Step 4.
+
+### Selection 3 — Show me the exact JSON first
+
+Print the JSON block (same as Selection 1's payload above). Then re-ask:
+
+```
+1. Yes, add the rules
+2. No, I'll approve each edit manually
+```
+
+Wait for selection. Route to Selection 1 or Selection 2 based on the choice.
+
+---
+
+## Step 4 — Show the menu
 
 ### If fresh install
 
@@ -98,7 +201,7 @@ Wait for selection. Accept a single number 1–5 (or 1–6 for returning users).
 
 ---
 
-## Step 4 — Route to the selected path
+## Step 5 — Route to the selected path
 
 ### Path 1 — 1:1 prep
 
@@ -108,7 +211,7 @@ Suggest project name: `1-on-1 prep with [Name]`. Confirm with user.
 
 Run `/os-new-project` with the confirmed name. The skill will walk through type (project), personal vs professional, company (likely none), people, and key contacts. Let it complete fully.
 
-After `/os-new-project` returns, print the path-specific hand-off (Step 5).
+After `/os-new-project` returns, print the path-specific hand-off (Step 6).
 
 ### Path 2 — Stalled project recovery
 
@@ -118,7 +221,7 @@ Suggest project name: the user's input as given (don't transform). Confirm.
 
 Run `/os-new-project` with that name. Let it complete.
 
-After it returns, print the path-specific hand-off (Step 5).
+After it returns, print the path-specific hand-off (Step 6).
 
 ### Path 3 — Research synthesis
 
@@ -128,7 +231,7 @@ Suggest project name: `Research synthesis: [Topic]`. Confirm.
 
 Run `/os-new-project` with the confirmed name. Let it complete.
 
-After it returns, print the path-specific hand-off (Step 5).
+After it returns, print the path-specific hand-off (Step 6).
 
 ### Path 4 — Tour Acme
 
@@ -181,7 +284,7 @@ Run `/os-start`. Welcome ends.
 
 ---
 
-## Step 5 — Hand-off (paths 1, 2, 3 only)
+## Step 6 — Hand-off (paths 1, 2, 3 only)
 
 After `/os-new-project` completes for paths 1–3, print the path-specific instructions:
 
@@ -249,7 +352,7 @@ Substitute `[slug]` with the actual kebab-case slug created by `/os-new-project`
 
 ---
 
-## Step 6 — Stop
+## Step 7 — Stop
 
 After printing the hand-off, end the welcome flow. Do not chain into `/ctx-transcript` or `/ctx-doc` — the user controls the next move.
 
