@@ -166,7 +166,79 @@ Things not resolved. Things that need a decision before work can continue.
 
 Check if `[project-root]/context/current-state.md` exists.
 
-**If it doesn't exist:** Create it by copying the template from `setup/project-template v2/context/current-state.md`. Fill in the project name in frontmatter and the Project Position section from what you know about this session.
+**If it doesn't exist:** Create it inline using this template, substituting `[Project Name]` and `[today]` (YYYY-MM-DD), and filling Project Position from what you know about this session:
+
+```markdown
+---
+project: [Project Name]
+last-updated: [today]
+updated-by: os-save
+---
+
+# Current State — [Project Name]
+
+_Living synthesis. Updated by os-save, ctx-synthesise, and ctx-doc. This is the primary context file loaded at session start._
+
+---
+
+## Project Position
+_Last updated: [today] via os-save_
+
+**Where we stand:** [2-3 sentences from this session]
+**Primary goal:** [what success looks like right now]
+**Key constraint or risk:** [the thing most likely to affect whether we succeed]
+
+---
+
+## What We Know From Documents
+_Last updated: — via ctx-doc_
+
+—
+
+**Sources:** —
+
+---
+
+## Stakeholder Dynamics
+_Last updated: — via ctx-synthesise_
+
+**Current read:** —
+**Key positions:** —
+**Tensions:** —
+**Who to watch:** —
+
+---
+
+## Standing Decisions
+_Last updated: [today] via os-save_
+
+| Decision | What was decided | Why it matters |
+|----------|-----------------|----------------|
+| — | — | — |
+
+---
+
+## In Flight
+_Last updated: [today] via os-save_
+
+- —
+
+---
+
+## Open Questions / Blockers
+_Last updated: [today] via os-save_
+
+- —
+
+---
+
+## Recent Changes
+_Last updated: [today] via os-save_
+
+- —
+```
+
+After the file is created, continue with the section updates below to populate In Flight, Open Questions, Recent Changes, and Standing Decisions from this session's content.
 
 **Update the following sections** (leave other sections unchanged):
 

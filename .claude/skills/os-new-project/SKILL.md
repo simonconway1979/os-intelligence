@@ -151,22 +151,168 @@ Do the following automatically, no further questions needed.
 
 ### For both project and portfolio types:
 
-**a) Copy template**
-Copy `setup/project-template v2/` to `projects/[project-name]/`
-Folder name: lowercase, hyphenated (e.g. `acme-corp-launch`)
+**a) Create the project folder structure**
 
-**b) Populate CLAUDE.md**
-Write `projects/[project-name]/CLAUDE.md` using the template, filled with:
-- Project name and goal from Steps 1–2
-- Type: `project` or `portfolio` (from Step 3)
-- Status: Active
-- Started: today's date
-- Company link (if applicable)
-- Key people table with links to people files
-- Current focus: leave as placeholder ("— add after first session")
+Folder name: lowercase, hyphenated (e.g. `acme-corp-launch`).
 
-For portfolios, also add to CLAUDE.md:
+Create the directory tree:
+```bash
+mkdir -p projects/[project-name]/{context,intelligence/{chats,docs/raw,meetings/inbox,notes},memory,outputs,people}
 ```
+
+Add `.gitkeep` files to the empty folders so they survive cloning and git operations:
+- `intelligence/chats/.gitkeep`
+- `intelligence/docs/raw/.gitkeep`
+- `intelligence/meetings/inbox/.gitkeep`
+- `intelligence/notes/.gitkeep`
+- `memory/.gitkeep`
+- `people/.gitkeep`
+
+Write `projects/[project-name]/context/README.md`:
+```markdown
+# Context
+
+Project knowledge. Flat structure — no subfolders.
+
+Name files semantically so their content is obvious from the filename (e.g. `q2-okrs.md`, `competitor-analysis.md`).
+
+**Rule:** Stable, reference-only knowledge lives here. Active drafts live in `outputs/`.
+```
+
+Write `projects/[project-name]/outputs/README.md`:
+```markdown
+# Outputs
+
+Active work in progress. Flat structure — no subfolders.
+
+**Rule:** If it's being edited, it lives here. When stable, move to `context/`.
+```
+
+Write `projects/[project-name]/context/current-state.md` using this template (substitute `[Project Name]` from Step 1, `[today]` as YYYY-MM-DD, and `[primary goal]` from Step 2):
+
+```markdown
+---
+project: [Project Name]
+last-updated: [today]
+updated-by: os-new-project
+---
+
+# Current State — [Project Name]
+
+_Living synthesis. Updated by os-save, ctx-synthesise, and ctx-doc. This is the primary context file loaded at session start._
+
+---
+
+## Project Position
+_Last updated: — via —_
+
+**Where we stand:** —
+**Primary goal:** [primary goal]
+**Key constraint or risk:** —
+
+---
+
+## What We Know From Documents
+_Last updated: — via ctx-doc_
+
+—
+
+**Sources:** —
+
+---
+
+## Stakeholder Dynamics
+_Last updated: — via ctx-synthesise_
+
+**Current read:** —
+**Key positions:** —
+**Tensions:** —
+**Who to watch:** —
+
+---
+
+## Standing Decisions
+_Last updated: — via os-save_
+
+| Decision | What was decided | Why it matters |
+|----------|-----------------|----------------|
+| — | — | — |
+
+---
+
+## In Flight
+_Last updated: — via os-save_
+
+- —
+
+---
+
+## Open Questions / Blockers
+_Last updated: — via os-save_
+
+- —
+
+---
+
+## Recent Changes
+_Last updated: — via os-save_
+
+- —
+```
+
+**b) Write CLAUDE.md**
+
+Write `projects/[project-name]/CLAUDE.md` using this template, substituting fields from Steps 1–8:
+
+```markdown
+# CLAUDE — [Project Name]
+
+**Inherits from:** Root `/CLAUDE.md` (PM Operating System)
+
+---
+
+## Project
+
+- **Name:** [Project Name]
+- **Goal:** [from Step 2]
+- **Status:** Active
+- **Started:** [today YYYY-MM-DD]
+
+---
+
+## Company
+
+[Company Name] — [link to company file, e.g. ../../companies/company-name.md]
+(Or: `— (personal project)` if no company linked)
+
+---
+
+## Key People
+
+| Name | Role |
+|------|------|
+| [Name](../../people/name.md) | [Role in this project] |
+
+---
+
+## Current Focus
+
+— add after first session
+
+---
+
+## Key Paths
+
+- `context/` — project knowledge (flat, named semantically); `current-state.md` is the live read
+- `outputs/` — work in progress
+- `intelligence/` — meetings, docs, notes, chats (bulk import targets)
+- `memory/` — session saves (`YYYYMMDD-HHMM.md`)
+```
+
+For portfolios, append a `## Portfolio` block to CLAUDE.md:
+```markdown
+---
+
 ## Portfolio
 
 - **Item name:** [item name from Step 3] (singular)

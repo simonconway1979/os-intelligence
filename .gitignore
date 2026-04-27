@@ -48,3 +48,9 @@ node_modules/
 !/people/.gitkeep
 /companies/*
 !/companies/.gitkeep
+
+# Acme example: ship the intelligence/ skeleton, ignore any content a user drops in
+!/projects/acme-corp-example/intelligence/
+/projects/acme-corp-example/intelligence/**/*
+!/projects/acme-corp-example/intelligence/**/
+!/projects/acme-corp-example/intelligence/**/.gitkeep

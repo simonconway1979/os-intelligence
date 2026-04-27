@@ -49,32 +49,56 @@ Save the state for Step 4.
 
 ## Step 3 — Permissions setup
 
-Check whether `.claude/settings.local.json` at the workspace root already grants OS-Intelligence write access to its managed paths.
+Check whether `.claude/settings.local.json` at the workspace root already grants OS-Intelligence the full current set of permissions.
 
-**How to detect "already configured":** read the file if it exists. Look for `permissions.allow` containing `"Edit(projects.md)"` or any of the OS-Intelligence-scoped patterns (`Edit(projects/**)`, `Write(projects/**)`, etc.). If found, skip this step silently — proceed to Step 4.
+**The current expected set** (must all be present in `permissions.allow` to count as configured):
+```
+Read(projects/**)
+Read(people/**)
+Read(companies/**)
+Read(**/intelligence/**)
+Edit(projects.md)
+Edit(projects/**)
+Edit(people/**)
+Edit(companies/**)
+Edit(.current-session)
+Write(projects.md)
+Write(projects/**)
+Write(people/**)
+Write(companies/**)
+Write(.current-session)
+Write(**/intelligence/**)
+```
 
-If not configured (file missing, or `permissions.allow` does not contain the OS-Intelligence pattern), show the offer:
+**How to detect "already configured":** read `.claude/settings.local.json` if it exists. Compute the set of expected entries above that are MISSING from `permissions.allow`.
+
+- If **0 missing** → fully configured. Skip this step silently and proceed to Step 4.
+- If **some missing but at least one present** → partially configured (older version). Show the migration offer below.
+- If **all missing** (or file doesn't exist, or `permissions.allow` doesn't exist) → never configured. Show the first-run offer below.
+
+### First-run offer (all missing)
 
 ```
 Quick check before we get started.
 
 OS-Intelligence creates and updates structural files as you work —
-projects.md, project folders, people files, current-state.md, and so on.
-By default, Claude Code will ask you to approve each edit. That gets
-noisy fast.
+projects.md, project folders, people files, current-state.md,
+intelligence/ inputs, and so on. By default, Claude Code will ask
+you to approve each edit. That gets noisy fast.
 
 Want me to add an auto-approve rule to your local settings so the
-system files can be edited without prompting?
+system files can be read and written without prompting?
 
 Scope (OS-Intelligence-managed paths only):
-  ✓ projects.md           (your project index)
-  ✓ projects/**           (your project folders)
-  ✓ people/**             (people files)
-  ✓ companies/**          (company files)
-  ✓ .current-session      (which project you're working on)
+  ✓ projects.md             (your project index)
+  ✓ projects/**             (your project folders)
+  ✓ people/**               (people files)
+  ✓ companies/**            (company files)
+  ✓ .current-session        (which project you're working on)
+  ✓ **/intelligence/**      (meetings, docs, chats, notes — bulk import)
 
 NOT auto-approved:
-  ✗ .claude/skills/       (skill code stays explicit)
+  ✗ .claude/skills/         (skill code stays explicit)
   ✗ Root CLAUDE.md and settings.json
   ✗ context-library/
   ✗ Anything else outside the scoped paths
@@ -87,6 +111,27 @@ stays on this machine, never committed to the repo.
 3. Show me the exact JSON first
 ```
 
+### Migration offer (some missing — older version detected)
+
+Show the missing entries explicitly so the user sees what's new:
+
+```
+Quick check — your permissions are partially configured from an
+earlier OS-Intelligence run, but [N] new entries have been added
+since then. They cover [short human-readable summary, e.g. "the
+intelligence/ folders for bulk-importing meetings, docs, chats,
+and notes"].
+
+Missing from your current settings:
+  + [list each missing entry, one per line]
+
+Want me to add them now?
+
+1. Yes, add the missing rules
+2. No, leave settings as is
+3. Show me the exact JSON to be added
+```
+
 Wait for selection.
 
 ### Selection 1 — Yes
@@ -97,6 +142,10 @@ Merge the following into `.claude/settings.local.json` at the workspace root:
 {
   "permissions": {
     "allow": [
+      "Read(projects/**)",
+      "Read(people/**)",
+      "Read(companies/**)",
+      "Read(**/intelligence/**)",
       "Edit(projects.md)",
       "Edit(projects/**)",
       "Edit(people/**)",
@@ -106,7 +155,8 @@ Merge the following into `.claude/settings.local.json` at the workspace root:
       "Write(projects/**)",
       "Write(people/**)",
       "Write(companies/**)",
-      "Write(.current-session)"
+      "Write(.current-session)",
+      "Write(**/intelligence/**)"
     ]
   }
 }
@@ -118,29 +168,53 @@ Merge the following into `.claude/settings.local.json` at the workspace root:
 - If `permissions.allow` already exists: append the OS-Intelligence entries that are not already present. Do not remove any existing entries.
 - Validate the result is valid JSON before saving.
 
-After saving, print:
+After saving, print one of these depending on which case applied:
 
+**First-run case (file/permissions.allow didn't exist or had no OS-Intelligence entries):**
 ```
 Done. Permissions added to .claude/settings.local.json.
 You won't be prompted for edits to OS-Intelligence-managed files.
+```
+
+**Migration case (some entries existed, others were appended):**
+```
+Done. [N] new permission rule(s) added to .claude/settings.local.json.
+Your existing rules were left untouched.
 ```
 
 Proceed to Step 4.
 
 ### Selection 2 — No
 
-Print:
+Print one of these:
 
+**First-run case:**
 ```
 Got it. You'll be prompted for each edit during this and future sessions.
 Run /os-welcome again later if you change your mind.
+```
+
+**Migration case:**
+```
+Got it — leaving your settings as is. The [N] missing rule(s) won't be added.
+Run /os-welcome again any time to re-offer them.
 ```
 
 Proceed to Step 4.
 
 ### Selection 3 — Show me the exact JSON first
 
-Print the JSON block (same as Selection 1's payload above). Then re-ask:
+**First-run case:** Print the full JSON block from Selection 1.
+
+**Migration case:** Print only the missing entries as a JSON snippet, framed as "these will be appended to your existing `permissions.allow` array":
+
+```json
+[
+  // each missing entry, one per line, exact strings
+]
+```
+
+Then re-ask:
 
 ```
 1. Yes, add the rules

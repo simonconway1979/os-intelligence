@@ -60,7 +60,7 @@ cd ~/your-existing-workspace
 # Skills
 mkdir -p .claude/skills
 for skill in os-start os-save os-switch-project os-new-project os-new-item \
-             os-new-person os-project-design new-project \
+             os-new-person os-project-design \
              ctx-transcript ctx-doc ctx-note ctx-chat ctx-synthesise \
              ctx-timeline ctx-inspiration; do
   ln -s ~/Code/os-intelligence/.claude/skills/$skill .claude/skills/$skill
