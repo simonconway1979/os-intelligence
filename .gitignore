@@ -1,0 +1,50 @@
+# OS / editor noise
+.DS_Store
+**/.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+*.tmp
+Thumbs.db
+
+# Claude Code per-user state
+.current-session
+.claude/settings.local.json
+.claude/backups/
+.claude/projects/
+
+# Local activity log (per-user, never committed)
+.os-intel-log/
+
+# Per-user runtime state (anywhere in tree)
+**/memory/
+**/outputs/
+**/intelligence/
+
+# Obsidian (per-device)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+
+# Environment / secrets
+.env
+**/.env
+*.env
+*.key
+*.pem
+**/*credentials*
+**/*secret*
+
+# Node
+node_modules/
+
+# Users' own projects, people, companies (only the Acme example ships)
+/projects/*
+!/projects/acme-corp-example/
+/people/*
+!/people/.gitkeep
+/companies/*
+!/companies/.gitkeep
