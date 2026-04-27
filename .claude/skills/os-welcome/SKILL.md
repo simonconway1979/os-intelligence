@@ -297,9 +297,12 @@ Print:
 ```
 Project ready at: projects/[slug]/
 
-Now let's figure out what context to bring. There are four types of
-material OS-Intelligence can capture. I'll ask about each in turn —
-say no to anything you don't have or don't want to bring right now.
+Now we'll import the four foundational inputs for stakeholder
+intelligence: documents, meeting transcripts, chat threads, and notes.
+
+I'll ask about each in turn — say no to anything you don't have, or
+don't want to bring right now. You can always run /os-welcome again
+later to add more.
 ```
 
 ### The four capture types
