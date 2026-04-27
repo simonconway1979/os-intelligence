@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OS-Intelligence — a memory layer for Claude Code</title>
+<title>OS-Intelligence. a memory layer for Claude Code</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <meta name="description" content="OS-Intelligence is an open-source memory layer for Claude Code. Capture meetings, synthesise across them, and turn your work into context that compounds.">
 
@@ -47,6 +47,52 @@
 
 
 
+
+
+  /* alternating section bg for visual rhythm */
+  #proof, #who, #hood { background-color: #0e0e0e; }
+  #early-access { background-color: #0a0a0a; }
+
+  @media (max-width: 640px) {
+    h1 { font-size: clamp(28px, 9vw, 40px); line-height: 1.1; }
+    .hero { padding: 60px 0 80px; }
+    .hero-cta { gap: 10px; }
+    .byline { font-size: 12px; }
+    main > section { padding: 56px 0; }
+  }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  section[id] { scroll-margin-top: 80px; }
+
+  @media (max-width: 640px) {
+    .hero h1 { margin-bottom: 48px; }
+    .hero .lede, .hero p.lede, .hero .subhead { margin-top: 0; }
+    .hero .hero-cta { margin-top: 40px; }
+  }
+
+  .hero { position: relative; }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, transparent 0%, rgba(10,10,10,0.45) 75%, rgba(10,10,10,0.85) 100%),
+      linear-gradient(to bottom, transparent 60%, rgba(10,10,10,0.95) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero > * { position: relative; z-index: 2; }
+
+  /* Tighter mobile spacing — get section 01 above the fold on phone */
+  @media (max-width: 640px) {
+    .hero { padding: 32px 0 48px; }
+    .hero .hero-cta { margin-top: 28px; }
+    .byline { margin-top: 16px; }
+    main > section { padding: 40px 0; }
+    .divider { margin-bottom: 24px; }
+    h2 { font-size: clamp(22px, 6vw, 28px); }
+  }
 </style>
 
 <style>
@@ -57,7 +103,7 @@
     --border: #262626;
     --border-strong: #333333;
     --text: #e8e6e3;
-    --muted: #8b8b8b;
+    --muted: #c4c4c4;
     --muted-2: #5e5e5e;
     --accent: #ffb454;
     --accent-hover: #ffc97a;
@@ -378,11 +424,11 @@
   .proof-intro { margin-top: 16px; }
   .code-wrap { margin-top: 40px; }
   .code-frame {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    background: #181818;
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
     overflow: hidden;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 0 0 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 0 rgba(255,180,84,0.06) inset, 0 8px 24px rgba(0,0,0,0.4);
   }
   .code-titlebar {
     padding: 10px 18px;
@@ -791,14 +837,11 @@
       <p class="lede">
         OS-Intelligence is an open-source memory layer for Claude Code.
         Capture meetings, synthesise across them, and turn your work into
-        context that compounds — so every session starts smart, not from scratch.
+        context that compounds. so every session starts smart, not from scratch.
       </p>
       <div class="hero-ctas">
-        <a class="btn btn-primary btn-lg" href="mailto:simon@condaal.com?subject=OS-Intelligence%20%E2%80%94%20I%20want%20the%20repo" target="_blank" rel="noopener">
+        <a class="btn btn-primary btn-lg" href="#early-access">
           Get the repo <span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="btn btn-ghost btn-lg" href="mailto:simon@condaal.com?subject=OS-Intelligence%20%E2%80%94%20I%20want%20the%20demo" target="_blank" rel="noopener">
-          Watch the 10-min walkthrough <span class="arrow" aria-hidden="true">→</span>
         </a>
       </div>
       <p class="byline">Built by Simon Conway · AI-native PM · Barcelona</p>
@@ -820,20 +863,17 @@
           </p>
         </div>
         <div class="job">
-          <span class="job-tag">/os-start</span>
+          <span class="job-tag">/ctx-synthesise</span>
           <p class="job-lead">Pick up a stalled project.</p>
           <p class="job-detail">
-            Six weeks since you touched it. <code>/os-start</code> gives you the
-            position, in-flight work, and the blockers — drawn from every meeting
-            and doc since.
+            Six weeks since you touched it. <code>/ctx-synthesise</code> reads every meeting and doc you've added, surfaces the position, in-flight work, and the blockers. <code>/os-start</code> loads the result.
           </p>
         </div>
         <div class="job">
-          <span class="job-tag">/ctx-synthesise</span>
-          <p class="job-lead">Synthesise user research without losing the texture.</p>
+          <span class="job-tag">/ctx-transcript</span>
+          <p class="job-lead">Capture a meeting without losing the texture.</p>
           <p class="job-detail">
-            Drop transcripts in. <code>/ctx-synthesise</code> pulls patterns,
-            contradictions, and the quotes that prove them. You decide what's real.
+            Drop the transcript in. <code>/ctx-transcript</code> structures it, links the people, and surfaces the quotes that matter. You decide what's real.
           </p>
         </div>
       </div>
@@ -845,11 +885,11 @@
     <div class="wrap">
       <p class="divider" aria-hidden="true" data-divider="" data-num="02" data-label="what it loads"></p>
       <h2>The shape of remembered context.</h2>
-      <p class="lede proof-intro">A real <code>current-state.md</code> file — the kind <code>/os-start</code> reads in.</p>
+      <p class="lede proof-intro">A real <code>current-state.md</code> file. The kind <code>/os-start</code> reads in.</p>
       <div class="code-wrap">
         <div class="code-frame" role="figure" aria-label="Sample current-state.md file">
           <div class="code-titlebar" data-titlebar="" data-filename="current-state.md"></div>
-<pre class="code-body"><span class="h1"># Current State — Acme Corp</span>
+<pre class="code-body"><span class="h1"># Current State. Acme Corp</span>
 
 <span class="h2">## Project Position</span>
 Series B fundraise just closed. Product velocity expected to 3x by Q3.
@@ -860,8 +900,8 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
 <span class="bullet">-</span> Edwin (CTO, sceptic on data quality): needs governance answer
 
 <span class="h2">## In Flight</span>
-<span class="bullet">-</span> AI roadmap discovery — 4 of 12 interviews done
-<span class="bullet">-</span> PM onboarding pilot — week 2 of 4
+<span class="bullet">-</span> AI roadmap discovery. 4 of 12 interviews done
+<span class="bullet">-</span> PM onboarding pilot. week 2 of 4
 
 <span class="h2">## Open Questions</span>
 <span class="bullet">-</span> What's the budget authority for new tooling?</pre>
@@ -877,16 +917,16 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
   <section id="start">
     <div class="wrap">
       <p class="divider" aria-hidden="true" data-divider="" data-num="03" data-label="setup"></p>
-      <h2>Get started in about an hour.</h2>
+      <h2>Give Claude Code its memory in one hour.</h2>
       <ol class="steps">
         <li>Clone the repo</li>
         <li>Drop in your last 3 meeting transcripts</li>
         <li>Run <code>/ctx-synthesise</code></li>
         <li>Run <code>/os-start</code></li>
       </ol>
-      <p class="closing">Your Claude Code now knows more than your second brain.</p>
+      <p class="closing">Your Claude Code now knows more about your work than you do.</p>
       <p class="smallprint">Prerequisite: Claude Code installed. That's it.</p>
-      <a class="text-link step-link" href="mailto:simon@condaal.com?subject=OS-Intelligence%20%E2%80%94%20Send%20me%20the%20quickstart" target="_blank" rel="noopener">Show me the commands →</a>
+      <a class="text-link step-link" href="#early-access">Show me the commands →</a>
     </div>
   </section>
 
@@ -899,18 +939,14 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
         <div class="audience-card">
           <h3>product-managers</h3>
           <p>
-            ICs who already use Claude Code and are tired of re-explaining their
-            stakeholders, projects, and decisions every session. If your work is
-            conversation-heavy and your context lives in fifteen places, this is
-            for you.
+            Already using Claude Code and tired of re-explaining your stakeholders, projects, and decisions every session? If your work is conversation-heavy and your context lives in fifteen places, this is for you.
           </p>
         </div>
         <div class="audience-card">
           <h3>founders-and-operators</h3>
           <p>
             Building a startup, running a team, shipping daily with Claude Code.
-            Same problem — context evaporates between sessions. Same fix —
-            capture once, compound forever.
+            Same problem. context evaporates between sessions. Same fix. capture once, compound forever.
           </p>
         </div>
       </div>
@@ -932,9 +968,9 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
           <div>
             <h4>your side</h4>
             <ul>
-              <li><strong>60-min setup call with me</strong> — after light pre-work; you download the repo, confirm Claude Code runs.</li>
+              <li><strong>60-min setup call with me</strong>, after light pre-work: download the repo, confirm Claude Code runs.</li>
               <li>Direct access during your install week.</li>
-              <li>First read on v0.2 — your friction points shape it.</li>
+              <li>First read on v0.2. Your friction points shape it.</li>
               <li>Public credit in <code>CONTRIBUTORS.md</code>.</li>
               <li>The system, free, forever.</li>
             </ul>
@@ -965,26 +1001,26 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
     <div class="wrap">
       <p class="divider" aria-hidden="true" data-divider="" data-num="06" data-label="what pilots are saying"></p>
       <h2>Quotes land here.</h2>
-      <p class="pilots-note">First cohort installs Apr 29. Quotes from real users land Apr 30.</p>
+      <p class="pilots-note">First cohort installs Apr 29. Quotes from real users land soon after.</p>
       <div class="quotes-grid" aria-label="Placeholder quote cards">
         <article class="quote-card">
           <div>
             <div class="quote-mark" aria-hidden="true">&gt;_</div>
-            <span class="quote-placeholder">— quote pending —</span>
+            <span class="quote-placeholder">. quote pending. </span>
           </div>
           <p class="quote-attrib">pilot 01</p>
         </article>
         <article class="quote-card">
           <div>
             <div class="quote-mark" aria-hidden="true">&gt;_</div>
-            <span class="quote-placeholder">— quote pending —</span>
+            <span class="quote-placeholder">. quote pending. </span>
           </div>
           <p class="quote-attrib">pilot 02</p>
         </article>
         <article class="quote-card">
           <div>
             <div class="quote-mark" aria-hidden="true">&gt;_</div>
-            <span class="quote-placeholder">— quote pending —</span>
+            <span class="quote-placeholder">. quote pending. </span>
           </div>
           <p class="quote-attrib">pilot 03</p>
         </article>
@@ -997,31 +1033,31 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
     <div class="wrap">
       <p class="divider" aria-hidden="true" data-divider="" data-num="07" data-label="under the hood"></p>
       <h2>For the Claude Code natives.</h2>
-      <p class="hood-intro">What's actually built — the bits that matter when you read the source.</p>
+      <p class="hood-intro">What's actually built. the bits that matter when you read the source.</p>
       <div class="hood-grid">
         <div class="hood-item">
           <span class="hood-lead">Parallel sub-agent fan-out</span>
-          <span class="hood-explain"> — for batch context enrichment; no race conditions on shared writes.</span>
+          <span class="hood-explain">. for batch context enrichment; no race conditions on shared writes.</span>
         </div>
         <div class="hood-item">
           <span class="hood-lead">Sonnet/Opus model routing</span>
-          <span class="hood-explain"> — per skill; cost-optimised capture, reasoning-optimised synthesis.</span>
+          <span class="hood-explain">. per skill; cost-optimised capture, reasoning-optimised synthesis.</span>
         </div>
         <div class="hood-item">
           <span class="hood-lead">Append-only intelligence layer</span>
-          <span class="hood-explain"> — with status lifecycle (raw → synthesised → validated → archived).</span>
+          <span class="hood-explain">. with status lifecycle (raw → synthesised → validated → archived).</span>
         </div>
         <div class="hood-item">
           <span class="hood-lead">Schema-aware permission migration</span>
-          <span class="hood-explain"> — in <code>/os-welcome</code>; diffs your config and asks, doesn't presume.</span>
+          <span class="hood-explain">. in <code>/os-welcome</code>; diffs your config and asks, doesn't presume.</span>
         </div>
         <div class="hood-item">
           <span class="hood-lead">Local activity log, zero telemetry</span>
-          <span class="hood-explain"> — opt-in <code>/share-usage</code> for the power-user funnel.</span>
+          <span class="hood-explain">. opt-in <code>/share-usage</code> for the power-user funnel.</span>
         </div>
         <div class="hood-item">
           <span class="hood-lead">Versioned via git tags + migration scripts</span>
-          <span class="hood-explain"> — breaking changes ship an idempotent migration, not a "good luck."</span>
+          <span class="hood-explain">. breaking changes ship an idempotent migration, not a "good luck."</span>
         </div>
       </div>
     </div>
@@ -1044,7 +1080,7 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
           <p class="faq-q">Won't Anthropic ship this?</p>
           <p class="faq-a">
             They'll ship better primitives over time. OS-Intelligence is the
-            <em>methodology</em> — how knowledge work uses context. When Anthropic
+            <em>methodology</em>. how knowledge work uses context. When Anthropic
             ships better foundations, OS-Intelligence gets better with them.
           </p>
         </div>
@@ -1067,7 +1103,7 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
       Built by Simon Conway · AI-native PM · Barcelona.
     </p>
     <nav class="footer-links" aria-label="Footer">
-      <a href="mailto:simon@condaal.com?subject=OS-Intelligence%20%E2%80%94%20GitHub%20access&body=Hi%20Simon%2C%20here%27s%20my%20GitHub%20handle%3A%20" target="_blank" rel="noopener" aria-label="GitHub repository">GitHub</a>
+      <a href="#early-access">GitHub</a>
       <a href="https://www.linkedin.com/in/simonconway" target="_blank" rel="noopener" aria-label="LinkedIn profile">LinkedIn</a>
       <a href="mailto:simon@condaal.com?subject=OS-Intelligence" aria-label="Email Simon">Email</a>
     </nav>
@@ -1153,9 +1189,9 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
         scaleMobile: 1.00,
         color: 0xffb454,
         backgroundColor: 0x0a0a0a,
-        points: isMobile ? 5.00 : 8.00,
-        maxDistance: isMobile ? 18.00 : 22.00,
-        spacing: 18.00,
+        points: isMobile ? 6.00 : 11.00,
+        maxDistance: isMobile ? 20.00 : 26.00,
+        spacing: 15.00,
         showDots: true
       });
     } catch (e) {
