@@ -63,6 +63,127 @@ Shall I process all [N], or just specific ones?
 
 If both locations are empty or fully processed, say so and ask if they want to add new files.
 
+**After the user confirms which files to process: if the count to process is 3 or more, ask:**
+
+```
+[N] files to process. Run in parallel? (Y/n)
+
+In parallel mode I spawn one sub-agent per file to do the heavy reading
+and analysis simultaneously. The merged context updates are then applied
+here in the main thread, sequentially, so there are no conflicts on
+shared files (context/*, people/*). Faster for batches; same result.
+```
+
+- If **yes** (default for N ≥ 3): go to **Step 2.5 — Parallel mode**
+- If **no**, or N < 3: continue to Step 3 (sequential, existing flow)
+
+---
+
+## Step 2.5 — Parallel mode (for batches of 3+ files)
+
+Use this when the user opted in to parallel processing.
+
+### A. Fan out
+
+In a single message, spawn one `general-purpose` sub-agent per file via the Task tool. Each agent receives a self-contained prompt.
+
+**Per-agent prompt template** (substitute placeholders):
+
+> You are analysing a single document for OS-Intelligence context enrichment. Do NOT modify any files in `context/` or `people/`. The main thread will apply those changes after all analyses come back. You MAY add YAML frontmatter to the raw file itself (the file you are analysing) if it lacks one, but do not add `informs` or `enriched` fields yet — the main thread will fill those in.
+>
+> **File to analyse:** `[FILE_PATH]`
+> **Project:** `[PROJECT_NAME]` (slug: `[PROJECT_SLUG]`)
+> **Project root:** `[PROJECT_ROOT]`
+>
+> **Tasks:**
+>
+> 1. Read the file via the Read tool.
+> 2. If the file lacks YAML frontmatter, add it. Required fields: `date`, `type`, `tags` (`type/context`, `project/[PROJECT_SLUG]`, `status/raw`). Leave `informs:` and `enriched:` empty.
+> 3. Analyse the content. Identify:
+>    - The doc type (call_notes, meeting_prep, board update, policy, etc.)
+>    - The date
+>    - People mentioned (full names — main thread will resolve to slugs)
+>    - Decisions, commitments, or facts the project should know
+>    - Tensions, contradictions, or risks worth flagging
+>    - Which `context/*` files this document should inform (project.md, business.md, current-state.md, or new ones)
+>    - Which `people/*` files this document should inform (one per person meaningfully present)
+> 4. Return a structured report in this exact format:
+>
+> ```
+> FILE: [filename]
+> TYPE: [doc type]
+> DATE: [ISO date]
+> SUMMARY: [2-3 sentences on what this reveals]
+>
+> PARTICIPANTS:
+>   - [Full Name] (role, company)
+>   - [Full Name] (role, company)
+>
+> DECISIONS / FACTS:
+>   - [item]
+>   - [item]
+>
+> TENSIONS / RISKS:
+>   - [item]
+>
+> CONTEXT FILES TO UPDATE:
+>   - target: context/project.md
+>     content: |
+>       [proposed addition or update — be specific, write the actual text]
+>   - target: context/business.md
+>     content: |
+>       [...]
+>
+> PEOPLE FILES TO UPDATE:
+>   - target: tom-okafor
+>     project_addition: |
+>       [proposed addition for project people file]
+>     root_addition: |
+>       [proposed addition for root identity file, if any]
+> ```
+>
+> Return ONLY this report. Do not include other commentary.
+
+Spawn all agents in a single message with multiple Agent tool calls so they run concurrently.
+
+### B. Aggregate reports
+
+When all sub-agents have returned:
+
+1. Collect every report into memory (keep them in main-thread context — they're summaries, not full documents).
+2. **Build a target-update map.** For each unique `context/*` file mentioned across all reports, gather the list of `(source_file, proposed_content)` pairs that target it. Same for each unique person.
+3. Resolve any people-name ambiguities to slugs (use `people/[slug].md` matching by full name or first name + initial).
+
+### C. Apply context updates (main thread, sequential)
+
+For each unique context-file target:
+
+1. Read the existing file. If it doesn't exist, create it.
+2. Take all `proposed_content` blocks for this target and merge into a single coherent update. Deduplicate. Where two sources contradict, prefer the more specific or more recent.
+3. Apply per Step 5 of the sequential flow (don't duplicate facts; update or extend existing sections).
+4. Update the `## Sources` section to list every raw file that informed this target.
+
+### D. Apply people updates (main thread, sequential)
+
+For each unique person target:
+
+1. Determine project-level path (`[project]/people/[slug].md`) and root-level path (`/people/[slug].md`). Create either if missing (use `people/TEMPLATE.md` for root).
+2. Merge all `project_addition` blocks for this person into the project file (per Step 6 of the sequential flow).
+3. Merge all `root_addition` blocks into the root file. Skip the root file if no root_addition was provided by any agent.
+
+### E. Mark each raw file as processed
+
+For each file analysed:
+
+1. Determine which context/people files ended up being updated as a result of this raw file's report.
+2. Update the raw file's frontmatter:
+   - `informs: [list of context/people paths]`
+   - `enriched: [today's ISO date]`
+
+### F. Continue to Step 8
+
+After E completes, skip the remaining sequential steps (Step 3 through Step 7 are already covered) and continue to **Step 8 — Update CLAUDE.md** with the full list of new raw files added and context/people files updated.
+
 ---
 
 ## Step 3 — Identify and accept new material
