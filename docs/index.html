@@ -831,14 +831,15 @@
   <section class="hero" id="hero">
     <div class="wrap hero-inner">
       <h1>
-        My Claude Code remembers every stakeholder, meeting, and decision.<span class="cursor" aria-hidden="true">_</span>
-        <span class="hero-line2">Yours can too.</span>
+        Every project starts with a clear why.<span class="cursor" aria-hidden="true">_</span>
+        <span class="hero-line2">Six weeks later, no one remembers it.</span>
       </h1>
+      <p class="lede"><strong>My Claude Code does. Yours can too.</strong></p>
       <p class="lede">
-        OS-Intelligence is an open-source memory layer for Claude Code.
-        Capture meetings, synthesise across them, and turn your work into
-        context that compounds. so every session starts smart, not from scratch.
+        OS-Intelligence is the open-source reasoning layer for Claude Code.
+        Every meeting, decision, and open question becomes a trail you can reason against. So when someone asks <em>"why did you decide this?"</em>, the answer is right there.
       </p>
+      <p class="lede"><em>Every judgement informed by the project, not your memory.</em></p>
       <div class="hero-ctas">
         <a class="btn btn-primary btn-lg" href="#early-access">
           Get the repo <span class="arrow" aria-hidden="true">→</span>
@@ -859,21 +860,21 @@
           <p class="job-lead">Walk into your 1:1 prepared.</p>
           <p class="job-detail">
             <code>/os-start</code> surfaces what you said last time, what's stuck,
-            and the open question for this person. Two minutes, not twenty.
+            and the open question for this person. The why, not just the what. Two minutes, not twenty.
           </p>
         </div>
         <div class="job">
           <span class="job-tag">/ctx-synthesise</span>
           <p class="job-lead">Pick up a stalled project.</p>
           <p class="job-detail">
-            Six weeks since you touched it. <code>/ctx-synthesise</code> reads every meeting and doc you've added, surfaces the position, in-flight work, and the blockers. <code>/os-start</code> loads the result.
+            Six weeks since you touched it. <code>/ctx-synthesise</code> reads every meeting and doc you've added, surfaces the position, in-flight work, and the reasoning behind every decision. <code>/os-start</code> loads the result.
           </p>
         </div>
         <div class="job">
-          <span class="job-tag">/ctx-transcript</span>
-          <p class="job-lead">Capture a meeting without losing the texture.</p>
+          <span class="job-tag">/ctx-synthesise</span>
+          <p class="job-lead">See what no single meeting tells you.</p>
           <p class="job-detail">
-            Drop the transcript in. <code>/ctx-transcript</code> structures it, links the people, and surfaces the quotes that matter. You decide what's real.
+            Three meetings this week. Two stakeholders flipped positions. One open question still unanswered. <code>/ctx-synthesise</code> reads across every meeting, chat, and decision. Surfaces the contradictions, the shifts, the unresolved. The project tells you something no single meeting can.
           </p>
         </div>
       </div>
@@ -884,8 +885,8 @@
   <section id="proof">
     <div class="wrap">
       <p class="divider" aria-hidden="true" data-divider="" data-num="02" data-label="what it loads"></p>
-      <h2>The shape of remembered context.</h2>
-      <p class="lede proof-intro">A real <code>current-state.md</code> file. The kind <code>/os-start</code> reads in.</p>
+      <h2>The shape of compounding reasoning.</h2>
+      <p class="lede proof-intro">A real <code>current-state.md</code> file. And what happens when you reason against it.</p>
       <div class="code-wrap">
         <div class="code-frame" role="figure" aria-label="Sample current-state.md file">
           <div class="code-titlebar" data-titlebar="" data-filename="current-state.md"></div>
@@ -896,8 +897,13 @@ Series B fundraise just closed. Product velocity expected to 3x by Q3.
 CPO mandate: ship the AI roadmap, get every PM context-fluent.
 
 <span class="h2">## Stakeholder Dynamics</span>
-<span class="bullet">-</span> Aakansha (CPO, ally): wants 25→80 PMs onboarded by year-end
-<span class="bullet">-</span> Edwin (CTO, sceptic on data quality): needs governance answer
+<span class="bullet">-</span> Maya Chen (CPO, ally): wants 25→80 PMs onboarded by year-end
+<span class="bullet">-</span> Tom Reilly (CTO, sceptic on data quality): needs governance answer
+
+<span class="h2">## Standing Decisions</span>
+<span class="bullet">-</span> Onboarding before features (2026-04-12). Maya's mandate ranked PM-fluency above shipping for Q2.
+<span class="bullet">-</span> 5-PM pilot then templated rollout (2026-04-18). 80-by-year-end needs playbook, not 1:1 hand-holding.
+<span class="bullet">-</span> Q2 launch gated on governance answer (2026-04-22). Tom won't sign off without it.
 
 <span class="h2">## In Flight</span>
 <span class="bullet">-</span> AI roadmap discovery. 4 of 12 interviews done
@@ -910,6 +916,29 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
           This is what <code>/os-start</code> loads at the start of every session.
         </p>
       </div>
+      <div class="code-wrap">
+        <div class="code-frame" role="figure" aria-label="Sample Claude Code session">
+          <div class="code-titlebar" data-titlebar="" data-filename="claude-code · session"></div>
+<pre class="code-body"><span class="h2">&gt; What is Tom's objection?</span>
+
+Tom is blocking the Q2 launch on data governance.
+
+SOC2 audit prep is on his desk for Q3. Anything that aggregates
+context server-side breaks the audit boundary he's defining. He
+flagged this in his Apr 2 1:1 and again in last week's CTO sync.
+
+If Q2 ships with ungoverned tooling, his SOC2 timeline slips a
+quarter. The board would notice.
+
+What he needs: written confirmation OS-Intelligence runs on endpoints
+only, plus an audit-trail demo. With those, he signs off.
+
+  <span class="bullet">→</span> Want the full position log? (4 conversations, 2 decisions referenced)</pre>
+        </div>
+        <p class="code-caption">
+          The trail holds the reasoning. You ask; it cites the sources.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -920,7 +949,7 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
       <h2>Give Claude Code its memory in one hour.</h2>
       <ol class="steps">
         <li>Clone the repo</li>
-        <li>Drop in your last 3 meeting transcripts</li>
+        <li>Drop in transcripts and documents</li>
         <li>Run <code>/ctx-synthesise</code></li>
         <li>Run <code>/os-start</code></li>
       </ol>
@@ -939,14 +968,14 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
         <div class="audience-card">
           <h3>product-managers</h3>
           <p>
-            Already using Claude Code and tired of re-explaining your stakeholders, projects, and decisions every session? If your work is conversation-heavy and your context lives in fifteen places, this is for you.
+            Already using Claude Code and tired of re-deriving the why behind every project? Meetings, decisions, chats, open questions. Captured from everyone who contributed, surfaced when you need them, ready for your AI to reason against.
           </p>
         </div>
         <div class="audience-card">
           <h3>founders-and-operators</h3>
           <p>
             Building a startup, running a team, shipping daily with Claude Code.
-            Same problem. context evaporates between sessions. Same fix. capture once, compound forever.
+            Same problem. reasoning evaporates between sessions. Same fix. capture once, reason in context forever.
           </p>
         </div>
       </div>
@@ -1044,8 +1073,8 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
           <span class="hood-explain">. per skill; cost-optimised capture, reasoning-optimised synthesis.</span>
         </div>
         <div class="hood-item">
-          <span class="hood-lead">Append-only intelligence layer</span>
-          <span class="hood-explain">. with status lifecycle (raw → synthesised → validated → archived).</span>
+          <span class="hood-lead">Append-only reasoning trail</span>
+          <span class="hood-explain">. with status lifecycle (raw → synthesised → validated → archived). surfaces contradictions across meetings and decisions.</span>
         </div>
         <div class="hood-item">
           <span class="hood-lead">Schema-aware permission migration</span>
@@ -1079,9 +1108,7 @@ CPO mandate: ship the AI roadmap, get every PM context-fluent.
         <div class="faq-item">
           <p class="faq-q">Won't Anthropic ship this?</p>
           <p class="faq-a">
-            They'll ship better primitives over time. OS-Intelligence is the
-            <em>methodology</em>. how knowledge work uses context. When Anthropic
-            ships better foundations, OS-Intelligence gets better with them.
+            They'll ship better primitives over time. better memory, better recall, better default skills. OS-Intelligence isn't competing on primitives. It's the <strong>reasoning layer above them</strong>. how you capture the why, surface the trail, and make every AI call defensible. When Anthropic ships better foundations, OS-Intelligence gets better with them.
           </p>
         </div>
         <div class="faq-item">
