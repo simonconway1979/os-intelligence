@@ -173,6 +173,24 @@
   .btn-onnavy{ background: var(--N0); color: var(--N900); }
   .btn-onnavy:hover{ background: var(--B50); color: var(--B700); text-decoration:none }
 
+  /* High-conversion CTA — orange */
+  .btn-cta{
+    background: #FF6B35;
+    color: var(--N0);
+    border-color: #FF6B35;
+    box-shadow: 0 1px 2px rgba(255,107,53,.22), 0 6px 16px -4px rgba(255,107,53,.45);
+    font-weight:600;
+  }
+  .btn-cta:hover{
+    background: #E5571E;
+    border-color: #E5571E;
+    color: var(--N0);
+    text-decoration:none;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(255,107,53,.25), 0 10px 22px -4px rgba(255,107,53,.55);
+  }
+  .btn-cta.lg{ padding: .95rem 1.5rem; font-size:1.02rem }
+
   /* ============ TYPOGRAPHY UTILS ============ */
   .eyebrow{
     display:inline-flex; align-items:center; gap:.5rem;
@@ -386,7 +404,13 @@
     grid-template-columns: 1fr;
     gap: 3rem;
     align-items:center;
+    /* Let mouse events pass through the hero shell + grid + empty right column
+       so LinkedIn cards underneath can be hovered. Re-enable on the headline
+       column only. */
+    pointer-events: none;
   }
+  .hero .shell{ pointer-events: none; }
+  .hero-grid > *:first-child{ pointer-events: auto; }
   @media(min-width:980px){
     .hero-grid{ grid-template-columns: minmax(0,1.05fr) minmax(0, .95fr); gap: 4rem; }
   }
@@ -502,6 +526,36 @@
     gap:1.25rem;
   }
   @media(min-width:880px){ .cards-3{ grid-template-columns: repeat(3, 1fr); gap:1.5rem } }
+
+  .what-tagline{
+    margin: 3rem auto 0;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #FF6B35;
+    line-height: 1.45;
+    max-width: 44rem;
+  }
+
+  /* Final CTA at the bottom of the page */
+  .final-cta{
+    background: var(--bg-soft);
+    border-top: 1px solid var(--N30);
+    padding: 4rem 0 4.5rem;
+    text-align: center;
+  }
+  .final-cta h2{
+    margin: 0 0 .85rem;
+    color: var(--N900);
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+  .final-cta p{
+    margin: 0 0 1.75rem;
+    color: var(--N80);
+    font-size: 1.05rem;
+  }
 
   .card{
     background:var(--N0);
@@ -677,6 +731,10 @@
     margin: 0 0 3rem;
   }
   .ea .lede em{ font-style:normal; color: var(--B100); font-weight:600 }
+
+  .ea-cta-top{
+    margin: -1.5rem 0 2.5rem;
+  }
 
   .deal{
     display:grid; gap: 1.5rem;
@@ -987,13 +1045,13 @@
       <span class="v">v0.1</span>
     </div>
     <nav class="top-nav" aria-label="Primary">
-      <a href="#what">What it does</a>
-      <a href="#start">Get started</a>
-      <a href="#early">Early access</a>
+      <a href="#what-it-does">What it does</a>
+      <a href="#get-started">Get started</a>
+      <a href="#early-access">Early access</a>
       <a href="#proof">Proof</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="btn btn-primary" href="https://tally.so/r/ja0vKa">
+    <a class="btn btn-cta" href="#early-access">
       Get early access
       <span class="arr" aria-hidden="true">→</span>
     </a>
@@ -1176,8 +1234,8 @@
         </p>
 
         <div class="cta-row">
-          <a class="btn btn-primary lg" href="#early-access">
-            Get started
+          <a class="btn btn-cta lg" href="#early-access">
+            Get early access
             <span class="arr" aria-hidden="true">→</span>
           </a>
         </div>
@@ -1198,12 +1256,11 @@
 </section>
 
 <!-- 2. WHAT IF YOU COULD -->
-<section id="what" class="what">
+<section id="what-it-does" class="what">
   <div class="shell">
     <div class="section-head">
       <span class="eyebrow">The premise</span>
       <h2>What if you could&hellip;</h2>
-      <p class="lede">Same Claude Code. Different outcomes — because the context is doing the work.</p>
     </div>
 
     <div class="cards-3">
@@ -1237,11 +1294,13 @@
         <div class="pull">Tells you what the project is saying, not what any one conversation said.</div>
       </article>
     </div>
+
+    <p class="what-tagline">Same Claude Code. Different outcomes — because the context is doing the work.</p>
   </div>
 </section>
 
 <!-- 3. GET STARTED -->
-<section id="start" class="start">
+<section id="get-started" class="start">
   <div class="shell">
     <div class="start-grid">
       <div>
@@ -1292,8 +1351,8 @@
           Claude Code installed. That's it.
         </div>
         <div>
-          <a class="btn btn-primary" href="#">
-            Show me the commands
+          <a class="btn btn-cta" href="#early-access">
+            Get early access
             <span class="arr" aria-hidden="true">→</span>
           </a>
         </div>
@@ -1327,7 +1386,7 @@
 </section>
 
 <!-- 5. EARLY ADOPTERS -->
-<section id="early" class="ea">
+<section id="early-access" class="ea">
   <div class="shell">
     <div class="section-head">
       <span class="eyebrow"><span class="dot"></span>Now hiring (in the user sense)</span>
@@ -1339,14 +1398,21 @@
       push it hard, and tell me what breaks.
     </p>
 
+    <div class="ea-cta-top">
+      <a class="btn btn-cta lg" href="https://tally.so/r/ja0vKa">
+        Get early access
+        <span class="arr" aria-hidden="true">→</span>
+      </a>
+    </div>
+
     <div class="deal">
       <div class="deal-card you">
         <h3><span class="badge">YOU</span>Your side of the deal</h3>
         <ul>
-          <li>60-min setup call with me <span class="muted">(after light pre-work — you download the repo, confirm Claude Code runs)</span></li>
+          <li>Quick setup call with me</li>
           <li>Direct access during your install week</li>
           <li>First read on v0.2 — your friction points shape it</li>
-          <li>Public credit in <code style="font-family:var(--mono); font-size:.9em; color:#85B8FF">CONTRIBUTORS.md</code></li>
+          <li>Public credit in <code style="font-family:var(--mono); font-size:.9em; color:#85B8FF; white-space:nowrap;">CONTRIBUTORS.md</code></li>
           <li>The system, free, forever</li>
         </ul>
       </div>
@@ -1362,7 +1428,7 @@
 
     <div class="ea-foot">
       <p>We're building this <strong>in the open, together.</strong></p>
-      <a class="btn btn-onnavy lg" href="https://tally.so/r/ja0vKa">
+      <a class="btn btn-cta lg" href="https://tally.so/r/ja0vKa">
         Get early access
         <span class="arr" aria-hidden="true">→</span>
       </a>
@@ -1549,6 +1615,18 @@ in v1 to test the core hypothesis. Decision pending.
   </div>
 </section>
 
+<!-- 9b. FINAL CTA -->
+<section class="final-cta">
+  <div class="shell">
+    <h2>Ready to fix your context?</h2>
+    <p>v0.1 ships Apr 29. Looking for ~10 early adopters.</p>
+    <a class="btn btn-cta lg" href="https://tally.so/r/ja0vKa">
+      Get early access
+      <span class="arr" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
 <!-- 10. FOOTER -->
 <footer>
   <div class="shell">
@@ -1560,19 +1638,19 @@ in v1 to test the core hypothesis. Decision pending.
           <span class="v">v0.1</span>
         </div>
         <p>
-          Open source under <a href="#">Apache 2.0</a>. Built by <span class="ink">Simon Conway</span> · AI-native PM · Barcelona.
+          Open source under <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache 2.0</a>. Built by <span class="ink">Simon Conway</span> · AI-native PM · Barcelona.
         </p>
       </div>
       <div class="foot-links">
-        <a href="#">
+        <a href="https://github.com/simonconway1979/os-intelligence" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
           GitHub
         </a>
-        <a href="#">
+        <a href="https://www.linkedin.com/in/simonconway" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.4v1.56h.05c.47-.9 1.62-1.85 3.34-1.85 3.57 0 4.23 2.35 4.23 5.4v6.34zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.77 13.02H3.56V9h3.55v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
           LinkedIn
         </a>
-        <a href="#">
+        <a href="mailto:simon.conway@condaal.com">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
           Email
         </a>
@@ -1703,6 +1781,41 @@ in v1 to test the core hypothesis. Decision pending.
         raf = null;
       }
     }
+  })();
+
+  /* ---------- Scrollspy: update URL hash as user scrolls (both directions) ---------- */
+  (function(){
+    var sections = document.querySelectorAll('section[id]');
+    if (!sections.length || !window.history || !window.history.replaceState) return;
+    var activeId = null;
+    var scrollRaf = null;
+
+    function updateHash(){
+      scrollRaf = null;
+      var offset = window.innerHeight * 0.30; // section becomes active when its top crosses 30% from viewport top
+      var candidate = null;
+      for (var i = 0; i < sections.length; i++){
+        var rect = sections[i].getBoundingClientRect();
+        if (rect.top <= offset){
+          candidate = sections[i].id;
+        }
+      }
+      if (candidate !== activeId){
+        activeId = candidate;
+        var newUrl = candidate
+          ? window.location.pathname + window.location.search + '#' + candidate
+          : window.location.pathname + window.location.search;
+        window.history.replaceState(null, '', newUrl);
+      }
+    }
+
+    window.addEventListener('scroll', function(){
+      if (scrollRaf == null) scrollRaf = requestAnimationFrame(updateHash);
+    }, { passive: true });
+    window.addEventListener('resize', function(){
+      if (scrollRaf == null) scrollRaf = requestAnimationFrame(updateHash);
+    });
+    updateHash();
   })();
 </script>
 </body>
