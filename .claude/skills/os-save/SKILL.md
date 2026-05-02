@@ -157,7 +157,7 @@ Things not resolved. Things that need a decision before work can continue.
 - [Question or blocker] — [what's needed to resolve it]
 
 ## Git Commit Draft
-[See Step 8 — included here for reference when committing]
+[See Step 9 — included here for reference when committing]
 ```
 
 ---
@@ -329,7 +329,7 @@ Update the `Last session:` field for the active project in `projects.md`:
 
 ---
 
-## Step 9 — Draft git commit and ask to commit
+## Step 9 — Draft commit, then commit + push together
 
 Review all files created or modified this session. Draft a commit message in this format:
 
@@ -340,31 +340,22 @@ Review all files created or modified this session. Draft a commit message in thi
 - [file or change 2]
 - [file or change 3]
 
-Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
+Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 Types: `feat` (new feature/file), `update` (changes to existing), `fix` (bug fix), `docs` (documentation only), `refactor` (restructure without behaviour change).
 
-Show the draft commit to the user, then ask:
+Show the draft commit to the user, then ask **one** question:
 
-> Commit to git? (y/N)
+> Commit and push to git? (y/N)
 
-If yes: stage the relevant files and commit using the draft message.
-If no: save the draft in the snapshot's "Git Commit Draft" section and move on.
+**On yes:** stage only the files this session created or modified (do not bulk-stage with `git add -A` — pre-existing unrelated changes in the working tree should stay untouched). Then commit with the draft message and run `git push`. All three commands run inline in sequence — no further prompts. If commit fails (e.g. pre-commit hook), surface the error clearly and stop; do NOT amend or skip hooks. If push fails (e.g. no upstream, rejected non-fast-forward), surface the error and ask the user how to proceed; do NOT force-push.
 
----
-
-## Step 10 — Ask to push
-
-If a commit was made in Step 8, ask:
-
-> Push to git? (y/N)
-
-Default is no. If yes: run `git push`.
+**On no:** save the draft in the snapshot's "Git Commit Draft" section and move on.
 
 ---
 
-## Step 11 — Confirm
+## Step 10 — Confirm
 
 ```
 ✅ Session saved
