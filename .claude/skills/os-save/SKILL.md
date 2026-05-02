@@ -329,9 +329,43 @@ Update the `Last session:` field for the active project in `projects.md`:
 
 ---
 
-## Step 9 — Draft commit, then commit + push together
+## Step 9 — Draft commit(s), then commit + push together
 
-Review all files created or modified this session. Draft a commit message in this format:
+### Step 9a — Discover symlinked-skill changes (run BEFORE drafting)
+
+Skills, sub-agents, and other shared assets in this workspace may be symlinks into a master repo (e.g. `~/Code/os-intelligence/`). Edits made via workspace paths land in the master repo, not the current repo — so they need a companion commit there.
+
+Find them deterministically (don't rely on the model's recollection of files edited this session):
+
+1. **Find symlinks** in `.claude/skills/`, `.claude/agents/`, and `sub-agents/` (top level — these are the symlinked skill/agent folders). One bash line:
+   ```bash
+   find .claude/skills .claude/agents sub-agents -maxdepth 1 -type l 2>/dev/null
+   ```
+
+2. **For each symlink, resolve and find its real repo:**
+   ```bash
+   for link in <symlinks>; do
+     real=$(realpath "$link")
+     ext_repo=$(cd "$real" && git rev-parse --show-toplevel 2>/dev/null)
+     # Group symlinks by ext_repo
+   done
+   ```
+
+3. **For each external repo (≠ current repo): check for uncommitted changes** to any of the resolved paths.
+   ```bash
+   cd "$ext_repo" && git status --porcelain
+   ```
+   Intersect the dirty file list with the resolved paths from step 2. The intersection is files dirty in the external repo AND symlinked from the current workspace.
+
+If the intersection is empty, skip the rest of 9a — proceed with a single commit as before.
+
+If the intersection is non-empty, you have one or more **companion commits** to surface alongside the primary commit.
+
+> **Note on subtle property:** if you also worked directly in the external repo between sessions (without committing), this check surfaces those changes too. Worst case the user says N and handles separately. Don't try to filter by mtime or guess provenance — just show what's dirty.
+
+### Step 9b — Draft commit message(s)
+
+**Primary commit (current repo):** as today.
 
 ```
 [type]: [short summary under 60 chars]
@@ -345,13 +379,45 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 
 Types: `feat` (new feature/file), `update` (changes to existing), `fix` (bug fix), `docs` (documentation only), `refactor` (restructure without behaviour change).
 
-Show the draft commit to the user, then ask **one** question:
+**Companion commit(s) (one per external repo with dirty symlinked files):**
+
+```
+[type]: [short summary describing the symlinked changes]
+
+- [resolved file 1 relative to external repo]
+- [resolved file 2 relative to external repo]
+
+Companion to <primary-repo-name>: <primary-commit-summary>
+(commit hash filled in after primary lands)
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+```
+
+### Step 9c — Single y/N, inline execution
+
+Show **all** drafts together (primary + companions), then ask **one** question:
 
 > Commit and push to git? (y/N)
 
-**On yes:** stage only the files this session created or modified (do not bulk-stage with `git add -A` — pre-existing unrelated changes in the working tree should stay untouched). Then commit with the draft message and run `git push`. All three commands run inline in sequence — no further prompts. If commit fails (e.g. pre-commit hook), surface the error clearly and stop; do NOT amend or skip hooks. If push fails (e.g. no upstream, rejected non-fast-forward), surface the error and ask the user how to proceed; do NOT force-push.
+**On yes:** execute in this order, all inline, no further prompts:
 
-**On no:** save the draft in the snapshot's "Git Commit Draft" section and move on.
+1. Stage session files in the current repo (do not bulk-stage with `git add -A` — only files this session created or modified).
+2. `git commit` in current repo with primary message.
+3. `git push` in current repo.
+4. Capture the primary commit's short hash. For each companion draft, replace the placeholder line with the actual hash.
+5. For each external repo:
+   - `cd` into it
+   - `git add` only the resolved symlinked paths (not other dirty files in that repo)
+   - `git commit` with the companion message
+   - `git push`
+
+If primary commit fails (pre-commit hook etc.): surface error, stop. Do NOT proceed to companions, do NOT amend, do NOT skip hooks.
+
+If primary push fails (no upstream, non-fast-forward): surface error, ask user. Do NOT force-push, do NOT proceed to companions.
+
+If primary succeeds but a companion commit/push fails: surface clearly which repo and at which step. Don't roll back the primary — it's already pushed and the failure point is recoverable manually.
+
+**On no:** save the primary draft and any companion drafts in the snapshot's "Git Commit Draft" section and move on.
 
 ---
 
