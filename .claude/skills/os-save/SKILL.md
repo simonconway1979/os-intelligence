@@ -393,13 +393,13 @@ Companion to <primary-repo-name>: <primary-commit-summary>
 Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
-### Step 9c — Single y/N, inline execution
+### Step 9c — Auto-execute (no prompt)
 
-Show **all** drafts together (primary + companions), then ask **one** question:
+Show **all** drafts together (primary + companions) so the user sees what's about to land. Then **execute immediately, no y/N**.
 
-> Commit and push to git? (y/N)
+If there's nothing to commit (working tree clean for both current and external repos), skip 9c entirely and note in Step 10 ("Nothing to commit").
 
-**On yes:** execute in this order, all inline, no further prompts:
+Execution order, all inline, no prompts:
 
 1. Stage session files in the current repo (do not bulk-stage with `git add -A` — only files this session created or modified).
 2. `git commit` in current repo with primary message.
@@ -411,13 +411,16 @@ Show **all** drafts together (primary + companions), then ask **one** question:
    - `git commit` with the companion message
    - `git push`
 
-If primary commit fails (pre-commit hook etc.): surface error, stop. Do NOT proceed to companions, do NOT amend, do NOT skip hooks.
+If primary commit fails (pre-commit hook etc.): surface error, stop. Do NOT proceed to companions, do NOT amend, do NOT skip hooks. The session save files are still on disk — user can re-run /os-save once the underlying issue is fixed.
 
-If primary push fails (no upstream, non-fast-forward): surface error, ask user. Do NOT force-push, do NOT proceed to companions.
+If primary push fails (no upstream, non-fast-forward): surface error, stop. Do NOT force-push, do NOT proceed to companions. User decides how to proceed (fetch + rebase, or roll back).
 
-If primary succeeds but a companion commit/push fails: surface clearly which repo and at which step. Don't roll back the primary — it's already pushed and the failure point is recoverable manually.
+If primary succeeds but a companion commit/push fails: surface clearly which repo and at which step. Don't roll back the primary — it's already pushed.
 
-**On no:** save the primary draft and any companion drafts in the snapshot's "Git Commit Draft" section and move on.
+**Rollback paths if a save was wrong:**
+- Pre-push (rare with auto-push): `git reset --soft HEAD~1` — undo the commit, keep changes staged.
+- Post-push (the normal case): `git revert HEAD && git push` — creates a "Revert: ..." commit on top. Honest history, no force-push needed. Standard solo-repo pattern.
+- Don't `git push --force` — blocked by the deny rule in `.claude/settings.json` for safety; revert is the right tool.
 
 ---
 
