@@ -6,195 +6,102 @@ user_invocable: true
 
 # /os-start — Session Start Briefing
 
-Invoked manually with `/os-start` to load project context and get a session briefing.
+---
+
+## Step 1 — Render menu
+
+Invoke exactly this Bash command:
+
+```
+bash .claude/skills/os-start/menu.sh
+```
+
+Then print the bash stdout **verbatim** as your text response (Claude Code collapses long bash output by default, so the user won't see it unless you echo it). Add NO preamble, NO commentary — just relay the script output. Then wait for the user to reply with a number.
 
 ---
 
-## Output Format
+## Step 2 — Resolve the selection
+
+When the user replies with a number, read `projects.md` and find the matching project under `## Active`. Extract:
+- Project name
+- `**Type:**` (project | portfolio)
+- `**Folders:**` path
+- `**One-liner:**`, `**Goal:**`
+
+Branch on Type:
+- **New project** (last menu item) → run `/os-new-project`, then continue.
+- **Type: project** → write project name to `[workspace-root]/.current-session`. Go to Step 3.
+- **Type: portfolio** → go to Step 2b.
+
+### Step 2b — Portfolio drill-down
+
+Read the portfolio's `TRACKER.md`. Print:
+
+```
+Which [item name] will you work on?
+
+1. [Item Name] ([stage])
+...
+N. Add new [item name]
+```
+
+- **Add new** → run `/os-new-item`, then continue.
+- **Existing item** → write `[Portfolio Name] / [Item Display Name]` to `.current-session`. Go to Step 3.
+
+---
+
+## Step 3 — Load current state
+
+Read `[project-root]/context/current-state.md` if it exists. This is the primary context source.
+
+For each section, check `_Last updated:_`:
+- > 14 days old → flag as stale in the briefing
+- still `—` → flag as not yet populated
+
+If missing: note `No current-state.md found. Run /os-save after this session to initialise it.` and fall back to Step 4.
+
+For portfolios: also read the selected item's `[item-name].md` frontmatter for `next_action` and `stage`.
+
+---
+
+## Step 4 — Most recent session (fallback only)
+
+Only run if `current-state.md` is missing, or the user explicitly asks for session detail.
+
+Search order: `[project]/memory/YYYYMMDD-HHMM.md` (newest, exclude `-reasoning.md`) → `[project]/memory/SESSIONS-INDEX.md` first row → `context-library/memory/context-snapshot/` → `context-library/_CURRENT-STATE.md`.
+
+When `current-state.md` exists, do NOT auto-load session files. Just note: `Last session: [date] — ask me to load it if you need the detail.`
+
+---
+
+## Step 5 — Output the briefing
+
+Format:
 
 ```
 PROJECT BRIEF
 
 ## [Project Name]
 
-Description: [one-liner from projects.md]
-Goal: [goal from projects.md]
-[For portfolios: Item: [Item Name] — [stage]]
+Description: [from projects.md]
+Goal: [from projects.md]
+[Portfolio only: Item: [Item Name] — [stage]]
 
 **Current State** · updated [date]
-[2-3 sentence summary drawn from current-state.md Project Position]
+[2-3 sentences from current-state.md Project Position]
 
 **In flight**
-- [from current-state.md In Flight section]
+- [from current-state.md In Flight]
 
 **Open questions**
-- [from current-state.md Open Questions section]
+- [from current-state.md Open Questions]
 
-**Most Recent Session** · [date] (on demand — ask to load)
+Last session: [date] — ask me to load it if you need the detail.
 ```
 
----
-
-## Instructions for Claude
-
-### Step 1: Identify the Active Project
-
-Read `projects.md` and list all Active projects. Ask:
-
-```
-What do you want to work on?
-
-1. [Project Name]
-2. [Project Name]
-[...all active projects...]
-N. New project
-```
-
-Wait for selection.
-
-If **New project**: run `/os-new-project`, then continue.
-
-If existing project:
-- Note the folder path (e.g. `projects/job-opportunities/`)
-- Check `**Type:**` in projects.md
-
-**If Type is `project`:** write the project name to `[workspace-root]/.current-session` (one line, e.g. `PM-OS`), then continue to Step 2.
-
-**If Type is `portfolio`:** go to Step 1b.
-
-#### Step 1b — Portfolio drill-down
-
-Read the portfolio's `TRACKER.md`. Extract all active items.
-
-```
-Which [item name] will you work on?
-
-1. [Item Name] ([stage])
-2. [Item Name] ([stage])
-
-N. Add new [item name]
-```
-
-If **Add new**: run `/os-new-item`, then continue.
-
-If existing item:
-- Write to `[workspace-root]/.current-session`:
-  ```
-  [Portfolio Name] / [Item Display Name]
-  ```
-  Example: `Job Opportunities / Acme Corp — Senior PM`
-- Continue to Step 2 with both portfolio root and item folder in context
-
----
-
-### Step 2: Load Current State
-
-Look for `[project-root]/context/current-state.md`.
-
-**If found:** This is the primary context source. Read it fully. Note the `last-updated` field in frontmatter.
-
-Check each section's `_Last updated:_` timestamp:
-- Any section last updated more than 14 days ago: flag as potentially stale in the briefing
-- Any section still showing `—`: flag as not yet populated
-
-**If not found:** Note in the briefing: `No current-state.md found. Consider running /os-save after this session to initialise it.` Fall back to Step 3.
-
-For portfolios: also read the selected item's `[item-name].md` frontmatter for `next_action` and `stage`.
-
----
-
-### Step 3: Load Most Recent Session (fallback or on-demand)
-
-Used as fallback if no current-state.md, or when the user explicitly asks for session history.
-
-Look in these locations in priority order:
-1. `[project]/memory/` — files named `YYYYMMDD-HHMM.md` (exclude `-reasoning.md`). Sort descending.
-2. `[project]/memory/SESSIONS-INDEX.md` — first data row.
-3. `context-library/memory/context-snapshot/` — legacy fallback.
-4. `context-library/_CURRENT-STATE.md` — legacy fallback.
-
-Do not load session files automatically when current-state.md exists. Instead, note the most recent session date and offer: `Last session: [date] — ask me to load it if you need the detail.`
-
----
-
-### Step 4: Output the Briefing
-
-Print this header first (exact text):
-
-```
-✦ os-start ✦
-Getting your context...
-```
-
-Then output the briefing. Rules:
-- If current-state.md exists: lead with Project Position, then In Flight, then Open Questions
-- If current-state.md is missing: fall back to session-file format (most recent work + next steps)
-- For portfolios: include the selected item name and stage
-- Flag any stale sections clearly
-- No preamble after the header
-- Add a blank line after the briefing, then respond to any user message
-
----
-
-## Example Output — Current State present
-
-```
-✦ os-start ✦
-Getting your context...
-
-PROJECT BRIEF
-
-## Job Opportunities
-
-Description: Working space to explore job opportunities from discovery through to interview.
-Goal: Secure a senior PM role at an AI-forward company.
-Item: Acme Corp — Senior PM (engaging)
-
-**Current State** · updated 15 Apr 2026
-Initial HR call completed. Acme Corp is a mid-size planning software company actively building an AI layer into their core product. Role is Senior PM, reporting to the CPO. Strong fit on mandate; comp range and team size TBC.
-
-**In flight**
-- Prep for technical interview (scheduled 18 Apr)
-- Research Acme's AI roadmap and recent releases
-
-**Open questions**
-- What is the actual budget authority for this role?
-- Is the AI layer greenfield or replatform?
-
-Last session: 15 Apr 2026 — ask me to load it if you need the detail.
-```
-
----
-
-## Example Output — No current-state.md (fallback)
-
-```
-✦ os-start ✦
-Getting your context...
-
-PROJECT BRIEF
-
-## PM-OS
-
-Description: A context-aware Product Management harness for Claude Code.
-Goal: Increase productivity as a product manager 100X.
-
-**Most Recent Work** · 15 Apr 2026
-Foundational session establishing PM-OS as a first-class project. Root CLAUDE.md trimmed from 616 to 86 lines. Multi-window os-start flow implemented.
-
-**What comes next**
-- Review skills-review.md and mark each KEEP / REMOVE
-- Fix add-contact Step P3
-- Validate os-start end-to-end
-
-No current-state.md found. Run /os-save after this session to initialise it.
-```
-
----
-
-## Handling Missing Files
-
-- **No current-state.md:** Fall back to session files; prompt to initialise
-- **No session files either:** Note `No previous sessions found. Starting fresh.`
-- **Portfolio with empty TRACKER:** Note `No items yet. Run /os-new-item to add your first [item name].`
-- **Stale sections:** Flag inline — `⚠ Stakeholder Dynamics last updated 21 days ago`
+Rules:
+- If `current-state.md` is missing, swap **Current State** / **In flight** / **Open questions** for **Most Recent Work** / **What comes next** drawn from the session file.
+- Flag stale sections inline: `⚠ Stakeholder Dynamics last updated 21 days ago`.
+- Empty portfolio TRACKER: `No items yet. Run /os-new-item to add your first [item name].`
+- No session files at all: `No previous sessions found. Starting fresh.`
+- No preamble. Blank line after the briefing, then respond to any user message.
