@@ -166,7 +166,7 @@ Things not resolved. Things that need a decision before work can continue.
 
 Check if `[project-root]/context/current-state.md` exists.
 
-**If it doesn't exist:** Create it inline using this template, substituting `[Project Name]` and `[today]` (YYYY-MM-DD), and filling Project Position from what you know about this session:
+**If it doesn't exist:** Create it inline using this template, substituting `[Project Name]`, `[One-liner from projects.md]`, `[Goal from projects.md]`, and `[today]` (YYYY-MM-DD). Fill Project Position from what you know about this session:
 
 ```markdown
 ---
@@ -175,9 +175,21 @@ last-updated: [today]
 updated-by: os-save
 ---
 
-# Current State — [Project Name]
+# Current State
 
-_Living synthesis. Updated by os-save, ctx-synthesise, and ctx-doc. This is the primary context file loaded at session start._
+The current snapshot of the project. Living synthesis.
+
+_Updated by os-save, ctx-synthesise, and ctx-doc. Primary context loaded at session start._
+
+---
+
+## [Project Name]
+
+[One-liner from projects.md]
+
+**Goal:** [Goal from projects.md]
+
+_Synced from `projects.md`. Edit there._
 
 ---
 
@@ -239,6 +251,8 @@ _Last updated: [today] via os-save_
 ```
 
 After the file is created, continue with the section updates below to populate In Flight, Open Questions, Recent Changes, and Standing Decisions from this session's content.
+
+**If the file already exists, reconcile the top block before updating sections:** confirm the header is `# Current State` (not `# Current State — [Project Name]`) and that the `## [Project Name]` block immediately below carries the current one-liner + `**Goal:**` line + `_Synced from `projects.md`. Edit there._` note. If the file uses the older header format, or the one-liner / goal has drifted from `projects.md`, rewrite the top block to match. Don't touch sections below `## Project Position` as part of reconciliation — those are handled by the section-update rules below.
 
 **Update the following sections** (leave other sections unchanged):
 
