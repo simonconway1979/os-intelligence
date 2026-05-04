@@ -188,7 +188,7 @@ Active work in progress. Flat structure — no subfolders.
 **Rule:** If it's being edited, it lives here. When stable, move to `context/`.
 ```
 
-Write `projects/[project-name]/context/current-state.md` using this template (substitute `[Project Name]` from Step 1, `[today]` as YYYY-MM-DD, and `[primary goal]` from Step 2):
+Write `projects/[project-name]/context/current-state.md` using this template (substitute `[Project Name]` from Step 1, `[One-liner]` and `[Goal]` from the projects.md entry written in Step 9c, and `[today]` as YYYY-MM-DD). Mirrors the `/os-save` create-from-scratch template so future os-save runs find the expected structure.
 
 ```markdown
 ---
@@ -197,9 +197,21 @@ last-updated: [today]
 updated-by: os-new-project
 ---
 
-# Current State — [Project Name]
+# Current State
 
-_Living synthesis. Updated by os-save, ctx-synthesise, and ctx-doc. This is the primary context file loaded at session start._
+The current snapshot of the project. Living synthesis.
+
+_Updated by os-save, ctx-synthesise, and ctx-doc. Primary context loaded at session start._
+
+---
+
+## [Project Name]
+
+[One-liner]
+
+**Goal:** [Goal]
+
+_Synced from `projects.md`. Edit there._
 
 ---
 
@@ -207,7 +219,7 @@ _Living synthesis. Updated by os-save, ctx-synthesise, and ctx-doc. This is the 
 _Last updated: — via —_
 
 **Where we stand:** —
-**Primary goal:** [primary goal]
+**Primary goal:** —
 **Key constraint or risk:** —
 
 ---
@@ -274,9 +286,10 @@ Write `projects/[project-name]/CLAUDE.md` using this template, substituting fiel
 ## Project
 
 - **Name:** [Project Name]
-- **Goal:** [from Step 2]
 - **Status:** Active
 - **Started:** [today YYYY-MM-DD]
+
+See `context/current-state.md` for description, goal, and current state (synced from `projects.md`).
 
 ---
 
