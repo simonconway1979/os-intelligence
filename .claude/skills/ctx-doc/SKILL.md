@@ -172,6 +172,7 @@ For each unique person target:
 1. Determine project-level path (`[project]/people/[slug].md`) and root-level path (`/people/[slug].md`). Create either if missing (use `people/TEMPLATE.md` for root).
 2. Merge all `project_addition` blocks for this person into the project file (per Step 6 of the sequential flow).
 3. Merge all `root_addition` blocks into the root file. Skip the root file if no root_addition was provided by any agent.
+4. **Reconcile root Project Footprint** — ensure the root file's Project Footprint table contains a row for this project. Append `| [Project Name] | [Role from project profile] |` if not already present (idempotent).
 
 ### E. Mark each raw file as processed
 
@@ -344,6 +345,8 @@ Update root file when:
 - You have new identity or contact information
 - Their title or company has changed
 - They've joined a new project
+
+**Project Footprint table — always reconcile.** If a project-level profile was created or updated for this person in this run, ensure the root file's Project Footprint table contains a row for the project. Append `| [Project Name] | [Role from project profile] |` if not already present (idempotent — skip if project is already listed). Project Name = name from `projects.md`. Role = the `**Role:**` value from the project profile.
 
 Do not add project-specific context (relationship dynamics, event role) to the root file — that belongs in the project people file.
 

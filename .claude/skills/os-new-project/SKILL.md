@@ -289,9 +289,8 @@ Write `projects/[project-name]/CLAUDE.md` using this template, substituting fiel
 
 ## Key People
 
-| Name | Role |
-|------|------|
-| [Name](../../people/name.md) | [Role in this project] |
+See `people/` for project-level stakeholder profiles (auto-maintained by `/ctx-transcript` and `/ctx-doc`).
+Current dynamics: `context/current-state.md` → Stakeholder Dynamics (auto-maintained by `/ctx-synthesise`).
 
 ---
 

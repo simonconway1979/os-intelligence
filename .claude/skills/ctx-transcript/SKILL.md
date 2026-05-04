@@ -105,6 +105,8 @@ For unmatched names, offer to create a contact: extract name, role, company from
 
 For matched names who don't yet have a project-level profile, create `[PROJECT_ROOT]/people/[name-slug].md` automatically.
 
+**After creating any new project-level profile, update the root `people/[name-slug].md` Project Footprint table.** Append a row `| [Project Name] | [Role from project profile] |` if not already present (idempotent — skip if the project is already listed). Project Name = the name from `projects.md`. Role = the `**Role:**` value from the project profile.
+
 Skip "Me" / "You" / the user.
 
 **Step 5 — Date/time.** Check transcript headers first. If found, confirm with user (Y/N). If not found, ask. Get duration too.
