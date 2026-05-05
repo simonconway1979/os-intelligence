@@ -168,6 +168,16 @@ Add `.gitkeep` files to the empty folders so they survive cloning and git operat
 - `memory/.gitkeep`
 - `people/.gitkeep`
 
+**Switch the active session to the new project.** The scaffold now exists, so it's a valid switch target. Write the project name (matching the `### [Project Name]` heading written to `projects.md` in Step 9c) to `[workspace-root]/.current-session`:
+
+```bash
+echo "[Project Name]" > .current-session
+```
+
+This mirrors `/os-start` Step 2 and ensures any subsequent `/os-save`, `/ctx-doc`, or other skill writes to the correct project — without it, the session silently stays on whatever project was previously active.
+
+Tell the user: `Switched active session to [Project Name].`
+
 Write `projects/[project-name]/context/README.md`:
 ```markdown
 # Context
@@ -450,17 +460,19 @@ Show the user what was created:
 For a standalone project:
 ```
 ✅ Project folder created: projects/[name]/
+✅ Active session switched to [Project Name]
 ✅ CLAUDE.md written (type: project)
 ✅ Entry added to projects.md
 ✅ [N] people linked
 ✅ Company: [name] (or — if none)
 
-Your project is ready. To start working, run /os-start.
+Your project is ready. You're already in it — start working, or run /os-save when you're done.
 ```
 
 For a portfolio:
 ```
 ✅ Project folder created: projects/[name]/
+✅ Active session switched to [Project Name]
 ✅ CLAUDE.md written (type: portfolio)
 ✅ Entry added to projects.md
 ✅ TRACKER.md created
@@ -469,7 +481,6 @@ For a portfolio:
 ✅ Company: [name] (or — if none)
 
 Your portfolio is ready. To add your first [item-name], run /os-new-item.
-To start a session, run /os-start.
 ```
 
 ---
