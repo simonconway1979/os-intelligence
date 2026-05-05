@@ -349,31 +349,23 @@ Update the `Last session:` field for the active project in `projects.md`:
 
 Skills, sub-agents, and other shared assets in this workspace may be symlinks into a master repo (e.g. `~/Code/os-intelligence/`). Edits made via workspace paths land in the master repo, not the current repo — so they need a companion commit there.
 
-Find them deterministically (don't rely on the model's recollection of files edited this session):
+Run the deterministic discovery script (don't rely on the model's recollection of files edited this session):
 
-1. **Find symlinks** in `.claude/skills/`, `.claude/agents/`, and `sub-agents/` (top level — these are the symlinked skill/agent folders). One bash line:
-   ```bash
-   find .claude/skills .claude/agents sub-agents -maxdepth 1 -type l 2>/dev/null
-   ```
+```bash
+bash .claude/skills/os-save/symlink-discovery.sh
+```
 
-2. **For each symlink, resolve and find its real repo:**
-   ```bash
-   for link in <symlinks>; do
-     real=$(realpath "$link")
-     ext_repo=$(cd "$real" && git rev-parse --show-toplevel 2>/dev/null)
-     # Group symlinks by ext_repo
-   done
-   ```
+The script (lives at `.claude/skills/os-save/symlink-discovery.sh`):
+1. Finds all symlinks in `.claude/skills/`, `.claude/agents/`, `sub-agents/`
+2. Resolves each to its backing external repo (skips dangling, skips workspace-internal)
+3. For each external repo, runs `git status --porcelain` and intersects with the workspace-reachable resolved paths
+4. Outputs one line per dirty intersected file: `[external-repo-abs-path]<TAB>[path-in-external-repo]`
 
-3. **For each external repo (≠ current repo): check for uncommitted changes** to any of the resolved paths.
-   ```bash
-   cd "$ext_repo" && git status --porcelain
-   ```
-   Intersect the dirty file list with the resolved paths from step 2. The intersection is files dirty in the external repo AND symlinked from the current workspace.
+Empty output = no companion commits needed. Skip the rest of 9a and proceed with a single commit.
 
-If the intersection is empty, skip the rest of 9a — proceed with a single commit as before.
+Non-empty output = each line is a companion-commit candidate. Group lines by external-repo column to determine how many companion commits and which files each touches.
 
-If the intersection is non-empty, you have one or more **companion commits** to surface alongside the primary commit.
+This pattern matches `/os-start`'s `menu.sh` — deterministic work in bash, judgment in the LLM. Single allowlist rule covers all `/os-save` invocations: `Bash(bash .claude/skills/os-save/*:*)`.
 
 > **Note on subtle property:** if you also worked directly in the external repo between sessions (without committing), this check surfaces those changes too. Worst case the user says N and handles separately. Don't try to filter by mtime or guess provenance — just show what's dirty.
 
