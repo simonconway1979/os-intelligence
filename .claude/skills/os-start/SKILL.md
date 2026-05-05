@@ -35,7 +35,7 @@ Branch on Type:
 
 ### Step 2b — Portfolio drill-down
 
-Read the portfolio's `TRACKER.md`. Print:
+Read the portfolio's `TRACKER.md`. By default, show only items with stage `pipeline`, `prep`, `upcoming`, or `complete` — hide `archived`. Print:
 
 ```
 Which [item name] will you work on?
@@ -43,10 +43,15 @@ Which [item name] will you work on?
 1. [Item Name] ([stage])
 ...
 N. Add new [item name]
+
+Tip: 0 to see old/archived [item name]s in the list.
 ```
 
+- **0** → re-render the menu with all items (including `archived`), no tip line. Renumber from 1. Wait for selection.
 - **Add new** → run `/os-new-item`, then continue.
 - **Existing item** → write `[Portfolio Name] / [Item Display Name]` to `.current-session`. Go to Step 3.
+
+Pluralise the item name naturally in the tip (e.g. "events", "ideas", "opportunities"). If the portfolio has zero archived items, omit the tip line.
 
 ---
 
