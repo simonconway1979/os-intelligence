@@ -185,7 +185,6 @@ os-intelligence/
 ├── CLAUDE.md                ← root working context (this is what Claude reads)
 ├── README.md                ← what is this, who it's for
 ├── ARCHITECTURE.md          ← this file
-├── MIGRATION.md             ← how to set up + how to overlay an existing setup
 ├── projects.md              ← projects index
 └── LICENSE                  ← Apache 2.0
 ```

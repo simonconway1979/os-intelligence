@@ -253,7 +253,7 @@ What do you want to do first?
    Browse a populated project. Read-only, no setup needed.
 
 5. Just show me the docs
-   Pointers to README, ARCHITECTURE, MIGRATION.
+   Pointers to README, ARCHITECTURE, and the docs/ folder.
 ```
 
 ### If returning user
@@ -339,15 +339,17 @@ No state changes. Print:
 ```
 Top docs to read, in order of usefulness on first run:
 
-  README.md         What this is, who it's for, three "try this" use cases
+  README.md         What this is, who it's for, the install flow
   ARCHITECTURE.md   Mental model: layers, projects vs portfolios, the flow
-  MIGRATION.md      Three install patterns: fresh, overlay, replace+migrate
   CLAUDE.md         Working context for Claude Code sessions in this repo
 
 Second-tier:
 
-  docs/usage-log.md   What gets logged locally and how to disable
+  docs/setup.md       Step-by-step Claude Code + Cursor + OS-Intelligence install
+  docs/skills.md      What each skill does, grouped by capture/synthesise/retrieve/scaffold
+  docs/status-bar.md  Set up your Claude Code status bar
   docs/addons.md      Where to drop your own skills, frameworks, integrations
+  docs/usage-log.md   What gets logged locally and how to disable
 
 Run /os-welcome again to start your first project when ready.
 ```

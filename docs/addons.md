@@ -84,7 +84,7 @@ If you've built a custom MCP server (for an internal API, a database, a service)
 
 OS-Intelligence is a public layer. If you want to bring in your personal background (CV, brand notes, working preferences, ongoing projects), keep them in your private workspace and reference them via paths in your project `CLAUDE.md` files.
 
-The clean separation: OS-Intelligence stays public and generic; your private context stays private. The symlink workflow (described in [`MIGRATION.md`](../MIGRATION.md)) keeps both in sync without mixing.
+The clean separation: OS-Intelligence stays public and generic; your private context stays private. The symlink workflow keeps both in sync without mixing.
 
 ---
 

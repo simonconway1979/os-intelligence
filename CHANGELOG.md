@@ -21,7 +21,7 @@ Initial public release.
 - 16 skills covering capture (`ctx-transcript`, `ctx-doc`, `ctx-note`, `ctx-chat`, `ctx-inspiration`), synthesis (`ctx-synthesise`, `ctx-timeline`), retrieval (`os-welcome`, `os-start`, `os-save`, `os-switch-project`), and scaffolding (`os-new-project`, `os-new-item`, `os-new-person`, `os-project-design`, `new-project`).
 - 7 sub-agents for second-opinion review: `customer-voice`, `designer-reviewer`, `engineer-reviewer`, `executive-reviewer`, `legal-advisor`, `skeptic`, `uxr-analyst`.
 - Context library with `file-conventions.md`, `writing-styles.md`, `writing-styles-global/` (5 audience-specific style guides), and stub configuration for `tone-of-voice.md` and `mcp-setup.md`.
-- Tier 1 documentation: `README.md`, `CLAUDE.md`, `ARCHITECTURE.md`, `MIGRATION.md`, `projects.md`, `LICENSE` (Apache 2.0), `docs/addons.md`.
+- Tier 1 documentation: `README.md`, `CLAUDE.md`, `ARCHITECTURE.md`, `projects.md`, `LICENSE` (Apache 2.0), `docs/setup.md`, `docs/skills.md`, `docs/status-bar.md`, `docs/addons.md`.
 - Acme Corp example project demonstrating the full intelligence/ folder shape.
 - Project + portfolio type system: portfolios use `TRACKER.md` and item-level memory.
 - Two-layer people system: root `people/` for global identity, project-level `people/` for operational context.
