@@ -91,11 +91,13 @@ If **None / not applicable**: skip.
 
 ---
 
-## Step 6 — Add yourself
+## Step 6 — Add the user (automatic)
 
-Ask: **"Shall I add you to this project? (Y/n)"**
+No prompt. Always add the user as project lead by default.
 
-Default is yes. If yes, link the user's own identity file at `people/[your-slug].md` as project lead. If no profile exists yet, run `/os-new-person` first to create one.
+Link the user's own identity file at `people/[your-slug].md` as project lead. If no profile exists yet, run `/os-new-person` first to create one.
+
+If the user needs to be removed from a project later, they can ask Claude directly.
 
 ---
 
@@ -135,6 +137,8 @@ If yes, for each person collect:
 - Name
 - Title
 - Company — if not provided, default to the project company (if one was selected in Step 5)
+
+**Important:** Collect only these three fields. Do not ask follow-up questions about the person — no "what's their relationship to you", no "manager/peer/direct report", no seniority, no history. Relationship and role detail get captured later via `/ctx-doc`, `/ctx-transcript`, or by running `/os-new-person` directly.
 
 Create a new file at `people/firstname-lastname.md` using TEMPLATE.md. Populate identity fields only. Leave summary and interaction history blank. Set project footprint to this project.
 

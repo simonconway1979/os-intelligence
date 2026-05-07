@@ -75,14 +75,9 @@ This timestamp is used for all files created in this skill.
 
 ---
 
-## Step 3 — Gather session metadata
+## Step 3 — Assess session type
 
-Ask the user (both fields are skippable — press enter to use `[unknown]`):
-
-1. **Session duration** — "How long was this session? (e.g. 1h 20m — shown in your status bar, or enter to skip)"
-2. **Session cost** — "What's the session cost shown in your status bar? (e.g. $1.21, or enter to skip)"
-
-Use `[unknown]` for any skipped field.
+Set both **Duration** and **Cost** to `[unknown]` in the snapshot. Most users don't have these readily available. Users who track time and cost can fill them in manually after.
 
 Assess whether this was an **exploratory session** (lots of discussion, direction changes, dead ends) or an **execution session** (clear tasks, concrete outputs). This determines whether a reasoning appendix is needed.
 

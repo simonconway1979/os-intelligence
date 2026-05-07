@@ -79,7 +79,7 @@ Write(**/intelligence/**)
 ### First-run offer (all missing)
 
 ```
-Quick check before we get started.
+Before we start, some admin to make OS-Intelligence easier to use...
 
 OS-Intelligence creates and updates structural files as you work —
 projects.md, project folders, people files, current-state.md,
