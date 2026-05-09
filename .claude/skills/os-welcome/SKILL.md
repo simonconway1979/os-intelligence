@@ -112,6 +112,8 @@ stays on this machine, never committed to the repo.
 1. Yes, add the rules (recommended)
 2. No, I'll approve each edit manually
 3. Show me the exact JSON first
+
+Tip: If you select 'auto mode' (Shift + Tab) this will reduce the number of accepts in the process.
 ```
 
 ### Migration offer (some missing — older version detected)
@@ -133,6 +135,8 @@ Want me to add them now?
 1. Yes, add the missing rules
 2. No, leave settings as is
 3. Show me the exact JSON to be added
+
+Tip: If you select 'auto mode' (Shift + Tab) this will reduce the number of accepts in the process.
 ```
 
 Wait for selection.
