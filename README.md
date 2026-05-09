@@ -1,12 +1,12 @@
 # OS-Intelligence
 
-**A reasoning layer for AI-native knowledge work.**
+**A reasoning layer for AI-native product managers.**
 
-Every AI session starts cold. You re-explain context, re-derive decisions, hold the thread in your head until you don't. What if every session built on the last, and the system held the thread for you?
+Every AI session starts cold. You re-explain the stakeholder context, re-derive the decision, hold the thread across PRDs, standups, and 1:1s in your head until you don't. What if every session built on the last, and the system held the thread for you?
 
-OS-Intelligence is a free, open-source context system for Claude Code. It captures your meetings, documents, chats, and notes, synthesises them into reference state, and surfaces the right context at the start of every session. It's the rails for AI-native knowledge work: every interaction has a reason, every decision is traceable, the system shows its homework.
+OS-Intelligence is a free, open-source context system for product managers using Claude Code. It captures your meetings, PRDs, stakeholder notes, and chats, synthesises them into reference state, and surfaces the right context at the start of every session. It's the rails for AI-native PM work: every interaction has a reason, every decision is traceable, the system shows its homework.
 
-Built by [Simon Conway](https://linkedin.com/in/simonconway), an AI-native PM. In daily use, designed to be shaped by the people who use it. If you live in Claude Code and you've already started building your own context system to make it work, this is for you.
+Built by [Simon Conway](https://linkedin.com/in/simonconway), an AI-native PM. In daily use, designed to be shaped by the PMs who use it. If you live in Claude Code and you've already started building your own context system to make it work, this is for you.
 
 Files stay on your machine. The only network call is the one Claude Code already makes to Anthropic.
 
