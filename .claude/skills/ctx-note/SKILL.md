@@ -25,10 +25,10 @@ Two phases:
 
 **Step 3 — Content.** Ask: `Paste note below, or give a file path:`
 
-**Step 4 — Person (optional).** Ask: `Is this about a specific person? (name or Enter to skip)`
+**Step 4 — Person (optional).** Ask: `Is this about a specific person? (name, or "none" to skip)`
 If yes, match to `[PROJECT_ROOT]/people/`. If no match found, offer to create a stub.
 
-**Step 5 — Context (optional).** Ask: `Any context? e.g. post-event reflection, follow-up to April 16 (Enter to skip):`
+**Step 5 — Context (optional).** Ask: `Any context? e.g. post-event reflection, follow-up to April 16 (type "none" to skip):`
 
 **Step 6 — Date.** Check content for a date. If found, confirm. If not: `Date (e.g. 17 Apr 2026):`
 

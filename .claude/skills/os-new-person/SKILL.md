@@ -123,7 +123,7 @@ Ask:
 Do you have any background material for [Name]?
 (LinkedIn profile, bio, blog, intro email — paste content or give me a filename in raw/)
 
-Press Enter to skip.
+Type "none" to skip.
 ```
 
 If the user provides content:

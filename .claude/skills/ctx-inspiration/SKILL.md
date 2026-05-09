@@ -258,7 +258,7 @@ What job did you process this synthesis for? (or skip)
 If not skipped, ask two more:
 ```
 What did the synthesis give you that helped? What was missing or harder than it needed to be?
-(Enter to skip)
+(type "none" to skip)
 ```
 
 ```

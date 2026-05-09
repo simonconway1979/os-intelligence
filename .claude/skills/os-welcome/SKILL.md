@@ -172,8 +172,7 @@ After saving, print one of these depending on which case applied:
 
 **First-run case (file/permissions.allow didn't exist or had no OS-Intelligence entries):**
 ```
-Done. Permissions added to .claude/settings.local.json.
-You won't be prompted for edits to OS-Intelligence-managed files.
+Done. Permissions added. That will reduce unneeded requests for permission and make your flow faster.
 ```
 
 **Migration case (some entries existed, others were appended):**
@@ -232,50 +231,35 @@ Wait for selection. Route to Selection 1 or Selection 2 based on the choice.
 Print:
 
 ```
-OS-Intelligence is set up. Let's get you to your first piece of value
-in about 15 minutes.
+Let's get you to your first piece of value in about 15 minutes.
 
-What do you want to do first?
+We'll set up a small project, to show you how it works. Here are some suggestions... What do you want to do first?
 
-1. Catch what's slipping across your sprints
-   Drop in transcripts from your last 3 sprint reviews. Get a synthesis
-   showing what's shipped, what's blocked, and what's drifting between
-   teams. ~15 min.
+**1. Walk into your next 1:1 prepared  ·  10 min**
+What they care about, what's open, what to ask.
 
-2. Find the patterns across your research
-   Drop in transcripts from 3 research calls. Get cross-cut themes,
-   tensions, and patterns you'd otherwise miss reading them one at a
-   time. ~15 min.
+**2. Catch what's slipping across your sprints  ·  15 min**
+What shipped, what's blocked, what's drifting between teams.
 
-3. Brief a new joiner in 10 minutes
-   Drop in 5 key documents about a project (PRD, strategy, last
-   quarterly update, customer escalation). Get a current-state a new
-   joiner can come up to speed on in 10 minutes. ~20 min.
+**3. Find the next move on a stalled project  ·  20 min**
+Where things stood, what's open, what to do next.
 
-4. Walk into your next 1:1 prepared
-   Drop in past meeting transcripts and supporting docs for someone
-   you're meeting soon. Get a stakeholder brief: what they care about,
-   what's open, what to ask. ~10 min.
+**4. Find patterns across your research  ·  15 min**
+Cross-cut themes and tensions from 3 research calls.
 
-5. Find the next move on a stalled project
-   Drop in 5-10 docs from a project that's been sitting. Get a
-   current-state showing where things stood, what's open, and what to
-   do next. ~20 min.
+**5. Sharpen your strategy  ·  20 min**
+Tensions, assumptions, and open questions on your bets.
 
-6. Coach with the full picture
-   Drop in past session transcripts, feedback or 360 docs, and notes
-   that frame what they're working on. Get a standing brief showing
-   patterns, what's progressing, and where to push next. ~15 min.
+**6. Pressure-test your next presentation  ·  20 min**
+Story arc, slide logic, likely pushback.
 
-7. Sharpen your strategy
-   Drop in strategy docs, recent strategy meeting transcripts, and
-   your notes on the bets you're making. Get a synthesis showing
-   tensions, assumptions, and open questions. ~20 min.
+**7. Coach with the full picture  ·  15 min**
+Patterns, what's progressing, where to push next.
 
-8. Pressure-test your next presentation
-   Drop in your slides, speaker notes, and a few lines on the audience
-   and what you want them to take away. Get a critique on the story arc,
-   slide-by-slide logic, and likely pushback. ~20 min.
+**8. Brief a new joiner  ·  20 min**
+Project current-state someone can explore interactively.
+
+**9. Something else — describe what you'd want.**
 ```
 
 ### If returning user
@@ -285,18 +269,19 @@ Print:
 ```
 Looks like you've used OS-Intelligence before. Quick options:
 
-1. Catch what's slipping across your sprints (~15 min)
-2. Find the patterns across your research (~15 min)
-3. Brief a new joiner in 10 minutes (~20 min)
-4. Walk into your next 1:1 prepared (~10 min)
-5. Find the next move on a stalled project (~20 min)
-6. Coach with the full picture (~15 min)
-7. Sharpen your strategy (~20 min)
-8. Pressure-test your next presentation (~20 min)
-9. Run /os-start (load your last project)
+1. Walk into your next 1:1 prepared (~10 min)
+2. Catch what's slipping across your sprints (~15 min)
+3. Find the next move on a stalled project (~20 min)
+4. Find patterns across your research (~15 min)
+5. Sharpen your strategy (~20 min)
+6. Pressure-test your next presentation (~20 min)
+7. Coach with the full picture (~15 min)
+8. Brief a new joiner (~20 min)
+9. Something else — describe what you'd want
+10. Load your last project (/os-start)
 ```
 
-Wait for selection. Accept a single number 1–8 (or 1–9 for returning users).
+Wait for selection. Accept a single number 1–9 (or 1–10 for returning users).
 
 ---
 
@@ -307,20 +292,26 @@ Wait for selection. Accept a single number 1–8 (or 1–9 for returning users).
 Ask: **"What's a short, real name for this project?"**
 
 If the user is unsure, suggest one based on the starter they picked. Examples:
-- 1 (sprints): `Q3 sprint patterns`
-- 2 (research): `Research synthesis: [topic]`
-- 3 (new joiner): `[Project] context for new joiners`
-- 4 (1:1 prep): `1-on-1 prep with [Name]`
-- 5 (stalled project): the user's project name as given
-- 6 (coaching): `Coaching: [Name]`
-- 7 (strategy): `[Quarter or year] strategy`
-- 8 (presentation): `[Topic] presentation review`
+- 1 (1:1 prep): `1-on-1 prep with [Name]`
+- 2 (sprints): `Q3 sprint patterns`
+- 3 (stalled project): the user's project name as given
+- 4 (research): `Research synthesis: [topic]`
+- 5 (strategy): `[Quarter or year] strategy`
+- 6 (presentation): `[Topic] presentation review`
+- 7 (coaching): `Coaching: [Name]`
+- 8 (new joiner): `[Project] context for new joiners`
 
 Confirm with the user, then run `/os-new-project` with the confirmed name. The skill will walk through type (project), personal vs professional, company, people, and key contacts. Let it complete fully.
 
 After `/os-new-project` returns, proceed to Step 6.
 
-### Path 9 — `/os-start` (returning user only)
+### Path 9 — Something else
+
+Ask: **"In a sentence — what do you have, and what do you want from it?"**
+
+Let the user describe their use case in their own words. Acknowledge what you heard in one short line, then ask: **"What's a short, real name for this project?"** Suggest a name based on what they described if they're unsure. Confirm, then run `/os-new-project` with the confirmed name. Proceed to Step 6 — the four capture types apply regardless of starter.
+
+### Path 10 — `/os-start` (returning user only)
 
 Run `/os-start`. Welcome ends.
 
@@ -328,23 +319,54 @@ Run `/os-start`. Welcome ends.
 
 ## Step 6 — Hand-off: walk through the four capture types (paths 1–8)
 
-After `/os-new-project` completes, walk the user through what context they might have to bring. Four capture types, asked one at a time, in the order: **transcripts → documents → notes → chats**. For each: ask Y/n, give where-to-drop instructions if yes, move to the next.
+After `/os-new-project` completes, walk the user through what context they might have to bring. Four capture types, asked one at a time, in the order: **documents → transcripts → chats → notes**. For each: ask Y/n, give where-to-drop instructions if yes, move to the next.
 
-Substitute `[slug]` with the kebab-case slug created by `/os-new-project`. Substitute `[Name]` with the name the user gave (path 4 only).
+Substitute `[slug]` with the kebab-case slug created by `/os-new-project`. Substitute `[Name]` with the name the user gave (path 1 only).
 
 ### Common opening
+
+Substitute `[Project Name]` with the project's name from Step 5. Substitute `[Company]` with the company linked to the project (from `/os-new-project`'s output). Substitute `[recommendation]` with a one-line suggestion of likely document types, tailored to the starter picked at Step 4. Examples:
+- 1 (1:1 prep): past meeting notes with [Name] and recent updates from their team
+- 2 (sprints): sprint review transcripts, planning docs, retros
+- 3 (stalled project): the project's PRD, status updates, last decisions
+- 4 (research): research call transcripts and any customer interview notes
+- 5 (strategy): strategy docs, recent planning transcripts, OKRs
+- 6 (presentation): the slide deck, speaker notes, audience brief
+- 7 (coaching): past 1:1 notes, 360 feedback, performance docs
+- 8 (new joiner): PRD, last quarterly update, key customer escalations
+- 9 (something else): infer from what the user described
 
 Print:
 
 ```
+Project set up. OS-Intelligence has linked [Project Name] to its people and [Company].
+
+By your third project, that link becomes a graph: every person you've added surfaces across every project they touch. Same for companies you work with more than once. Each new entry pulls in what you already have.
+
+---
+
+Adding context
+
 Project ready at: projects/[slug]/
 
-Now we'll import the four foundational inputs for stakeholder
-intelligence: documents, meeting transcripts, chat threads, and notes.
+The next steps capture and analyse your context. This is heavier at
+the start than once your project is set up. After that, you add info
+as it arrives.
 
-I'll ask about each in turn — say no to anything you don't have, or
-don't want to bring right now. You can always run /os-welcome again
-later to add more.
+OS-Intelligence captures four types of context:
+
+| Type        | What it is                                              |
+|-------------|---------------------------------------------------------|
+| Documents   | Slide decks, PRDs, strategy docs, briefs, updates       |
+| Transcripts | Meeting recordings, 1:1s, interviews, calls             |
+| Chats       | Slack, WhatsApp, iMessage threads with stakeholders     |
+| Notes       | Your own observations, voice memos, written reflections |
+
+For [Project Name], you'll likely need [recommendation].
+
+Tip: start with 3–4 documents only. You'll build better context by
+adding files with Claude over time than by trying to load everything
+at the start.
 ```
 
 ### The four capture types
@@ -356,11 +378,10 @@ For each type, ask the question, wait for Y/n, and respond:
 Question:
 
 ```
-2. Documents
-   Slide decks, briefs, PRDs, strategy docs, org charts, status updates,
-   policies, anything written about the project or its context.
+Let's start with documents:
+(Slide decks, briefs, PRDs, strategy docs, org charts, status updates, policies, anything written about the project or its context.)
 
-   Got any to bring? (Y/n)
+Got any to add? (Y/n)
 ```
 
 If **Y**, print:
@@ -382,10 +403,10 @@ If **n**, just say `Skipping documents.` and continue.
 Question:
 
 ```
-1. Meeting transcripts
-   Kickoffs, 1:1s, customer calls, team meetings, interviews.
+Now transcripts:
+(Kickoffs, 1:1s, customer calls, team meetings, interviews.)
 
-   Got any to bring? (Y/n)
+Got any to add? (Y/n)
 ```
 
 If **Y**, print:
@@ -408,11 +429,10 @@ If **n**, say `Skipping meeting transcripts.` and continue.
 Question:
 
 ```
-4. Chat threads
-   Slack channels, Teams DMs, WhatsApp groups — anything where the team
-   talks informally and useful context lives.
+Now chats:
+(Slack channels, Teams DMs, WhatsApp groups. Anywhere the team talks informally and useful context lives.)
 
-   Got any to bring? (Y/n)
+Got any to add? (Y/n)
 ```
 
 If **Y**, print:
@@ -435,11 +455,10 @@ If **n**, say `Skipping chats.` and continue.
 Question:
 
 ```
-3. Notes and observations
-   Your own field notes, voice memos transcribed, off-the-cuff thoughts,
-   ideas you don't want to lose.
+Finally, notes:
+(Your own field notes, voice memos transcribed, off-the-cuff thoughts, ideas you don't want to lose.)
 
-   Got any to bring? (Y/n)
+Got any to add? (Y/n)
 ```
 
 If **Y**, print:

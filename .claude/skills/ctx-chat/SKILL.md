@@ -46,7 +46,7 @@ Suggest a slug based on participants or platform (e.g. `acme-launch-team-whatsap
 - If yes: show last processed date range. Ask: `Last import covered [date range]. Process from [end date] onwards? [Y/N]`
 - If no: first import — process all.
 
-**Step 7 — Context (optional).** Ask: `Any context? e.g. post-event, planning thread (Enter to skip):`
+**Step 7 — Context (optional).** Ask: `Any context? e.g. post-event, planning thread (type "none" to skip):`
 
 **Step 8 — Date range.** Check content for timestamps. If found, confirm. If not: `Date or date range (e.g. 10–17 Apr 2026):`
 
