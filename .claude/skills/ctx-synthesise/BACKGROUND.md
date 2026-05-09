@@ -225,22 +225,19 @@ Also update the `## Interaction History` section:
 
 ## Step 5 — Notify
 
+After all writes complete, return **only** this closing message. Do NOT add headline, urgency flags, top findings, or running commentary — those live in `cross-synthesis.md` for the user to read at their pace. The point of this message is: confirm done + point at next step.
+
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  CROSS-SYNTHESIS COMPLETE ✓
+  CROSS-SYNTHESIS COMPLETE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Project:   [Project name]
-Mode:      [First run / Delta — N new meetings]
-Meetings:  [N] processed · [M] carried forward
-People:    [N] standing briefs updated
+[N] meetings into one cross-cutting picture. Standing briefs updated for each person involved. Stakeholder Dynamics in current-state.md refreshed.
 
-Files written:
-  ✓ intelligence/cross-synthesis.md
-  ✓ people/[name].md × [N]
+→ Read the picture: projects/[slug]/intelligence/cross-synthesis.md
+→ Save the session:  /os-save
 
-Most important things this synthesis revealed:
-  · [Finding 1 — one sentence]
-  · [Finding 2 — one sentence]
-  · [Finding 3 — one sentence]
+(/os-start in future sessions loads the briefing automatically.)
 ```
+
+Substitute `[N]` and `[slug]`. Nothing else. Do not append the cross-synthesis findings inline.

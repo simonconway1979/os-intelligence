@@ -146,7 +146,7 @@ In a single message, spawn one `general-purpose` sub-agent per file via the Task
 >
 > Return ONLY this report. Do not include other commentary.
 
-Spawn all agents in a single message with multiple Agent tool calls so they run concurrently.
+Spawn all agents in a single message with multiple Agent tool calls so they run concurrently. Use `run_in_background: false` so the main thread waits for all reports before the aggregation step.
 
 ### B. Aggregate reports
 

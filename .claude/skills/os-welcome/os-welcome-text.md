@@ -229,4 +229,4 @@ If this clicked, I'd like to swap 20 minutes with you.
 
 You tell me what worked, what broke, and what you wish was there. In return, I help you scope your next OS-Intelligence project: what to bring, how to structure it, what to skip.
 
-Complimentary, no strings. Book a slot here: [Calendly link]
+Complimentary, no strings. Book a slot here: https://calendly.com/simonconway/os-intelligence

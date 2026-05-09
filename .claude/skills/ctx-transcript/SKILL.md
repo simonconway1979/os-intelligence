@@ -64,22 +64,46 @@ Wait for confirmation.
 
 **B3 — Read inbox.** List all files in `inbox/`. If empty: print `No files found in inbox. Add files and try again.` and stop.
 
-**B4 — Process each file.** For each file in the inbox:
+**B4 — Prepare each file.** For each file in the inbox:
 
 1. Read the first 40 lines to extract: date, time, attendee names, topic.
 2. Match attendees against root `people/` and `[PROJECT_ROOT]/people/`. Note any unmatched names.
 3. Build `MEETING_FOLDER`: `[PROJECT_ROOT]/intelligence/meetings/[DATE]-[TIME]-[slug]/`
 4. Copy file content verbatim to `[MEETING_FOLDER]/raw.md`.
 5. Delete the source file from `inbox/`.
-6. Spawn a background agent to process this meeting. Pass the same parameters as the single-transcript handoff. Tell the agent: **Read `.claude/skills/ctx-transcript/BACKGROUND.md` for processing instructions. Do not ask questions — proceed through all steps.**
 
-**B5 — Gaps report.** After all files are dispatched, print a summary:
+Hold the prepared meeting params (folder path, raw file path, attendee map, date) in a list — they all dispatch together in B5.
 
+**B5 — Dispatch agents in parallel and wait.** Spawn one Agent call per prepared meeting in a single message so they run concurrently. Each agent gets the same parameters as the single-transcript handoff and the instruction: **Read `.claude/skills/ctx-transcript/BACKGROUND.md` for processing instructions. Do not ask questions — proceed through all steps.**
+
+Use `run_in_background: false` (the default) so the main thread waits for all agents to complete. Sync wait is what makes the verification in B6 possible — without it, B6 would run while agents were still mid-write and report false failures.
+
+**B6 — Verify outputs and report.** For each meeting folder created in B4, check that the expected output files exist and are non-empty:
+
+- `[MEETING_FOLDER]/synthesis.md` — must exist, must be > 0 bytes
+- `[MEETING_FOLDER]/validation.md` — must exist, must be > 0 bytes
+- `[MEETING_FOLDER]/shareable.md` — must exist, must be > 0 bytes
+
+If any file is missing or 0 bytes, that meeting's processing failed. The most likely cause: auto-accept edits was off and the agent's writes got silently denied (background-style permission requests can't surface to the user).
+
+If any failures, print:
+```
+⚠ Output verification failed for [N]/[M] meetings:
+  - [meeting-folder]: synthesis.md is 0 bytes
+  - [meeting-folder]: shareable.md missing
+
+Most likely cause: auto-accept edits was off during processing.
+
+Fix: turn on auto-accept (Shift + Tab until your status bar shows auto-accept or auto mode on), then re-run:
+  /ctx-transcript --batch
+```
+
+If all files verify clean, print:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   BATCH COMPLETE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Processed: [N] transcripts
+Processed: [N] transcripts · all outputs verified
 
 ⚠ Gaps to resolve:
 - [filename]: date not found — assumed [date] from filename
@@ -87,7 +111,7 @@ Processed: [N] transcripts
 - [filename]: attendees unclear — only one speaker detected
 ```
 
-Any gaps the user should address manually are listed. Syntheses run in the background — no further input needed.
+If there are no gaps, omit the warning block. Syntheses are written; the user can run `/ctx-synthesise` next.
 
 ---
 

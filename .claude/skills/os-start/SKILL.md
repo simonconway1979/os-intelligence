@@ -27,11 +27,42 @@ When the user replies with a number, read `projects.md` and find the matching pr
 - `**Type:**` (project | portfolio)
 - `**Folders:**` path
 - `**One-liner:**`, `**Goal:**`
+- `**Welcome:**` field if present (e.g. `pending`)
 
 Branch on Type:
 - **New project** (last menu item) → run `/os-new-project`, then continue.
-- **Type: project** → write project name to `[workspace-root]/.current-session`. Go to Step 3.
-- **Type: portfolio** → go to Step 2b.
+- **Type: project** → write project name to `[workspace-root]/.current-session`. If `**Welcome:** pending`, go to Step 2c before Step 3. Otherwise go to Step 3.
+- **Type: portfolio** → if `**Welcome:** pending`, go to Step 2c before Step 2b. Otherwise go to Step 2b.
+
+### Step 2c — Welcome-back render (first return after /os-welcome)
+
+This step only runs when the project's entry has `- **Welcome:** pending`. It's the second-session aha moment — the cliffhanger payoff for the user who just ran `/os-welcome` last session and was instructed to quit and come back.
+
+Print:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  WELCOME BACK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+You ran /os-start, picked your project, and you're back exactly where you left off. That's the loop.
+
+My biggest win: my context-switching has reduced to seconds. Claude just handles this now.
+
+Use it for a week and it'll be doing some of the lifting for you. Use it for 4 weeks and you won't remember how you worked without it.
+
+---
+
+One last thing.
+
+If this clicked, I'd love 20 minutes with you. Tell me what worked, what broke, what you wish was there. In return, I'll help scope your next OS-Intelligence project: what to bring, how to structure it, what to skip.
+
+Complimentary, no strings: https://calendly.com/simonconway/os-intelligence
+```
+
+**Then clear the tag.** Edit `projects.md` to remove the `- **Welcome:** pending` line from this project's entry — the welcome-back fires once, not every `/os-start`.
+
+Continue to the normal flow (Step 3 for projects, Step 2b for portfolios). The standard briefing then follows the welcome-back so the user immediately sees the loop in action.
 
 ### Step 2b — Portfolio drill-down
 

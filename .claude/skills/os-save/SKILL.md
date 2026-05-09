@@ -438,6 +438,37 @@ Current state:      [active-project]/context/current-state.md  (updated)
 
 ---
 
+## Step 10b — Welcome flow post-save summary (conditional)
+
+Read the active project's entry in `projects.md`. If it contains `- **Welcome:** pending`, this is the user's first session through `/os-welcome`. Append the following block immediately after the Step 10 confirmation. Otherwise skip Step 10b entirely.
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  YOU JUST RAN THE FULL OS-INTELLIGENCE LOOP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+In this session, you:
+  - Set up a project with a stated goal
+  - Captured your context across documents, transcripts, chats, and notes
+  - Cross-synthesised it into one read of the project
+  - Pressure-tested the synthesis with Claude
+  - Saved the session as memory
+
+You'll do this every time. The hard part is over.
+
+After one week of using OS-Intelligence, your context will be doing real lifting — every meeting briefed before you walk in, every project surfaceable on demand. By four weeks, you won't remember how you worked without it.
+
+Now quit Claude Code.
+
+Next time you launch Claude Code, run /os-start and pick this project. What you'll see is everything you just built — current, ready, no context-switching needed. From there you keep working.
+
+I'll meet you there.
+```
+
+Do NOT clear the `**Welcome:** pending` tag in this skill — `/os-start` clears it after rendering the welcome-back content next session. That's what creates the cliffhanger payoff.
+
+---
+
 ## Loading Context in Future Sessions
 
 When a user asks about past work, follow this retrieval order:

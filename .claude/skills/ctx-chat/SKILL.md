@@ -21,6 +21,11 @@ Two phases:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+Then print this one-line tip (non-blocking — proceed to Step 2 without waiting):
+```
+Tip: make sure auto-accept edits is ON (Shift + Tab) — background synthesis fails silently otherwise.
+```
+
 **Step 2 — Project.** Read `[workspace-root]/.current-session` for the active project. Show pre-selected, list others. Wait for confirmation.
 
 **Step 3 — Content.** Ask: `Paste thread below, or give a file path:`

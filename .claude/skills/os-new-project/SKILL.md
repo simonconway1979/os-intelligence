@@ -27,7 +27,7 @@ Ask again. Do not proceed until the name is unique.
 
 Ask the following questions one at a time:
 
-1. **"One sentence — what is it?"**
+1. **"In one line — what's the project? (Goal comes next.)"**
 2. **"What's the primary goal? What does success look like?"**
 
 ---
@@ -36,16 +36,18 @@ Ask the following questions one at a time:
 
 Ask:
 ```
-What type of project is this?
+Project or portfolio? (default: project)
 
-1. Standalone project — a single piece of work with a clear goal
-   (e.g., building an app, running a product launch, writing a report)
+1. Project — a single piece of work with a clear goal (default)
+   e.g., building an app, running a product launch, writing a report
 
 2. Portfolio — a managed collection of similar items
-   (e.g., a set of job opportunities, an ideas bank, a reading list)
+   e.g., a set of job opportunities, an ideas bank, a reading list
+
+Type 1, 2, or "default" for project.
 ```
 
-Record the answer as `project` or `portfolio`. This determines the folder structure created in Step 8.
+Record the answer as `project` or `portfolio`. Treat `1`, `default`, or any clear "project" signal as `project`; treat `2` or "portfolio" as `portfolio`. This determines the folder structure created in Step 8.
 
 **If portfolio:** also ask:
 - "What do you call a single item in this collection? (e.g., opportunity, idea, article)" — record as the item name (singular, lowercase)
@@ -56,10 +58,10 @@ Record the answer as `project` or `portfolio`. This determines the folder struct
 
 Ask:
 ```
-Is this a personal or professional project?
+Is this a professional or personal project?
 
-1. Personal
-2. Professional
+1. Professional
+2. Personal
 ```
 
 Record the answer and add the corresponding tag (`personal` or `professional`) to the project.
@@ -128,10 +130,7 @@ Accept comma-separated numbers, ranges, or "none" / "skip". Record all selected 
 
 Ask:
 ```
-Anyone else to add who isn't in your contacts yet?
-Give me their name and title. Also their company if it's
-not [project company] — don't worry if you don't have
-everyone, you can add more later.
+Add anyone new — name, title, and company (if not [project company]). Two or three is plenty; you can come back for more.
 ```
 
 If yes, for each person collect:

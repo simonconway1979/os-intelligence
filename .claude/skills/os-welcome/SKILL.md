@@ -1,6 +1,6 @@
 ---
 name: os-welcome
-description: First-run entry point. Routes new users to their first piece of value in under 15 minutes. Detects fresh install vs returning user. Chains into /os-new-project for active paths.
+description: First-run entry point. Routes new users to their first piece of value in about 20 minutes. Detects fresh install vs returning user. Chains into /os-new-project for active paths.
 user_invocable: true
 ---
 
@@ -23,7 +23,8 @@ Print this banner exactly, as the first thing in the output:
  | |_| |___) | (_)   | || |\  | | | | |___| |___| |___ | | |_| | |___| |\  | |___| |___
   \___/|____/       |___|_| \_| |_| |_____|_____|_____|___|\____|_____|_| \_|\____|_____|
 
-       The intelligence layer for your operating system.
+The intelligence layer for your operating system.
+From install to first synthesis in 20 minutes.
 ```
 
 A blank line, then continue.
@@ -79,7 +80,9 @@ Write(**/intelligence/**)
 ### First-run offer (all missing)
 
 ```
-Before we start, some admin to make OS-Intelligence easier to use...
+### Before we start
+
+An admin change to make...
 
 OS-Intelligence creates and updates structural files as you work —
 projects.md, project folders, people files, current-state.md,
@@ -168,6 +171,14 @@ Merge the following into `.claude/settings.local.json` at the workspace root:
 - If `permissions.allow` already exists: append the OS-Intelligence entries that are not already present. Do not remove any existing entries.
 - Validate the result is valid JSON before saving.
 
+**If the write is blocked by auto-mode safety:** The classifier flags editing `settings.local.json` as self-modification of permissions. **This block is hard — plain-English "go ahead" consent does NOT override it.** The user must temporarily turn off auto-accept edits so the write can land. Do NOT present a multi-option recovery menu. Print a single short prompt:
+
+```
+Auto-accept edits is blocking this write. Please turn off auto-accept edits (Shift + Tab) and reply Y to proceed.
+```
+
+On `Y`: retry the write (auto-mode is now off, so it'll succeed). On `n`: print `Got it — leaving settings as is. Run /os-welcome any time to re-offer.` and proceed to Step 4.
+
 After saving, print one of these depending on which case applied:
 
 **First-run case (file/permissions.allow didn't exist or had no OS-Intelligence entries):**
@@ -231,7 +242,7 @@ Wait for selection. Route to Selection 1 or Selection 2 based on the choice.
 Print:
 
 ```
-Let's get you to your first piece of value in about 15 minutes.
+Let's get you to your first piece of value in about 20 minutes.
 
 We'll set up a small project, to show you how it works. Here are some suggestions... What do you want to do first?
 
@@ -260,6 +271,8 @@ Patterns, what's progressing, where to push next.
 Project current-state someone can explore interactively.
 
 **9. Something else — describe what you'd want.**
+
+Type the number you want to start with.
 ```
 
 ### If returning user
@@ -279,9 +292,11 @@ Looks like you've used OS-Intelligence before. Quick options:
 8. Brief a new joiner (~20 min)
 9. Something else — describe what you'd want
 10. Load your last project (/os-start)
+
+Type the number you want to start with.
 ```
 
-Wait for selection. Accept a single number 1–9 (or 1–10 for returning users).
+**Read the user's typed reply as plain text input.** Accept a single number 1–9 (or 1–10 for returning users). Do NOT use `AskUserQuestion` or any interactive selector tool — the menu has already been printed as text, and the user will type a number. Calling `AskUserQuestion` here renders a duplicate selector at the bottom of the screen, which is what we want to avoid.
 
 ---
 
@@ -325,16 +340,19 @@ Substitute `[slug]` with the kebab-case slug created by `/os-new-project`. Subst
 
 ### Common opening
 
-Substitute `[Project Name]` with the project's name from Step 5. Substitute `[Company]` with the company linked to the project (from `/os-new-project`'s output). Substitute `[recommendation]` with a one-line suggestion of likely document types, tailored to the starter picked at Step 4. Examples:
-- 1 (1:1 prep): past meeting notes with [Name] and recent updates from their team
-- 2 (sprints): sprint review transcripts, planning docs, retros
-- 3 (stalled project): the project's PRD, status updates, last decisions
-- 4 (research): research call transcripts and any customer interview notes
-- 5 (strategy): strategy docs, recent planning transcripts, OKRs
-- 6 (presentation): the slide deck, speaker notes, audience brief
-- 7 (coaching): past 1:1 notes, 360 feedback, performance docs
-- 8 (new joiner): PRD, last quarterly update, key customer escalations
-- 9 (something else): infer from what the user described
+Substitute `[Project Name]` with the project's name from Step 5. Substitute `[Company]` with the company linked to the project (from `/os-new-project`'s output).
+
+**Before printing, ensure all four capture folders exist:**
+
+```bash
+mkdir -p \
+  projects/[slug]/intelligence/docs/raw \
+  projects/[slug]/intelligence/meetings/inbox \
+  projects/[slug]/intelligence/chats \
+  projects/[slug]/intelligence/notes
+```
+
+`/os-new-project` already creates these, but the explicit `mkdir -p` is idempotent and guards against any case where it didn't (older project, manual creation, partial failure).
 
 Print:
 
@@ -343,9 +361,9 @@ Project set up. OS-Intelligence has linked [Project Name] to its people and [Com
 
 By your third project, that link becomes a graph: every person you've added surfaces across every project they touch. Same for companies you work with more than once. Each new entry pulls in what you already have.
 
----
-
-Adding context
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ADD CONTEXT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Project ready at: projects/[slug]/
 
@@ -362,11 +380,7 @@ OS-Intelligence captures four types of context:
 | Chats       | Slack, WhatsApp, iMessage threads with stakeholders     |
 | Notes       | Your own observations, voice memos, written reflections |
 
-For [Project Name], you'll likely need [recommendation].
-
-Tip: start with 3–4 documents only. You'll build better context by
-adding files with Claude over time than by trying to load everything
-at the start.
+Tip: start with 2–3 items only. You'll build sharper context by adding more later in conversation with Claude than by loading everything up front.
 ```
 
 ### The four capture types
@@ -387,14 +401,16 @@ Got any to add? (Y/n)
 If **Y**, print:
 
 ```
-   Drop them at:
-     projects/[slug]/intelligence/docs/raw/
+Drop your documents at:
+  projects/[slug]/intelligence/docs/raw/
 
-   On macOS:
-     open projects/[slug]/intelligence/docs/raw/
+On macOS:
+  open projects/[slug]/intelligence/docs/raw/
 
-   Later you'll run /ctx-doc and it'll process them in parallel.
+Type Y when you've added them, and I'll process them before we move on.
 ```
+
+Wait for the user's `Y`. Then invoke `/ctx-doc` — it scans `intelligence/docs/raw/` for unprocessed files and handles them. After the skill confirms processing has started or completed, continue to the next capture type.
 
 If **n**, just say `Skipping documents.` and continue.
 
@@ -412,15 +428,16 @@ Got any to add? (Y/n)
 If **Y**, print:
 
 ```
-   Drop them at:
-     projects/[slug]/intelligence/meetings/
+Drop your transcripts at:
+  projects/[slug]/intelligence/meetings/inbox/
 
-   On macOS:
-     open projects/[slug]/intelligence/meetings/
+On macOS:
+  open projects/[slug]/intelligence/meetings/inbox/
 
-   Later you'll run /ctx-transcript (or its --batch mode if you have a
-   pile) and it'll synthesise each meeting and update people files.
+Type Y when you've added them, and I'll process them before we move on.
 ```
+
+Wait for the user's `Y`. Then invoke `/ctx-transcript --batch` — it processes everything in the inbox folder. After the skill confirms processing has started, continue to the next capture type.
 
 If **n**, say `Skipping meeting transcripts.` and continue.
 
@@ -438,15 +455,16 @@ Got any to add? (Y/n)
 If **Y**, print:
 
 ```
-   Export the thread to a markdown or text file, then drop it at:
-     projects/[slug]/intelligence/chats/
+Export each thread to .md or .txt and drop them at:
+  projects/[slug]/intelligence/chats/
 
-   On macOS:
-     open projects/[slug]/intelligence/chats/
+On macOS:
+  open projects/[slug]/intelligence/chats/
 
-   Later you'll run /ctx-chat. It deduplicates on re-imports, so you
-   can update the same thread over time.
+Type Y when you've added them, and I'll process them before we move on.
 ```
+
+Wait for the user's `Y`. Then invoke `/ctx-chat` for each file in `intelligence/chats/`. The skill walks through participants and thread name interactively per thread — let it complete for each one. After all chats are processed, continue to the next capture type.
 
 If **n**, say `Skipping chats.` and continue.
 
@@ -464,44 +482,81 @@ Got any to add? (Y/n)
 If **Y**, print:
 
 ```
-   Drop them at:
-     projects/[slug]/intelligence/notes/
+Drop your notes at:
+  projects/[slug]/intelligence/notes/
 
-   On macOS:
-     open projects/[slug]/intelligence/notes/
+On macOS:
+  open projects/[slug]/intelligence/notes/
 
-   Later you'll run /ctx-note to capture and link them to people if relevant.
+Type Y when you've added them, and I'll process them before we move on.
 ```
+
+Wait for the user's `Y`. Then invoke `/ctx-note` for each file in `intelligence/notes/`. The skill walks through person-linking interactively per note — let it complete for each one. After all notes are processed, continue.
 
 If **n**, say `Skipping notes.` and continue.
 
 ### Common closing
 
-After all four questions, print:
+After all four capture types have been walked through (and processed inline for whichever ones the user opted into):
+
+**Step a — Write the Welcome: pending tag to projects.md.** Find the active project's entry under `## Active` in `projects.md` (the entry whose `### [Project Name]` heading matches the project name in `.current-session`). Add a new line `- **Welcome:** pending` at the bottom of that entry's bullet block, before the next `### [Project Name]` heading or section divider. This tag triggers the post-save summary in `/os-save` this session and the welcome-back render in `/os-start` next session.
+
+**Step b — Print the synthesis transition:**
 
 ```
-Got it. Once you've dropped everything, run these in order — only the
-ones you have material for:
+Almost there. One more skill, then we capture this session.
 
-  /ctx-doc                 (processes documents)
-  /ctx-transcript          (processes meetings)
-  /ctx-chat                (processes chat threads)
-  /ctx-note                (processes notes)
-
-Then to bring it together:
-
-  /ctx-synthesise          (cross-cuts everything, updates current-state.md)
-  /os-start                (loads the briefing for your next session)
-
-Total time from here: 10–20 minutes depending on volume. The synthesis
-step is where the picture comes together.
+Now we synthesise. /ctx-synthesise cross-cuts everything you brought in into one read — tensions, themes, urgency flags, who to watch.
 ```
+
+**Step c — Invoke `/ctx-synthesise`.** Wait for it to complete. The skill writes `cross-synthesis.md` and returns its own confirmation message.
+
+**Step d — After synthesis returns, print the working-session section.** This is one of the three recurring banners that mark the structural beats of the OS-Intelligence loop (the others: ADD CONTEXT and CROSS-SYNTHESIS COMPLETE).
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  WORKING SESSION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This is where context compounds — and where the real thought partnership begins.
+
+The OS-Intelligence principle: the best context isn't loaded upfront, it's built with Claude in conversation. You ask. Claude pressure-tests. You answer. The richer the context gets, the more Claude can do with it. And every decision, question, and piece of reasoning here becomes memory — captured by /os-save, included in the briefing /os-start loads next time.
+
+Three good questions to start with:
+  - What's the single most important thing to focus on, given my goal?
+  - What's missing from my context that would change your read?
+  - What would you suggest I do next?
+
+Pick one. Push back. Argue. Ask follow-ups.
+
+When you're done, just say "save" and I'll wrap the session.
+```
+
+**Step e — Enter working-session mode (the conversation loop).**
+
+After printing the section above, the welcome flow does NOT end. Enter conversational working-session mode and follow these rules:
+
+1. **Respond as a peer, not a tool.** When the user asks a question or pushes back, give a real answer — pressure-test their thinking, surface tensions in the synthesis, push back where their reasoning is weak. The richness of this conversation determines the richness of the memory `/os-save` captures.
+
+2. **End every response in this mode with this exact off-ramp line** (separated by a blank line from the substantive answer above it):
+   ```
+   Another question, or shall I /os-save this session?
+   ```
+
+3. **Save signals to interpret as "yes, save now":**
+   - Exact: `save`, `/os-save`, `done`, `yes`, `wrap up`, `let's save`, `save it`
+   - Loose: any reply that clearly signals close intent (e.g. "ok let's wrap", "yeah save", "I'm done")
+   - On any save signal, **invoke `/os-save` directly**. Do NOT re-confirm — the user has already signalled.
+
+4. **Continue signals (anything else):** treat as another question or piece of reasoning. Respond substantively, then re-append the off-ramp line on the next response.
+
+5. **End welcome flow when `/os-save` returns.** The tag written in Step a remains in place; `/os-start` next session clears it.
 
 ---
 
 ## Step 7 — Stop
 
-After the hand-off, end the welcome flow. Do not chain into `/ctx-doc`, `/ctx-transcript`, `/ctx-chat`, or `/ctx-note` — the user needs to drop their files first, then run the relevant skills themselves.
+After all four capture types have been walked through, end the welcome flow. The `/ctx-*` ingestion skills have already been invoked inline during Step 6 for whichever types the user opted into. Do NOT chain into `/ctx-synthesise` or `/os-start` — those are explicit user actions.
 
 ---
 
