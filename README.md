@@ -31,19 +31,38 @@ cd os-intelligence
 claude
 ```
 
-Once Claude is running, type:
+Once Claude is running, you have two ways in.
+
+**Quick look (~60 seconds)** — point `/ctx-doc` at a meeting transcript, PRD, or any text file you've already got. The system reads it, infers what kind of artifact it is, and synthesises it into the right place. You see how it thinks before committing to anything.
+
+```
+/ctx-doc path/to/your-file.md
+```
+
+**Guided walkthrough (~45 minutes)** — `/os-welcome` walks you end-to-end through your first project with your own data, so you experience the full workflow.
 
 ```
 /os-welcome
 ```
-
-This walkthrough guides you through your first project end-to-end so you experience the workflow with your own data.
 
 ### Keep your context private: clone, don't fork
 
 OS-Intelligence is the framework. Your meetings, documents, notes, and people files are the context, and that context is private. **Don't fork this repo on GitHub.** Forks default to public, so anything you add gets indexed.
 
 Recommended: create your own private repo and repoint the remote so commits go there. Full walkthrough in the [Setup guide](docs/setup.md#step-4-clone-the-repo).
+
+---
+
+## What we call things
+
+OS-Intelligence has its own vocabulary. Worth a quick pass before you dig in:
+
+- **`intelligence/`** — your project's source-of-truth folder. Meetings, docs, chats, notes all live here. Synthesis reads from this.
+- **`current-state.md`** — the living context summary for a project. Updated by `/os-save`, `/ctx-doc`, `/ctx-synthesise`. Read at the start of every session.
+- **`/os-*` skills** — operating the system itself. Start a session, save a session, switch project, add a project.
+- **`/ctx-*` skills** — adding to context. Documents, transcripts, notes, chat threads, cross-synthesis.
+- **Project vs portfolio** — a project is one initiative; a portfolio holds many items of the same shape (ideas, opportunities, events).
+- **"Reasoning layer"** — the system captures, structures, and surfaces context. Claude does the language work on top.
 
 ---
 

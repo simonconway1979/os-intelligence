@@ -8,8 +8,16 @@
 # Empty output = no companion commits needed; primary commit can proceed alone.
 # Non-empty output = each line is a companion-commit candidate.
 #
-# Run from workspace root. Inspects .claude/skills/, .claude/agents/, sub-agents/
-# top-level entries (these are the canonical locations for symlinked skills + sub-agents).
+# Run from workspace root. Two passes:
+#   Pass 1 — top-level symlinks under .claude/skills/, .claude/agents/, sub-agents/
+#            (per-skill symlinks like ctx-doc -> external repo's skill folder).
+#            Intersects dirty files with the resolved symlink paths.
+#   Pass 2 — directory-level symlinks at projects/*/github/ that point at the
+#            full repo root of an external repo (e.g. projects/os-intelligence/
+#            github -> ~/Code/os-intelligence). Emits every dirty file in that
+#            repo — no intersection filter, because the symlink IS the repo.
+#
+# Output from both passes is unioned and deduped.
 #
 # Why this exists: Step 9a was previously an inline compound bash command (cd && for ...
 # do ... done | sort -u) which fell through Claude Code's pattern-based bash allowlist
@@ -22,6 +30,9 @@ set -uo pipefail
 
 WORKSPACE_ROOT="$(pwd)"
 
+# ============================================================
+# Pass 1: per-skill / per-agent symlinks (intersection)
+# ============================================================
 # Build list: each line "ext_repo<TAB>resolved-path-in-ext-repo"
 # Skip dangling symlinks, symlinks not under git, and symlinks pointing back into the workspace.
 SYMLINK_MAP=$(
@@ -34,30 +45,48 @@ SYMLINK_MAP=$(
   done
 )
 
-# No external symlinks → nothing to check.
-[ -z "$SYMLINK_MAP" ] && exit 0
-
-# For each unique external repo, intersect its dirty files with workspace-reachable paths.
-echo "$SYMLINK_MAP" | awk -F'\t' '{print $1}' | sort -u | while read -r ext_repo; do
-  [ -n "$ext_repo" ] || continue
-
-  # Resolved paths (relative to ext_repo root) reachable via this workspace's symlinks
-  RESOLVED=$(echo "$SYMLINK_MAP" | awk -F'\t' -v r="$ext_repo" '$1 == r {print $2}')
-
-  # All dirty files in the external repo (relative to its root)
-  DIRTY=$(cd "$ext_repo" 2>/dev/null && git status --porcelain 2>/dev/null | awk '{print $NF}')
-  [ -z "$DIRTY" ] && continue
-
-  # Intersection: emit dirty files that fall under any resolved symlink path.
-  # Uses prefix match so a symlinked folder catches every dirty file inside it.
-  echo "$DIRTY" | while IFS= read -r dirty; do
-    [ -n "$dirty" ] || continue
-    while IFS= read -r resolved; do
-      [ -n "$resolved" ] || continue
-      if [[ "$dirty" == "$resolved"* ]]; then
-        printf "%s\t%s\n" "$ext_repo" "$dirty"
-        break
-      fi
-    done <<< "$RESOLVED"
+PASS1=$(
+  [ -z "$SYMLINK_MAP" ] && exit 0
+  echo "$SYMLINK_MAP" | awk -F'\t' '{print $1}' | sort -u | while read -r ext_repo; do
+    [ -n "$ext_repo" ] || continue
+    RESOLVED=$(echo "$SYMLINK_MAP" | awk -F'\t' -v r="$ext_repo" '$1 == r {print $2}')
+    DIRTY=$(cd "$ext_repo" 2>/dev/null && git status --porcelain 2>/dev/null | awk '{print $NF}')
+    [ -z "$DIRTY" ] && continue
+    echo "$DIRTY" | while IFS= read -r dirty; do
+      [ -n "$dirty" ] || continue
+      while IFS= read -r resolved; do
+        [ -n "$resolved" ] || continue
+        if [[ "$dirty" == "$resolved"* ]]; then
+          printf "%s\t%s\n" "$ext_repo" "$dirty"
+          break
+        fi
+      done <<< "$RESOLVED"
+    done
   done
-done
+)
+
+# ============================================================
+# Pass 2: full-repo directory symlinks at projects/*/github/
+# ============================================================
+# Each projects/*/github/ symlink that points at an external repo's root means
+# every dirty file in that repo is in workspace scope. Catches edits to README,
+# docs/, landing pages — anywhere outside the .claude/skills/ scan in Pass 1.
+PASS2=$(
+  find projects -maxdepth 2 -type l -name github 2>/dev/null | while read -r link; do
+    real=$(realpath "$link" 2>/dev/null) || continue
+    [ -d "$real" ] || continue
+    ext_repo=$(cd "$real" 2>/dev/null && git rev-parse --show-toplevel 2>/dev/null) || continue
+    [ -n "$ext_repo" ] || continue
+    [ "$real" = "$ext_repo" ] || continue
+    [ "$ext_repo" != "$WORKSPACE_ROOT" ] || continue
+    cd "$ext_repo" 2>/dev/null && git status --porcelain 2>/dev/null | awk '{print $NF}' | while IFS= read -r dirty; do
+      [ -n "$dirty" ] && printf "%s\t%s\n" "$ext_repo" "$dirty"
+    done
+  done
+)
+
+# Combine + dedupe
+{
+  [ -n "$PASS1" ] && echo "$PASS1"
+  [ -n "$PASS2" ] && echo "$PASS2"
+} | sort -u
