@@ -1224,7 +1224,7 @@
   <div class="shell">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow"><span class="dot"></span>v0.1 ships Apr 29, 2026</span>
+        <span class="eyebrow"><span class="dot"></span>v0.1 — soft-launched May 2026</span>
         <h1 style="margin-top:1.25rem">
           Using Claude Code.<br>
           <span class="muted">Not getting the </span><span class="accent-blue">10×</span><span class="muted"> everyone on LinkedIn keeps posting about?</span>
@@ -1310,7 +1310,7 @@
       <div>
         <div class="section-head" style="margin-bottom: 2rem">
           <span class="eyebrow">Setup</span>
-          <h2>Get started in about an hour.</h2>
+          <h2>Get started in about 20 minutes.</h2>
         </div>
 
         <ol class="steps">
@@ -1324,22 +1324,8 @@
           <li>
             <div class="num">2</div>
             <div class="body">
-              <div class="title">Drop in transcripts and documents</div>
-              <div class="sub">Meetings, Slack threads, decision notes — whatever you have.</div>
-            </div>
-          </li>
-          <li>
-            <div class="num">3</div>
-            <div class="body">
-              <div class="title">Run <code>/ctx-synthesise</code></div>
-              <div class="sub">Builds your reasoning trail from the raw material.</div>
-            </div>
-          </li>
-          <li>
-            <div class="num">4</div>
-            <div class="body">
-              <div class="title">Run <code>/os-start</code></div>
-              <div class="sub">Boots the operating layer. You're live.</div>
+              <div class="title">Run <code>/os-welcome</code></div>
+              <div class="sub">Guided walkthrough. From install to first synthesis on your real work in 20 minutes.</div>
             </div>
           </li>
         </ol>
@@ -1398,7 +1384,7 @@
     </div>
 
     <p class="lede">
-      v0.1 ships <em>Apr 29.</em> Looking for ~10 people to install in week one,
+      v0.1 is <em>live.</em> Looking for 12–20 people to install in Week 1,
       push it hard, and tell me what breaks.
     </p>
 
@@ -1519,14 +1505,14 @@ in v1 to test the core hypothesis. Decision pending.
     <div class="section-head">
       <span class="eyebrow">Field reports</span>
       <h2>What pilots are saying.</h2>
-      <p class="lede">First cohort installs <strong class="ink">Apr 29</strong>. Quotes from real users land soon after.</p>
+      <p class="lede">First cohort installed <strong class="ink">May 2026</strong>. More real-user quotes landing this week.</p>
     </div>
 
     <div class="quotes">
       <div class="quote">
         <div class="qmark">"</div>
-        <div class="q">Pilot quote, landing soon.</div>
-        <div class="who"><span class="pulse"></span>Pilot 01 · v0.1 cohort</div>
+        <div class="q">It should be on rails. There should be a reason to chat to the thing, for the same reason there's a reason for a meeting.</div>
+        <div class="who">Edwin Groenendaal · CTO · v0.1 pilot</div>
       </div>
       <div class="quote">
         <div class="qmark">"</div>
@@ -1612,7 +1598,27 @@ in v1 to test the core hypothesis. Decision pending.
       <details class="faq-item">
         <summary>I don't have Claude Code installed. Can I still try this?</summary>
         <div class="ans">
-          <p>Not yet. Claude Code is the substrate — it's what reasons against your trail. Install it first, then come back. Setup takes about ten minutes.</p>
+          <p>Not yet. Claude Code is the substrate — it's what reasons against your trail. Install it first, then come back. <code>/os-welcome</code> takes you from clone to first synthesis in about 20 minutes.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Is this just for PMs already using Claude Code, or can I start from scratch?</summary>
+        <div class="ans">
+          <p>It's built for PMs already living in Claude Code — that's the substrate, that's where the reasoning happens. If you don't use Claude Code yet, install it first (10 minutes from <a href="https://claude.com/code" target="_blank" rel="noopener">claude.com/code</a>), then clone OS-Intelligence and run <code>/os-welcome</code>. The guided walkthrough takes about 20 minutes and lands you with your first synthesis on real work.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>How is this different from Granola, Notion AI, or Team OS?</summary>
+        <div class="ans">
+          <p>Granola captures meetings. Notion AI summarises documents. Team OS structures shared team context. OS-Intelligence is the layer underneath: it synthesises your raw material (meetings, PRDs, stakeholder notes, chats) into a reasoning trail your AI reasons against, not a wiki you click through.</p>
+          <p>Different shape, different layer — they stack rather than replace. If you already use one of those, OS-Intelligence is what makes your AI sessions reason against that captured context instead of starting cold every time.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>What does the system look like once it's running — can I see a real example?</summary>
+        <div class="ans">
+          <p>Scroll up to the proof section — that's a real <code>current-state.md</code> file (project name and people anonymised), and the second frame is what your Claude Code session looks like reasoning against it.</p>
+          <p>The full Acme Corp example also ships in the public repo at <code>projects/acme-corp-example/</code> — clone, browse it, see the structure on synthetic data before you bring your own.</p>
         </div>
       </details>
     </div>
@@ -1623,7 +1629,7 @@ in v1 to test the core hypothesis. Decision pending.
 <section class="final-cta">
   <div class="shell">
     <h2>Ready to fix your context?</h2>
-    <p>v0.1 ships Apr 29. Looking for ~10 early adopters.</p>
+    <p>v0.1 is live. Looking for 12–20 early adopters.</p>
     <a class="btn btn-cta lg" href="https://tally.so/r/ja0vKa">
       Get early access
       <span class="arr" aria-hidden="true">→</span>
@@ -1663,7 +1669,7 @@ in v1 to test the core hypothesis. Decision pending.
     <div class="copy">
       <span class="ossp">
         <span class="badge">Apache 2.0</span>
-        © 2026 OS-Intelligence · v0.1 · Apr 29
+        © 2026 OS-Intelligence · v0.1
       </span>
       <span>No tracking. No cookies. No newsletter.</span>
     </div>
