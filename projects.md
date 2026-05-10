@@ -8,18 +8,6 @@ Two types: **project** (one ongoing piece of work) or **portfolio** (a container
 
 ## Active
 
-### Research Synthesis: First 90 days
-- **Type:** project
-- **Status:** Active
-- **One-liner:** Newly started as CPO at a company. Conducting interviews to read the project and business and shape a 90-day strategy and execution plan.
-- **Goal:** Within 90 days, a strong strategy and execution plan with first outcomes already delivered, backed by the board and key stakeholders.
-- **Folders:** `projects/research-synthesis-first-90-days/`
-- **Company:** [Simon Conway Digital Consulting](companies/simon-conway-digital-consulting.md)
-- **Key people:** [Simon Conway](people/simon-conway.md)
-- **Started:** 2026-05-09
-- **Last session:** 2026-05-09
-- **Welcome:** pending
-
 ### Acme Corp Example
 - **Type:** project
 - **Status:** Active
