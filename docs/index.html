@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OS-Intelligence — A reasoning layer for AI-native PMs</title>
+<title>OS-Intelligence - A reasoning layer for AI-native PMs</title>
 <meta name="description" content="A free, open-source context system for product managers using Claude Code. Capture meetings, PRDs, and stakeholder notes; synthesise into reference state; start every session with the right context.">
-<meta property="og:title" content="OS-Intelligence — A reasoning layer for AI-native PMs">
+<meta property="og:title" content="OS-Intelligence - A reasoning layer for AI-native PMs">
 <meta property="og:description" content="A free, open-source context system for product managers using Claude Code. Every session compounds.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -177,7 +177,7 @@
   .btn-onnavy{ background: var(--N0); color: var(--N900); }
   .btn-onnavy:hover{ background: var(--B50); color: var(--B700); text-decoration:none }
 
-  /* High-conversion CTA — orange */
+  /* High-conversion CTA - orange */
   .btn-cta{
     background: #FF6B35;
     color: var(--N0);
@@ -260,7 +260,7 @@
   .li-layer{
     position:absolute;
     top: 0; bottom: 0;
-    /* Right half only — keeps headline column completely clean */
+    /* Right half only - keeps headline column completely clean */
     left: 52%;
     right: 0;
     pointer-events:none;
@@ -287,7 +287,7 @@
     opacity: 0;
     will-change: transform, opacity, filter;
     transition: filter .35s ease, opacity .35s ease, transform .35s ease, box-shadow .35s ease;
-    /* parallax target — set by JS */
+    /* parallax target - set by JS */
     --px: 0px;
     --py: 0px;
   }
@@ -368,7 +368,7 @@
   .li-post.depth-mid   { filter: blur(.8px);  opacity: 0; }
   .li-post.depth-front { filter: blur(0);     opacity: 0; }
 
-  /* drift animation — translate is composed with parallax via translate3d wrapper */
+  /* drift animation - translate is composed with parallax via translate3d wrapper */
   @keyframes liDriftA {
     0%   { opacity: 0; transform: translate3d(var(--px), calc(var(--py) + 8px), 0) }
     18%  { opacity: var(--peak, .85); transform: translate3d(var(--px), var(--py), 0) }
@@ -520,7 +520,7 @@
   .tag.purple{ color:#5E4DB2; background:#F3F0FA; border-color:#DFD8F7 }
   .tag.teal{ color:#206B74; background:#E7F9FB; border-color:#BCEEF3 }
 
-  /* ============ SECTION 2 — WHAT IF (cards) ============ */
+  /* ============ SECTION 2 - WHAT IF (cards) ============ */
   .what{
     background: var(--bg-soft);
   }
@@ -603,7 +603,7 @@
   .card.c3 .pull{ color:#206B74 }
   .card.c3 .pull::before{ background:#206B74 }
 
-  /* ============ SECTION 3 — START ============ */
+  /* ============ SECTION 3 - START ============ */
   .start{ background: var(--N0) }
   .start-grid{
     display:grid;
@@ -678,7 +678,7 @@
     margin-bottom:.3rem;
   }
 
-  /* ============ SECTION 4 — WHO ============ */
+  /* ============ SECTION 4 - WHO ============ */
   .who{ background: var(--bg-soft) }
   .who-grid{
     display:grid; gap:1.5rem;
@@ -710,7 +710,7 @@
     width:.55rem; height:.55rem; border-radius:50%; background:currentColor;
   }
 
-  /* ============ SECTION 5 — EARLY ADOPTERS (navy) ============ */
+  /* ============ SECTION 5 - EARLY ADOPTERS (navy) ============ */
   .ea{
     background: var(--bg-navy);
     color: var(--N0);
@@ -805,13 +805,23 @@
   }
   .ea-foot p strong{ color: var(--N0) }
 
-  /* ============ SECTION 6 — PROOF ============ */
+  /* ============ SECTION 6 - PROOF ============ */
   .proof{ background: var(--N0) }
   .proof-grid{
     display:grid; gap:1.25rem;
     grid-template-columns: 1fr;
   }
   @media(min-width: 980px){ .proof-grid{ grid-template-columns: 1fr 1fr } }
+
+  .proof-caption{ margin: 0; font-size: 1rem; color: var(--N100); line-height: 1.5 }
+  .proof-caption strong{ color: var(--N900); font-weight: 600 }
+  @media(min-width: 980px){
+    .proof-grid{ grid-template-rows: auto 1fr }
+    .proof-caption-1{ grid-column: 1; grid-row: 1 }
+    .proof-caption-2{ grid-column: 2; grid-row: 1 }
+    .proof-frame-1{ grid-column: 1; grid-row: 2 }
+    .proof-frame-2{ grid-column: 2; grid-row: 2 }
+  }
 
   .frame{
     background: var(--N0);
@@ -871,7 +881,7 @@
   .session .src{ color: var(--B600); font-family: var(--sans); font-size:.78rem }
   .session .drill{ color: var(--N80); font-family: var(--sans); font-size:.85rem; display:block; margin-top:.5rem }
 
-  /* ============ SECTION 7 — QUOTES ============ */
+  /* ============ SECTION 7 - QUOTES ============ */
   .pilots{ background: var(--bg-soft) }
   .quotes{ display:grid; gap:1rem; grid-template-columns:1fr }
   @media(min-width:880px){ .quotes{ grid-template-columns: repeat(3,1fr); gap:1.25rem } }
@@ -909,7 +919,7 @@
     animation: pulse 2.4s ease-in-out infinite;
   }
 
-  /* ============ SECTION 8 — UNDER THE HOOD ============ */
+  /* ============ SECTION 8 - UNDER THE HOOD ============ */
   .uh{ background: var(--N0) }
   .uh-grid{
     display:grid; gap:1.25rem;
@@ -938,7 +948,7 @@
   .uh-item h4{ font-size:1.05rem; color: var(--N900); font-weight:600; line-height:1.3 }
   .uh-item p{ font-size:.93rem; line-height:1.55; color: var(--N80) }
 
-  /* ============ SECTION 9 — FAQ ============ */
+  /* ============ SECTION 9 - FAQ ============ */
   .faq-section{ background: var(--bg-soft) }
   .faq-list{
     max-width: 50rem;
@@ -1050,13 +1060,13 @@
     </div>
     <nav class="top-nav" aria-label="Primary">
       <a href="#what-it-does">What it does</a>
-      <a href="#get-started">Get started</a>
-      <a href="#early-access">Early access</a>
+      <a href="#get-started">Setup</a>
+      <a href="#early-access">Get started</a>
       <a href="#proof">Proof</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a class="btn btn-cta" href="#early-access">
-      Get early access
+      Get started
       <span class="arr" aria-hidden="true">→</span>
     </a>
   </div>
@@ -1067,7 +1077,7 @@
   <!-- Ambient LinkedIn-style noise layer -->
   <div class="li-layer" id="liLayer" aria-hidden="true">
 
-    <!-- BACK — top right -->
+    <!-- BACK - top right -->
     <article class="li-post depth-back" data-anim="A"
       style="top: 4%; right: 2%; --dur: 16s; animation-delay: -1.2s;">
       <div class="li-head">
@@ -1086,7 +1096,7 @@
       </div>
     </article>
 
-    <!-- MID — upper left of right column -->
+    <!-- MID - upper left of right column -->
     <article class="li-post depth-mid" data-anim="B"
       style="top: 8%; left: 4%; --dur: 14s; animation-delay: -3.8s;">
       <div class="li-head">
@@ -1105,7 +1115,7 @@
       </div>
     </article>
 
-    <!-- BACK — bottom right corner -->
+    <!-- BACK - bottom right corner -->
     <article class="li-post depth-back" data-anim="A"
       style="bottom: 6%; right: 4%; --dur: 18s; animation-delay: -7.5s;">
       <div class="li-head">
@@ -1124,7 +1134,7 @@
       </div>
     </article>
 
-    <!-- MID — bottom left of right column -->
+    <!-- MID - bottom left of right column -->
     <article class="li-post depth-mid" data-anim="A"
       style="bottom: 10%; left: 2%; --dur: 15s; animation-delay: -5.2s;">
       <div class="li-head">
@@ -1143,7 +1153,7 @@
       </div>
     </article>
 
-    <!-- FRONT — upper-mid right -->
+    <!-- FRONT - upper-mid right -->
     <article class="li-post depth-front" data-anim="B"
       style="top: 30%; right: -2%; --dur: 13s; animation-delay: -9.4s;">
       <div class="li-head">
@@ -1162,7 +1172,7 @@
       </div>
     </article>
 
-    <!-- FRONT — middle, slightly left of right column -->
+    <!-- FRONT - middle, slightly left of right column -->
     <article class="li-post depth-front" data-anim="A"
       style="top: 44%; left: 8%; --dur: 12s; animation-delay: -2.4s;">
       <div class="li-head">
@@ -1181,7 +1191,7 @@
       </div>
     </article>
 
-    <!-- BACK — middle-right, atmospheric -->
+    <!-- BACK - middle-right, atmospheric -->
     <article class="li-post depth-back" data-anim="B"
       style="top: 38%; right: 14%; --dur: 20s; animation-delay: -11.8s;">
       <div class="li-head">
@@ -1200,7 +1210,7 @@
       </div>
     </article>
 
-    <!-- MID — bottom-mid right -->
+    <!-- MID - bottom-mid right -->
     <article class="li-post depth-mid" data-anim="B"
       style="bottom: 28%; right: 22%; --dur: 17s; animation-delay: -6.6s;">
       <div class="li-head">
@@ -1224,22 +1234,22 @@
   <div class="shell">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow"><span class="dot"></span>v0.1 — soft-launched May 2026</span>
+        <span class="eyebrow"><span class="dot"></span>v0.1 - soft-launched May 2026</span>
         <h1 style="margin-top:1.25rem">
-          Every AI session starts cold.<br>
-          <span class="muted">8-12 projects in flight, half a morning re-loading state.</span>
+          Using Claude Code?<br>
+          <span style="font-size: 0.8em;"><span class="muted">Not getting the </span><span class="accent-blue">10×</span><span class="muted"> AI PMs on LinkedIn keep posting about?</span></span>
         </h1>
 
         <span class="hero-fix">Let's fix that.</span>
 
         <p class="hero-body">
-          <strong>OS-Intelligence</strong> is a reasoning layer for AI-native PMs.<br>
-          It holds the thread across PRDs, 1:1s, and stakeholder context. Every session builds on the last.
+          It's not the tool. It's the <strong>context</strong> you're feeding it.<br>
+          <strong>OS-Intelligence</strong> is how you fix the context.
         </p>
 
         <div class="cta-row">
           <a class="btn btn-cta lg" href="#early-access">
-            Get early access
+            Get started
             <span class="arr" aria-hidden="true">→</span>
           </a>
         </div>
@@ -1274,7 +1284,7 @@
         </span>
         <h3>Walk into every 1:1 already knowing where you left off.</h3>
         <p>Last time, <strong>Maya pushed back on the Q3 roadmap</strong>. You said you'd come back with the stakeholder map. She's waiting.</p>
-        <p>Your Claude Code surfaces it before she sits down — what she said, what's stuck, what she's waiting on you for.</p>
+        <p>Your Claude Code surfaces it before she sits down - what she said, what's stuck, what she's waiting on you for.</p>
         <div class="pull">Two minutes, not twenty.</div>
       </article>
 
@@ -1284,7 +1294,7 @@
         </span>
         <h3>Pick up a stalled project like you closed it yesterday.</h3>
         <p>Six weeks since you touched it. And you can't remember the details. Three decisions happened in between.</p>
-        <p>Your Claude Code rebuilds the picture in a paragraph — <strong>the position, the in-flight work, the reasoning behind every call since.</strong></p>
+        <p>Your Claude Code rebuilds the picture in a paragraph - <strong>the position, the in-flight work, the reasoning behind every call since.</strong></p>
         <div class="pull">You're back in the project before your coffee's cool.</div>
       </article>
 
@@ -1294,12 +1304,12 @@
         </span>
         <h3>See what no single meeting reveals.</h3>
         <p>Three meetings this week. Two stakeholders flipped positions. One open question still nobody's answered.</p>
-        <p>Your Claude Code reads across every meeting, chat, and decision — surfaces <strong>the contradictions, the shifts, the unresolved.</strong></p>
+        <p>Your Claude Code reads across every meeting, chat, and decision - surfaces <strong>the contradictions, the shifts, the unresolved.</strong></p>
         <div class="pull">Tells you what the project is saying, not what any one conversation said.</div>
       </article>
     </div>
 
-    <p class="what-tagline">Same Claude Code. Different outcomes — because the context is doing the work.</p>
+    <p class="what-tagline" style="font-size: 1.15rem; font-weight: 500; line-height: 1.6;"><strong style="font-weight: 700;">OS-Intelligence</strong> is a reasoning layer for AI-native PMs. It captures your meetings, PRDs, stakeholder notes, and chats, synthesises them into reference state, and surfaces the right context at the start of every session. Your stated goal becomes the lens. Every claim traces back to source.</p>
   </div>
 </section>
 
@@ -1333,8 +1343,10 @@
 
       <aside class="start-aside">
         <span class="eyebrow">Outcome</span>
-        <p class="quote">
-          Your Claude Code now <em>reasons against your trail,</em> not against thin air.
+        <p class="quote" style="text-align: left; justify-content: center; gap: 0.25rem; line-height: 1.4;">
+          <span style="display: block; white-space: nowrap;">Claude <em>holds the thread.</em></span>
+          <span style="display: block;">No cold starts.</span>
+          <span style="display: block; margin-top: 0.85rem; font-size: 0.78em; font-weight: 500; color: var(--N80);">Week 1: real lifting. Week 4: indispensable.</span>
         </p>
         <div class="meta">
           <span class="label">Prerequisite</span>
@@ -1342,7 +1354,7 @@
         </div>
         <div>
           <a class="btn btn-cta" href="#early-access">
-            Get early access
+            Get started
             <span class="arr" aria-hidden="true">→</span>
           </a>
         </div>
@@ -1363,7 +1375,7 @@
       <article class="who-card pm">
         <span class="role"><span class="ic"></span>Product managers</span>
         <h3>ICs and leads who ship daily.</h3>
-        <p>Meetings, PRDs, decisions, chats, open questions — captured from everyone who contributed, surfaced when you need them, ready for your AI to reason against.</p>
+        <p>Meetings, PRDs, decisions, chats, open questions - captured from everyone who contributed, surfaced when you need them, ready for your AI to reason against.</p>
       </article>
 
       <article class="who-card fo">
@@ -1379,39 +1391,29 @@
 <section id="early-access" class="ea">
   <div class="shell">
     <div class="section-head">
-      <span class="eyebrow"><span class="dot"></span>Now hiring (in the user sense)</span>
-      <h2>Early adopters wanted.</h2>
+      <span class="eyebrow"><span class="dot"></span>Open source · free forever</span>
+      <h2>Get a working context system in about 20 minutes.</h2>
     </div>
 
     <p class="lede">
-      v0.1 is <em>live.</em> Looking for 12–20 people to install in Week 1,
-      push it hard, and tell me what breaks.
+      Install today. First synthesis on real PM work in one sitting.
     </p>
 
     <div class="ea-cta-top">
       <a class="btn btn-cta lg" href="https://tally.so/r/ja0vKa">
-        Get early access
+        Get started
         <span class="arr" aria-hidden="true">→</span>
       </a>
     </div>
 
     <div class="deal">
-      <div class="deal-card you">
-        <h3><span class="badge">YOU</span>Your side of the deal</h3>
+      <div class="deal-card you" style="grid-column: 1 / -1;">
+        <h3>What you get</h3>
         <ul>
-          <li>Quick setup call with me</li>
-          <li>Direct access during your install week</li>
-          <li>First read on v0.2 — your friction points shape it</li>
-          <li>Public credit in <code style="font-family:var(--mono); font-size:.9em; color:#85B8FF; white-space:nowrap;">CONTRIBUTORS.md</code></li>
-          <li>The system, free, forever</li>
-        </ul>
-      </div>
-      <div class="deal-card me">
-        <h3><span class="badge">ME</span>My side of the deal</h3>
-        <ul>
-          <li>You give me one honest quote I can publish (with attribution)</li>
-          <li>You ship something real with it</li>
-          <li>You tell me what's clunky</li>
+          <li>The full system, free, forever</li>
+          <li><span>From clone to first synthesis in about 20 minutes, via <code style="font-family:var(--mono); font-size:.9em; color:#85B8FF; white-space:nowrap;">/os-welcome</code></span></li>
+          <li>After 1 week, real lifting. After 4 weeks, you won't work without it.</li>
+          <li>Designed to be shaped by the PMs who use it</li>
         </ul>
       </div>
     </div>
@@ -1419,7 +1421,7 @@
     <div class="ea-foot">
       <p>We're building this <strong>in the open, together.</strong></p>
       <a class="btn btn-cta lg" href="https://tally.so/r/ja0vKa">
-        Get early access
+        Get started
         <span class="arr" aria-hidden="true">→</span>
       </a>
     </div>
@@ -1432,19 +1434,24 @@
     <div class="section-head">
       <span class="eyebrow">The proof</span>
       <h2>Here's the trail. Here's what you can ask it.</h2>
-      <p class="lede">A real <code style="font-family:var(--mono); font-size:.9em; background:var(--N20); padding:.1em .4em; border-radius:var(--r-sm)">current-state.md</code> file — and what your AI sees when it reasons against it.</p>
     </div>
 
     <div class="proof-grid">
+      <!-- Caption 1 -->
+      <p class="proof-caption proof-caption-1">
+        <strong>A real <code style="font-family:var(--mono); font-size:.92em; background:var(--N20); padding:.1em .4em; border-radius:var(--r-sm)">current-state.md</code></strong><br>
+        - the project's live context, ready when you start.
+      </p>
+
       <!-- Frame 1 -->
-      <div class="frame">
+      <div class="frame proof-frame-1">
         <div class="frame-head">
           <div class="dots"><span></span><span></span><span></span></div>
           <span class="name">current-state.md</span>
           <span class="tag-sm">project / atlas</span>
         </div>
         <div class="frame-body">
-<pre class="md"><span class="h"># Atlas — current state</span>
+<pre class="md"><span class="h"># Atlas - current state</span>
 <span class="meta">updated 2026-04-22 · 14 sessions</span>
 
 <span class="hh">## Project Position</span>
@@ -1453,28 +1460,34 @@ Q3 roadmap is <span class="em">contested</span>. Tom (eng) wants to defer
 in v1 to test the core hypothesis. Decision pending.
 
 <span class="hh">## Stakeholder Dynamics</span>
-— <span class="name">Maya Chen</span> (design lead) — pushed back Apr 14.
+- <span class="name">Maya Chen</span> (design lead) - pushed back Apr 14.
   Wants stakeholder map before next sync.
-— <span class="name">Tom Reilly</span> (eng lead) — flipped Apr 18.
+- <span class="name">Tom Reilly</span> (eng lead) - flipped Apr 18.
   Now open to v1 if scoped to one surface.
 
 <span class="hh">## Standing Decisions</span>
-— Ship v1 to internal users only (Apr 09)
-— Defer mobile until v1 lands (Apr 11)
+- Ship v1 to internal users only (Apr 09)
+- Defer mobile until v1 lands (Apr 11)
 
 <span class="hh">## In Flight</span>
-— Stakeholder map for Maya — owed
-— Cost estimate for agentic v1 — w/ Tom
+- Stakeholder map for Maya - owed
+- Cost estimate for agentic v1 - w/ Tom
 
 <span class="hh">## Open Questions</span>
-— Are we measuring activation or retention?
-— Who owns the v1 / v2 cut decision?
+- Are we measuring activation or retention?
+- Who owns the v1 / v2 cut decision?
 </pre>
         </div>
       </div>
 
+      <!-- Caption 2 -->
+      <p class="proof-caption proof-caption-2">
+        <strong>Claude reasoning against it</strong><br>
+        - every answer traced to source.
+      </p>
+
       <!-- Frame 2 -->
-      <div class="frame session">
+      <div class="frame session proof-frame-2">
         <div class="frame-head">
           <div class="dots"><span></span><span></span><span></span></div>
           <span class="name">claude-code · session</span>
@@ -1483,16 +1496,26 @@ in v1 to test the core hypothesis. Decision pending.
         <div class="frame-body">
 <pre class="md"><span class="prompt">›</span> <span class="you">What is Tom's objection?</span>
 
-<span class="ans">
-<p>Tom's objection isn't to agentic flows in principle — it's to <strong>scope and timing</strong>. As of Apr 18 he flipped: he'll accept v1 if it's bounded to one surface.</p>
-<p>The unresolved piece is <strong>cost</strong>. He's working on an estimate for the scoped version; until that lands, he can't commit.</p>
-<p>There's also a <strong>second-order objection</strong>: he wants the v1 / v2 cut decision owned by someone — currently it isn't, and that's blocking Maya's stakeholder map.</p>
-<p>If you want him on board this week, the move is to surface the ownership question before the cost estimate, not after.</p>
-</span>
+Tom's objection isn't to agentic flows in principle -
+it's to <span class="em">scope and timing</span>. As of Apr 18
+he flipped: he'll accept v1 if it's bounded to one
+surface.
 
-<span class="src">sources · standing-decisions.md · session-2026-04-18.md · open-questions.md</span>
-<span class="drill">↳ drill into the Apr 18 session?</span>
-</pre>
+The unresolved piece is <span class="em">cost</span>. He's
+working on an estimate for the scoped version; until
+that lands, he can't commit.
+
+There's also a <span class="em">second-order objection</span>:
+he wants the v1 / v2 cut decision owned by someone -
+currently it isn't, and that's blocking Maya's
+stakeholder map.
+
+If you want him on board this week, the move is to
+surface the ownership question before the cost
+estimate, not after.
+
+<span class="meta">sources · standing-decisions.md · session-2026-04-18.md · open-questions.md</span>
+<span class="meta">↳ drill into the Apr 18 session?</span></pre>
         </div>
       </div>
     </div>
@@ -1511,7 +1534,7 @@ in v1 to test the core hypothesis. Decision pending.
     <div class="quotes">
       <div class="quote">
         <div class="qmark">"</div>
-        <div class="q">It should be on rails. There should be a reason to chat to the thing, for the same reason there's a reason for a meeting.</div>
+        <div class="q">This is Claude on rails. This provides the reason to chat to Claude, similar to how there should be a reason to set up a meeting.</div>
         <div class="who">Edwin Groenendaal · CTO · v0.1 pilot</div>
       </div>
       <div class="quote">
@@ -1551,12 +1574,12 @@ in v1 to test the core hypothesis. Decision pending.
       <div class="uh-item">
         <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11l3 3v13H5z"/><path d="M9 9h6"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span>
         <h4>Append-only reasoning trail</h4>
-        <p>Every decision is a new entry, never a rewrite. Your past selves stay legible — diffs over time, not overwrites.</p>
+        <p>Every decision is a new entry, never a rewrite. Your past selves stay legible - diffs over time, not overwrites.</p>
       </div>
       <div class="uh-item">
         <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="6" rx="1"/><rect x="4" y="14" width="16" height="6" rx="1"/><path d="M8 10v4"/><path d="M16 10v4"/></svg></span>
         <h4>Schema-aware permission migration</h4>
-        <p>When the schema evolves, your existing trail migrates forward — no re-ingest, no losing what you already wrote.</p>
+        <p>When the schema evolves, your existing trail migrates forward - no re-ingest, no losing what you already wrote.</p>
       </div>
       <div class="uh-item">
         <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v8"/><path d="M8 8l4-4 4 4"/><rect x="4" y="14" width="16" height="6" rx="1"/></svg></span>
@@ -1584,41 +1607,42 @@ in v1 to test the core hypothesis. Decision pending.
       <details class="faq-item" open>
         <summary>Where does my data go? Is any of this leaving my machine?</summary>
         <div class="ans">
-          <p>No. The reasoning trail is a folder in your repo. Synthesis runs locally through your own Claude Code install — same model calls you're already making, no new endpoints, no new accounts.</p>
+          <p>No. The reasoning trail is a folder in your repo. Synthesis runs locally through your own Claude Code install - same model calls you're already making, no new endpoints, no new accounts.</p>
           <p>If you push the repo to GitHub, that's on you and where you push it. OS-Intelligence itself adds zero telemetry.</p>
         </div>
       </details>
       <details class="faq-item">
         <summary>Why build on Anthropic primitives specifically?</summary>
         <div class="ans">
-          <p>Claude Code is the only environment where a long-horizon reasoning layer can sit <em>next to your work</em>, not in a separate tool. Skills, sub-agents, model routing — the primitives needed already exist. OS-Intelligence is the connective layer.</p>
+          <p>Claude Code is the only environment where a long-horizon reasoning layer can sit <em>next to your work</em>, not in a separate tool. Skills, sub-agents, model routing - the primitives needed already exist. OS-Intelligence is the connective layer.</p>
           <p>If those primitives change, OS-Intelligence changes with them. That's a feature, not a risk.</p>
         </div>
       </details>
       <details class="faq-item">
         <summary>I don't have Claude Code installed. Can I still try this?</summary>
         <div class="ans">
-          <p>Not yet. Claude Code is the substrate — it's what reasons against your trail. Install it first, then come back. <code>/os-welcome</code> takes you from clone to first synthesis in about 20 minutes.</p>
+          <p>Not yet. Claude Code is the substrate OS-Intelligence runs inside - install it first, then come back. <code>/os-welcome</code> takes you from clone to first synthesis in about 20 minutes.</p>
         </div>
       </details>
       <details class="faq-item">
         <summary>Is this just for PMs already using Claude Code, or can I start from scratch?</summary>
         <div class="ans">
-          <p>It's built for PMs already living in Claude Code — that's the substrate, that's where the reasoning happens. If you don't use Claude Code yet, install it first (10 minutes from <a href="https://claude.com/code" target="_blank" rel="noopener">claude.com/code</a>), then clone OS-Intelligence and run <code>/os-welcome</code>. The guided walkthrough takes about 20 minutes and lands you with your first synthesis on real work.</p>
+          <p>It's built for PMs already living in Claude Code - that's the substrate, that's where the reasoning happens. If you don't use Claude Code yet, install it first (10 minutes from <a href="https://claude.com/code" target="_blank" rel="noopener">claude.com/code</a>), then clone OS-Intelligence and run <code>/os-welcome</code>. The guided walkthrough takes about 20 minutes and lands you with your first synthesis on real work.</p>
         </div>
       </details>
       <details class="faq-item">
         <summary>How is this different from Granola, Notion AI, or Team OS?</summary>
         <div class="ans">
+          <p><strong>Not a memory layer. Not a retrieval tool.</strong> OS-Intelligence is a reasoning layer with structure, traceability, and governance built in.</p>
           <p>Granola captures meetings. Notion AI summarises documents. Team OS structures shared team context. OS-Intelligence is the layer underneath: it synthesises your raw material (meetings, PRDs, stakeholder notes, chats) into a reasoning trail your AI reasons against, not a wiki you click through.</p>
-          <p>Different shape, different layer — they stack rather than replace. If you already use one of those, OS-Intelligence is what makes your AI sessions reason against that captured context instead of starting cold every time.</p>
+          <p>Different shape, different layer - they stack rather than replace. If you already use one of those, OS-Intelligence is what makes your AI sessions reason against that captured context instead of starting cold every time.</p>
         </div>
       </details>
       <details class="faq-item">
-        <summary>What does the system look like once it's running — can I see a real example?</summary>
+        <summary>What does the system look like once it's running - can I see a real example?</summary>
         <div class="ans">
-          <p>Scroll up to the proof section — that's a real <code>current-state.md</code> file (project name and people anonymised), and the second frame is what your Claude Code session looks like reasoning against it.</p>
-          <p>The full Acme Corp example also ships in the public repo at <code>projects/acme-corp-example/</code> — clone, browse it, see the structure on synthetic data before you bring your own.</p>
+          <p>Scroll up to the proof section - that's a real <code>current-state.md</code> file (project name and people anonymised), and the second frame is what your Claude Code session looks like reasoning against it.</p>
+          <p>The full Acme Corp example also ships in the public repo at <code>projects/acme-corp-example/</code> - clone, browse it, see the structure on synthetic data before you bring your own.</p>
         </div>
       </details>
     </div>
@@ -1629,9 +1653,8 @@ in v1 to test the core hypothesis. Decision pending.
 <section class="final-cta">
   <div class="shell">
     <h2>Ready to fix your context?</h2>
-    <p>v0.1 is live. Looking for 12–20 early adopters.</p>
     <a class="btn btn-cta lg" href="https://tally.so/r/ja0vKa">
-      Get early access
+      Get started
       <span class="arr" aria-hidden="true">→</span>
     </a>
   </div>
@@ -1689,35 +1712,35 @@ in v1 to test the core hypothesis. Decision pending.
        (which fires when the post is at opacity 0), swap to the alt; next
        iteration, swap back to the original. Invisible during the swap. */
     var ALT = [
-      // 0 — Daniel Mercer
+      // 0 - Daniel Mercer
       { name:"Hugo Renard", role:"Founder & CEO · 2d", av:"a1", initials:"HR",
         body:'Killed our entire product spec process this week. <span class="hl">The AI just does it</span>. We approve. Done.',
         likes:'1,892', comments:'421', icons:['like','cele','bulb'] },
-      // 1 — Priya Vasanthan
+      // 1 - Priya Vasanthan
       { name:"Mira Achterberg", role:"Chief of Staff · 4h", av:"a2", initials:"MA",
         body:"Quietly, our best ICs are <span class=\"hl\">running circles around our managers</span> with this. The org chart is the bottleneck now.",
         likes:'4,118', comments:'687', icons:['like','cele'] },
-      // 2 — Jordan Tate
+      // 2 - Jordan Tate
       { name:"Felix Akerman", role:"VP Product · 9h", av:"a3", initials:"FA",
         body:"Replaced our entire weekly planning ritual with a 6-minute prompt. <span class=\"hl\">Nobody noticed</span>. Tells you everything.",
         likes:'1,206', comments:'274', icons:['like','bulb'] },
-      // 3 — Sara Köhler
+      // 3 - Sara Köhler
       { name:"Tomás Iglesias", role:"Engineering Manager · 3d", av:"a4", initials:"TI",
         body:"Hot take: hiring senior engineers in 2026 is <span class=\"hl\">a capital allocation mistake</span>. Don't shoot the messenger.",
         likes:'7,402', comments:'1,388', icons:['like','cele','bulb'] },
-      // 4 — Marco Olivetti
+      // 4 - Marco Olivetti
       { name:"Anika Devraj", role:"Indie hacker · 11h", av:"a5", initials:"AD",
         body:'Crossed $40k MRR this month. Team size: still me, <span class="hl">still my dog</span>. The future is small.',
         likes:'3,217', comments:'512', icons:['like','cele'] },
-      // 5 — Lena Bauer
+      // 5 - Lena Bauer
       { name:"Caleb Whitford", role:"Head of Platform · 1d", av:"a6", initials:"CW",
         body:"We deleted our internal docs. <span class=\"hl\">Asking the AI is faster</span> than searching Notion. Not even close.",
         likes:'955', comments:'241', icons:['like','bulb'] },
-      // 6 — Aarav Reddy
+      // 6 - Aarav Reddy
       { name:"Sofia Larsen", role:"Strategy Consultant · 8h", av:"a7", initials:"SL",
         body:"Met three founders this week who let their AI <span class=\"hl\">write their board updates</span>. The board hasn't noticed. Make of that what you will.",
         likes:'612', comments:'94', icons:['like'] },
-      // 7 — Evelyn Hart
+      // 7 - Evelyn Hart
       { name:"Rashid Al-Mansoori", role:"Managing Partner · 2d", av:"a8", initials:"RM",
         body:"New diligence question for every founder we meet: <span class=\"hl\">show me your prompts</span>. The good ones answer in five minutes.",
         likes:'8,471', comments:'1,602', icons:['like','cele','bulb'] }
