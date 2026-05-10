@@ -33,13 +33,15 @@ claude
 
 Once Claude is running, you have two ways in.
 
-**Quick look (~60 seconds)** — point `/ctx-doc` at a meeting transcript, PRD, or any text file you've already got. The system reads it, infers what kind of artifact it is, and synthesises it into the right place. You see how it thinks before committing to anything.
+**Quick look (~60 seconds)** — open the Acme Example. A fully synthetic PM project with 30+ docs already synthesised. Walk around inside a populated system before committing your own data.
 
 ```
-/ctx-doc path/to/your-file.md
+/os-start
 ```
 
-**Guided walkthrough (~45 minutes)** — `/os-welcome` walks you end-to-end through your first project with your own data, so you experience the full workflow.
+Pick "Acme Example" from the menu.
+
+**Guided walkthrough (~20 minutes)** — `/os-welcome` sets up your first project with your own data and walks you through the full loop.
 
 ```
 /os-welcome
