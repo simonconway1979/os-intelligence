@@ -248,6 +248,8 @@ Print:
 ```
 Let's get you to your first piece of value in about 20 minutes.
 
+(Bailing partway through? simon.conway@condaal.com — where you stopped, what tripped you up. It'll be the next thing I fix.)
+
 We'll set up a small project, to show you how it works. Here are some suggestions... What do you want to do first?
 
 **1. Walk into your next 1:1 prepared  ·  10 min**
@@ -526,12 +528,16 @@ This is where context compounds — and where the real thought partnership begin
 
 The OS-Intelligence principle: the best context isn't loaded upfront, it's built with Claude in conversation. You ask. Claude pressure-tests. You answer. The richer the context gets, the more Claude can do with it. And every decision, question, and piece of reasoning here becomes memory — captured by /os-save, included in the briefing /os-start loads next time.
 
+After one week, the context starts doing real lifting. After four weeks, you won't work without it.
+
 Three good questions to start with:
   - What's the single most important thing to focus on, given my goal?
   - What's missing from my context that would change your read?
   - What would you suggest I do next?
 
 Pick one. Push back. Argue. Ask follow-ups.
+
+(If anything got rough up to here, email simon.conway@condaal.com — what tripped you. It'll be the next thing I fix.)
 
 When you're done, just say "save" and I'll wrap the session.
 ```
