@@ -180,7 +180,13 @@ Add `.gitkeep` files to the empty folders so they survive cloning and git operat
 - `memory/.gitkeep`
 - `people/.gitkeep`
 
-**Switch the active session to the new project.** The scaffold now exists, so it's a valid switch target. Write the project name (matching the `### [Project Name]` heading written to `projects.md` in Step 9c) to `[workspace-root]/.current-session`:
+**Switch the active session to the new project.** The scaffold now exists, so it's a valid switch target. Write the project name (matching the `### [Project Name]` heading written to `projects.md` in Step 9c) to `[workspace-root]/.sessions/<session-id>` (your Claude Code session ID is injected into your context by the SessionStart hook):
+
+```bash
+echo "[Project Name]" > .sessions/<session-id>
+```
+
+If you don't have a session ID in your context, fall back to writing `.current-session`:
 
 ```bash
 echo "[Project Name]" > .current-session

@@ -31,7 +31,7 @@ When the user replies with a number, read `projects.md` and find the matching pr
 
 Branch on Type:
 - **New project** (last menu item) → run `/os-new-project`, then continue.
-- **Type: project** → write project name to `[workspace-root]/.current-session`. If `**Welcome:** pending`, go to Step 2c before Step 3. Otherwise go to Step 3.
+- **Type: project** → write project name to `[workspace-root]/.sessions/<session-id>` (your Claude Code session ID is injected into your context by the SessionStart hook — use it). If you don't have a session ID in your context, fall back to `[workspace-root]/.current-session`. If `**Welcome:** pending`, go to Step 2c before Step 3. Otherwise go to Step 3.
 - **Type: portfolio** → if `**Welcome:** pending`, go to Step 2c before Step 2b. Otherwise go to Step 2b.
 
 ### Step 2c — Welcome-back render (first return after /os-welcome)
@@ -80,7 +80,7 @@ Tip: 0 to see old/archived [item name]s in the list.
 
 - **0** → re-render the menu with all items (including `archived`), no tip line. Renumber from 1. Wait for selection.
 - **Add new** → run `/os-new-item`, then continue.
-- **Existing item** → write `[Portfolio Name] / [Item Display Name]` to `.current-session`. Go to Step 3.
+- **Existing item** → write `[Portfolio Name] / [Item Display Name]` to `[workspace-root]/.sessions/<session-id>` (fall back to `.current-session` if no session ID is in your context). Go to Step 3.
 
 Pluralise the item name naturally in the tip (e.g. "events", "ideas", "opportunities"). If the portfolio has zero archived items, omit the tip line.
 

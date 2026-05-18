@@ -22,11 +22,11 @@ Saving session for [active project name]...
 
 ## Step 1 — Identify the active project
 
-Read `[workspace-root]/.current-session`.
+Read `[workspace-root]/.sessions/<session-id>` (your Claude Code session ID is injected into your context by the SessionStart hook). If that file doesn't exist or you don't have a session ID, fall back to `[workspace-root]/.current-session`.
 
-- If it contains ` / ` (e.g. `Job Opportunities / Acme Corp — Senior PM`): this is a portfolio item session. Go to Step 1b.
+- If the value contains ` / ` (e.g. `Job Opportunities / Acme Corp — Senior PM`): this is a portfolio item session. Go to Step 1b.
 - If it's a single name (e.g. `PM-OS`): look it up in `projects.md` to find the folder path. Use that as the project root.
-- If `.current-session` is missing or empty: ask the user which project this session belongs to.
+- If neither file exists or both are empty: ask the user which project this session belongs to.
 
 ### Step 1b — Portfolio item session
 
