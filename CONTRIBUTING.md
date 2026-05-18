@@ -27,6 +27,26 @@ Search existing issues before opening a new one. If you find a related issue, co
 
 ---
 
+## Local setup
+
+After cloning, install the version-controlled git hooks:
+
+```
+bash scripts/install-hooks.sh
+```
+
+This sets `core.hooksPath` to `scripts/hooks/` so the shipped hooks activate. Currently one hook:
+
+- **pre-commit** — scans staged content for test-artefact patterns listed in `scripts/hooks/test-artefact-patterns.txt` (known test project names, `[TEST]` markers, transient `Welcome: pending` tags). Blocks the commit if it matches; existed because a test project once leaked into the public `projects.md`.
+
+To bypass on a specific commit (e.g. you're intentionally editing the pattern file itself):
+
+```
+git commit --no-verify
+```
+
+---
+
 ## Submitting pull requests
 
 ### Process

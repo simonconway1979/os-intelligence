@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+# pre-commit — block commits that contain test-artefact patterns.
+#
+# Reads regex patterns from scripts/hooks/test-artefact-patterns.txt (one per
+# line, # for comments) and scans the staged content of every text file for
+# matches. Any match blocks the commit and prints the offending file + pattern
+# so the author can decide what to do.
+#
+# Why this exists: prior incident (commit e860d01, 2026-05-09) — a test project
+# "Research Synthesis: First 90 days" was registered to the public projects.md
+# during a local /os-welcome run and committed. This hook is the structural
+# guard against that class of leak.
+#
+# To bypass intentionally:
+#   git commit --no-verify
+#
+# To install: bash scripts/install-hooks.sh
+
+set -e
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+PATTERN_FILE="$REPO_ROOT/scripts/hooks/test-artefact-patterns.txt"
+
+if [ ! -f "$PATTERN_FILE" ]; then
+  echo "pre-commit: pattern file not found at $PATTERN_FILE — skipping check."
+  exit 0
+fi
+
+# Collect non-empty, non-comment patterns.
+patterns=()
+while IFS= read -r line || [ -n "$line" ]; do
+  trimmed="${line#"${line%%[![:space:]]*}"}"
+  [ -z "$trimmed" ] && continue
+  case "$trimmed" in \#*) continue ;; esac
+  patterns+=("$trimmed")
+done < "$PATTERN_FILE"
+
+if [ ${#patterns[@]} -eq 0 ]; then
+  exit 0
+fi
+
+# Build a combined ERE from the patterns. Escaping is the author's responsibility
+# in the pattern file (these are regexes, not literal strings).
+combined=""
+for p in "${patterns[@]}"; do
+  if [ -z "$combined" ]; then
+    combined="$p"
+  else
+    combined="$combined|$p"
+  fi
+done
+
+# Scan staged content of every added/modified text file.
+hits=""
+while IFS= read -r file; do
+  [ -z "$file" ] && continue
+  # Skip binaries: git diff --cached --numstat marks binaries with "-".
+  binary=$(git diff --cached --numstat -- "$file" | awk '{print $1}')
+  [ "$binary" = "-" ] && continue
+  # Get the staged content; grep for matches.
+  match=$(git show ":$file" 2>/dev/null | grep -nE "$combined" || true)
+  if [ -n "$match" ]; then
+    hits+="
+  $file:
+$(echo "$match" | sed 's/^/    /')"
+  fi
+done < <(git diff --cached --name-only --diff-filter=AM)
+
+if [ -n "$hits" ]; then
+  cat <<EOF
+✗ pre-commit blocked: test-artefact pattern matched in staged content.
+
+Matches:$hits
+
+Patterns scanned: $PATTERN_FILE
+
+If this is a legitimate commit (e.g. you are updating the pattern file or
+documenting the hook), bypass with:
+  git commit --no-verify
+
+EOF
+  exit 1
+fi
+
+exit 0

@@ -1,0 +1,23 @@
+# Test-artefact patterns scanned by scripts/hooks/pre-commit.
+#
+# One ERE per line. Lines starting with # are comments. Blank lines ignored.
+# Patterns are matched case-sensitively against the staged content of every
+# added/modified text file. Escaping is the author's responsibility — these
+# are regexes, not literal strings.
+#
+# When you intentionally update this file, bypass the hook with:
+#   git commit --no-verify
+
+# --- Known test session project names (extend as new ones surface) ---
+Research Synthesis: First 90 days
+
+# --- Generic test markers ---
+\[TEST\]
+\(test only\)
+\(test-only\)
+\bthrowaway test\b
+
+# --- /os-welcome residue in projects.md ---
+# The "Welcome: pending" tag is written by /os-welcome on first-run and cleared
+# by /os-start. It should never persist in any committed projects.md.
+\*\*Welcome:\*\* pending

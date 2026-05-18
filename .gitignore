@@ -12,6 +12,7 @@ Thumbs.db
 
 # Claude Code per-user state
 .current-session
+.sessions/
 .claude/settings.local.json
 .claude/backups/
 .claude/projects/
