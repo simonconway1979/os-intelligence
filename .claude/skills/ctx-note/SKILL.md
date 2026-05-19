@@ -21,9 +21,10 @@ Two phases:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-Then print this one-line tip (non-blocking — proceed to Step 2 without waiting):
+Then print these one-line tips (non-blocking — proceed to Step 2 without waiting):
 ```
 Tip: make sure auto-accept edits is ON (Shift + Tab) — background synthesis fails silently otherwise.
+Tip: /add-context auto-detects type — you can route through it next time instead of /ctx-note.
 ```
 
 **Step 2 — Project.** Read `[workspace-root]/.current-session` for the active project. Show pre-selected, list others. Wait for confirmation.

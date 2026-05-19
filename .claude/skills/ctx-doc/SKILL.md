@@ -7,6 +7,8 @@ description: Add a document to the project and update synthesised context. Run t
 
 Run this when a new document arrives for a project. Output: raw files with frontmatter, updated context docs, updated people files (project + root level).
 
+> **Tip:** `/add-context` auto-detects type — you can route through it next time instead of `/ctx-doc`.
+
 **Cost note:** This skill is designed to be context-efficient. The preferred path is to copy files into `intelligence/docs/raw/` yourself first, then run this skill. That way long transcripts and documents never sit in the conversation window — they're read by tool as needed and processed one at a time. Pasting content directly into chat is the expensive path and should be avoided for long files.
 
 ---

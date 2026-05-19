@@ -23,6 +23,11 @@ Supports `--batch` flag for processing multiple transcripts at once.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+Then print this one-line tip (non-blocking — proceed to Step 1b without waiting):
+```
+Tip: /add-context auto-detects type — you can route through it next time instead of /ctx-transcript.
+```
+
 **Step 1b — Batch mode check.**
 
 Read `[workspace-root]/.current-session` to identify the active project and its `PROJECT_ROOT`.
