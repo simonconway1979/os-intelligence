@@ -32,7 +32,7 @@ When the user replies with a number, read `projects.md` and find the matching pr
 Branch on Type:
 - **New project** (last menu item) → run `/os-new-project`, then continue.
 - **Type: project** → write project name to `[workspace-root]/.sessions/<session-id>` (your Claude Code session ID is injected into your context by the SessionStart hook — use it). If you don't have a session ID in your context, fall back to `[workspace-root]/.current-session`. If `**Welcome:** pending`, go to Step 2c before Step 3. Otherwise go to Step 3.
-- **Type: portfolio** → if `**Welcome:** pending`, go to Step 2c before Step 2b. Otherwise go to Step 2b.
+- **Type: portfolio** → **immediately write the portfolio name** to `[workspace-root]/.sessions/<session-id>` (fall back to `[workspace-root]/.current-session` if no session ID is in your context). Do this *before* the drill-down so the status bar reflects the portfolio even if the user never selects a specific item (e.g. they jump straight into a different task). The item drill-down in Step 2b then *refines* this value to `[Portfolio Name] / [Item Display Name]`. After writing, verify the write landed (the status bar reads this file verbatim — a failed write leaves it showing a stale or `(no project)` value). Then: if `**Welcome:** pending`, go to Step 2c before Step 2b. Otherwise go to Step 2b.
 
 ### Step 2c — Welcome-back render (first return after /os-welcome)
 
