@@ -35,7 +35,7 @@ This is a **memory layer**, not a digest. The difference is the last point: it r
 2. Collect candidate source files: all `*.md` (and `*.txt`) under the folder, **excluding** the output file `current-state.md` itself and any obvious non-source files (`README.md`, `CLAUDE.md`, `INDEX.md`, `_SCHEMA.md`, `LICENSE`).
 3. If the folder is empty of source files: `No markdown to synthesise in <folder>.` and stop.
 4. **Decide the unit.** If `--per-subfolder`, loop Steps 2–7 once per immediate child folder. Otherwise treat the whole folder as one unit.
-5. Note rough size. If there are more than ~40 source files, say so and synthesise the most recent + most referenced first, then state explicitly what was not yet read (no silent truncation).
+5. Note rough size. If there are more than ~60 source files, say so and synthesise the most recent + most referenced first, then state explicitly what was not yet read (no silent truncation).
 
 ## Step 2 — Read and extract per source
 
@@ -160,7 +160,7 @@ Drop sections that have nothing to say (e.g. no contradictions found) rather tha
 
 ## Edge cases
 
-- **Huge folder (>~40 sources):** synthesise recent + most-referenced first; state what wasn't read.
+- **Huge folder (>~60 sources):** synthesise recent + most-referenced first; state what wasn't read.
 - **No dates anywhere:** synthesise without the staleness map; note that dates were unavailable.
 - **Mixed languages / messy auto-transcripts:** synthesise anyway; preserve verbatim quotes in original language.
 - **`--per-subfolder` with one subfolder having no sources:** skip it, note the skip.
