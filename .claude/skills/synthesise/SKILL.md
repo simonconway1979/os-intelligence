@@ -29,13 +29,27 @@ This is a **memory layer**, not a digest. The difference is the last point: it r
 
 ---
 
+## The lens (optional, but the biggest quality lever)
+
+A synthesis is sharper when it knows *for whom and for what*. The hint (`-- <hint>`) sets a **lens** with up to three parts:
+
+- **Vantage** — whose seat to read *from* (e.g. "incoming Head of Product"). Decides what counts as signal. Durable across runs.
+- **Occasion** — the decision or moment it serves (e.g. "orient my first six weeks", "prep the renewal"). Forces prioritisation and the "so what". Rotates run to run.
+- **Audience** — who *reads* the output. Default = the person running it (private; candid, inferred reads allowed). If the audience is a **team**, strip private/inferred reads, keep contradictions open as decisions rather than reconciling them on one reader's behalf, and make actions assignable by owner.
+
+With no hint, produce a neutral, reader-agnostic synthesis (still reconcile and flag staleness) and say so. With a hint, lead the Position with the vantage's highest-leverage takeaway, and weight findings by relevance to the occasion.
+
+---
+
 ## Step 1 — Scope and scan
 
 1. Confirm the folder exists and is readable. If not: `Can't read <folder>. Check the path.` and stop.
-2. Collect candidate source files: all `*.md` (and `*.txt`) under the folder, **excluding** the output file `current-state.md` itself and any obvious non-source files (`README.md`, `CLAUDE.md`, `INDEX.md`, `_SCHEMA.md`, `LICENSE`).
-3. If the folder is empty of source files: `No markdown to synthesise in <folder>.` and stop.
-4. **Decide the unit.** If `--per-subfolder`, loop Steps 2–7 once per immediate child folder. Otherwise treat the whole folder as one unit.
-5. Note rough size. If there are more than ~60 source files, say so and synthesise the most recent + most referenced first, then state explicitly what was not yet read (no silent truncation).
+2. Collect candidate source files: all `*.md` (and `*.txt`) under the folder, **excluding** the output file `current-state.md` and non-source files (`README.md`, `CLAUDE.md`, `INDEX.md`, `_SCHEMA.md`, `LICENSE`).
+3. **Prefer raw; dedupe derived.** Sources are the *raw* originals (transcripts, notes, docs, exports). When one unit appears in multiple representations — a meeting folder with `raw.md` + `synthesis.md` + `validation.md` + `shareable.md`, or a chat present as both a flat export and a processed folder — read **one** representation per unit (prefer `raw`) and skip the rest. They are the same source re-expressed, not independent corroboration; counting them all fakes agreement.
+4. **Existing synthesis is the prior, not a source.** Exclude `synthesis.md`, `validation.md`, `shareable.md`, `cross-synthesis.md`, and any prior `current-state.md` from extraction. A prior interpretation belongs in Step 5 (compound against + audit), never Step 2. Reading it as a source makes the skill plagiarise its own earlier output and hides the hygiene catch where a raw file was never reflected in the prior synthesis.
+5. If the folder is empty of source files: `No markdown to synthesise in <folder>.` and stop.
+6. **Decide the unit.** If `--per-subfolder`, loop Steps 2–7 once per immediate child folder. Otherwise treat the whole folder as one unit.
+7. Note rough size. If there are more than ~60 source files, say so and synthesise the most recent + most referenced first, then state explicitly what was not yet read (no silent truncation).
 
 ## Step 2 — Read and extract per source
 
@@ -59,6 +73,7 @@ This is the work. Don't just concatenate per-file summaries.
 
 - **Corroborate.** Where multiple sources say the same thing, state it once and cite each supporter by source.
 - **Surface contradictions — never flatten.** Where sources disagree, name both sides explicitly with their sources, then reconcile if the evidence supports a reconciliation (e.g. "the single label hid two cases"). If it doesn't, leave the tension open. Do not average dissent into "mixed feedback."
+- **Cross-check stated claims against structural sources.** When a source asserts a relationship, status, or fact that another document would independently record — a person's stated reporting line vs the org chart, a "done" / "in production" claim vs the artifact that would show it, a marketing or About-page claim vs the org chart or roster — check the two against each other and surface any mismatch. *Stated ≠ recorded* is itself a finding: it changes an escalation path, an external claim, or a plan.
 - **Sequence over time.** Newer evidence updates older; say what changed and when. A recent source does not automatically outweigh a repeated pattern — weight repeated signals over fresh anecdotes, and say when a single new source is just a watch item.
 - **Separate observation from inference.** Keep "what was said/measured" distinct from "what it might mean."
 
@@ -69,14 +84,18 @@ For each section of findings, record the **newest** supporting evidence date and
 - 🟡 watch / ageing — re-check soon (fast-moving topics, or a forward commitment with a near date)
 - 🔴 stale — the section is materially older than the facts likely are; recommend a refresh
 
-Also flag **hygiene catches** when you find them:
+Also flag **hygiene catches** — run this as a deliberate pass over the sources, not an afterthought. These are the highest-value and most-missed findings:
 - a source that exists but was clearly never incorporated into prior state (filed, not synthesised)
-- an action item or commitment with a due date that has passed without visible closure
+- a **dated milestone or commitment that has passed** relative to the run date with no later source confirming it shipped or closed — name it, date it, and mark it unverified; never assume it happened
+- an **open loop**: an agreed action, accepted offer, or promised artifact (a paper, a review, an exit interview, a decision) with no recorded outcome — flag the loop even when the thing that prompted it is old
+- a **named prerequisite or gate** a stakeholder says must be resolved before the work can proceed (especially "can't be fixed later / retrospectively") — surface it explicitly as a sequencing gate, and say who named it
 - a state file (theirs, or a prior `current-state.md`) whose timestamp is recent but whose substance predates a newer source
 
 ## Step 5 — Compound (diff against the prior run)
 
 If a `current-state.md` already exists in the output location, read it first. In the new output, include a **"What changed since last run"** section that names: claims that strengthened, weakened, or self-corrected; new findings; new contradictions; and sections that aged into 🟡/🔴. If there's no prior file, say "first run — baseline." Rely on git for history; the file is overwritten with the new version.
+
+Make three behaviours fire explicitly: (a) **self-correct** — where a new source supersedes a prior claim, say the claim weakened or resolved and why; don't carry it forward stale. (b) **Age unmoved flags** — a prior flag with no new evidence gets *louder*, with the elapsed time noted, never silently dropped. (c) **Surface emergent contradictions** — conflicts that exist only because the new input meets the prior state (e.g. a newly-committed date against unchanged unstarted work). The prior is read from the existing `current-state.md` and git history; never re-ingest it as a fresh source.
 
 ## Step 6 — Write one file
 
