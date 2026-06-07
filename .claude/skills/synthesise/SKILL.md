@@ -49,7 +49,22 @@ With no hint, produce a neutral, reader-agnostic synthesis (still reconcile and 
 4. **Existing synthesis is the prior, not a source.** Exclude `synthesis.md`, `validation.md`, `shareable.md`, `cross-synthesis.md`, and any prior `current-state.md` from extraction. A prior interpretation belongs in Step 5 (compound against + audit), never Step 2. Reading it as a source makes the skill plagiarise its own earlier output and hides the hygiene catch where a raw file was never reflected in the prior synthesis.
 5. If the folder is empty of source files: `No markdown to synthesise in <folder>.` and stop.
 6. **Decide the unit.** If `--per-subfolder`, loop Steps 2–7 once per immediate child folder. Otherwise treat the whole folder as one unit.
-7. Note rough size. If there are more than ~60 source files, say so and synthesise the most recent + most referenced first, then state explicitly what was not yet read (no silent truncation).
+7. **Note rough size, and pick the mode.** Count the unit's source files. **≤ ~60** → synthesise it as one unit (Steps 2–7). **More than ~60** → do NOT skim-and-skip (that reads a fraction and loses all depth); switch to **hierarchical mode** (next section). Never silently truncate.
+
+## Large folders — synthesise hierarchically (automatic when a unit exceeds ~60 sources)
+
+A big multi-subfolder corpus can't be read well as one flat unit — you blow the context budget and end up skimming a fraction (e.g. reading 30 of 250 files and representing the busiest area at the same shallow depth as a dormant one). When a unit is over ~60 sources, recurse instead of skimming:
+
+1. **Descend.** For each immediate child subfolder that contains source files, synthesise *that subfolder* as its own unit — run Steps 2–7 on it and write its own `current-state.md` inside it. If a child is itself over ~60 sources, recurse again (depth-first) before coming back up. Every leaf unit stays under the cap, so every source file is actually read somewhere.
+   - **Keep each subfolder's read in its own context.** If you can dispatch a sub-task / sub-agent per subfolder (fresh context each, returns when its `current-state.md` is written), do — that's what makes this scale without the parent holding every raw file at once. If you can't, process one subfolder fully, write its file, then move on to the next; don't carry all raws forward.
+2. **Roll up.** Synthesise the parent's `current-state.md` from the **freshly-generated child `current-state.md` files** (one per subfolder) plus any loose source files sitting directly in the parent. This is a synthesis-of-syntheses: reconcile across areas, surface cross-subfolder contradictions and the portfolio-level position, and **link to each child file** rather than repeating it.
+3. **Verify, then report the tree.** Before the roll-up, confirm **every non-empty child subfolder now has its own `current-state.md`** — if one is missing (an easy slip across many subfolders), write it before continuing. The roll-up is only complete once every child exists. In Step 7, list every `current-state.md` written (parent + children) and the total source count covered — this list is the completeness check, not just a report.
+
+**This is the one place a freshly-generated `current-state.md` is read as an input rather than a prior.** A child file written *this run* is the intended roll-up input. The Step 1.4 rule (existing synthesis = prior, not source) still holds for any *pre-existing* file from an earlier run — that's the Step 5 diff target, never a fresh source.
+
+`--per-subfolder` is the explicit, non-recursive version of step 1 alone: one `current-state.md` per immediate child, no parent roll-up. Use it when you want per-area files and deliberately no portfolio-level summary.
+
+---
 
 ## Step 2 — Read and extract per source
 
@@ -99,7 +114,7 @@ Make three behaviours fire explicitly: (a) **self-correct** — where a new sour
 
 ## Step 6 — Write one file
 
-Write `current-state.md` into the unit folder (or chat only, if `--dry-run`). **Touch nothing else.** Use the template below. Every finding carries at least one provenance link or honest tag. All links are **relative to the folder the file is written into** — count the path carefully so they resolve.
+Write `current-state.md` into the unit folder (or chat only, if `--dry-run`). **Touch nothing else.** In hierarchical mode this runs once per unit — one file inside each synthesised subfolder, plus the parent roll-up. Use the template below. Every finding carries at least one provenance link or honest tag. All links are **relative to the folder the file is written into** — count the path carefully so they resolve.
 
 ## Step 7 — Report back
 
