@@ -37,9 +37,28 @@ A synthesis is sharper when it knows *for whom and for what*. The hint (`-- <hin
 - **Occasion** — the decision or moment it serves (e.g. "orient my first six weeks", "prep the renewal"). Forces prioritisation and the "so what". Rotates run to run.
 - **Audience** — who *reads* the output. Default = the person running it (private; candid, inferred reads allowed). If the audience is a **team**, strip private/inferred reads, keep contradictions open as decisions rather than reconciling them on one reader's behalf, and make actions assignable by owner.
 
-With no hint, produce a neutral, reader-agnostic synthesis (still reconcile and flag staleness) and say so. With a hint, lead the Position with the vantage's highest-leverage takeaway, and weight findings by relevance to the occasion.
+With a hint, lead the Position with the vantage's highest-leverage takeaway, and weight findings by relevance to the occasion.
+
+**If invoked without a hint, ask for the lens once before scanning** — don't silently default to neutral, because a generic synthesis is the most common way the output underwhelms. Ask a single plain-language question the user can answer in a line (no "vantage/occasion/audience" jargon):
+
+> Before I read through `<folder>` — one quick thing so this comes out sharp instead of generic:
+>
+> **Whose seat should I read it from, and what are you about to use it for?** A line is plenty. For example:
+> - "founder, prepping my week ahead"
+> - "account lead, going into the renewal call"
+> - "incoming head of product, orienting in my first month"
+>
+> And is it just for you, or will you be sharing it with a team? (only matters for how I handle candid reads and open contradictions)
+>
+> Reply with a line — or say **"just go neutral"** and I'll do a reader-agnostic version.
+
+Then use their answer as the lens. **Fall back to a neutral, reader-agnostic synthesis (still reconcile and flag staleness) — and say so — only if** the user says go neutral, or the run is non-interactive and can't surface the question (headless eval, `--batch`, a dispatched sub-agent). Never block an automated run waiting on an answer. In hierarchical mode, ask **once at the top** and pass the same lens down to every subfolder; sub-agents do not re-ask.
 
 ---
+
+## Step 0 — Set the lens
+
+If a hint was given (`-- <hint>`), use it as the lens and continue to Step 1. If not, **ask the lens question** (see "The lens" above) before reading anything, and wait for the reply — unless the run is non-interactive (headless eval, `--batch`, dispatched sub-agent), in which case proceed neutral and note it. Carry the resolved lens through every step; in hierarchical mode it's set once here and reused for all subfolders.
 
 ## Step 1 — Scope and scan
 
