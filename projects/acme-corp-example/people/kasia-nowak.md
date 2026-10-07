@@ -61,18 +61,18 @@ Builds and protects culture — hired most of her team and is proud of what they
 
 ## Sources
 
-- `intelligence/docs/raw/kasia-nowak-linkedin.md`
-- `intelligence/docs/raw/predecessor-handoff-memo.md`
-- `intelligence/docs/raw/engineering-tech-stack.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
-- `intelligence/docs/raw/ceo-ai-first-memo.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/series-c-investor-update-q4-2025.md`
-- `intelligence/docs/raw/priya-360-review-2025.md`
-- `intelligence/docs/raw/priya-nair-linkedin.md`
-- `intelligence/docs/raw/tom-okafor-linkedin.md`
-- `intelligence/docs/raw/conference-brief-htr-europe-2026.md`
-- `intelligence/docs/raw/job-description-head-of-product.md`
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
-- `intelligence/docs/raw/org-chart.md`
-- `intelligence/docs/raw/strategy-deck-2026.md`
+- `context/docs/raw/kasia-nowak-linkedin.md`
+- `context/docs/raw/predecessor-handoff-memo.md`
+- `context/docs/raw/engineering-tech-stack.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/ceo-ai-first-memo.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/series-c-investor-update-q4-2025.md`
+- `context/docs/raw/priya-360-review-2025.md`
+- `context/docs/raw/priya-nair-linkedin.md`
+- `context/docs/raw/tom-okafor-linkedin.md`
+- `context/docs/raw/conference-brief-htr-europe-2026.md`
+- `context/docs/raw/job-description-head-of-product.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/org-chart.md`
+- `context/docs/raw/strategy-deck-2026.md`

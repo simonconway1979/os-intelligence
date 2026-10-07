@@ -8,8 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+- **Project folders renamed** (migration 0003): `intelligence/` → `context/` (what went in: meetings, docs, chats, notes; the folder `/add-context` fills) and `context/` → `state/` (what we hold now: `current-state.md`, decisions, synthesised topic files). Folders are named for what they hold, not for the skill that fills them. All skills, docs and the Acme example updated; `os-start`, `os-save`, `ctx-doc` and `session-diff.sh` still read the pre-0003 `context/current-state.md` as a fallback. Run `python migrations/0003-rename-context-and-state-folders.py --dry-run` from your workspace root, then without the flag. Rationale and details: `docs/migrations.md`.
+
 ### Added
 - Tier 2 OSS files: `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `CHANGELOG.md`, `AUTHORS.md`.
+- `migrations/0003-rename-context-and-state-folders.py` and `docs/migrations.md` (the change note for every migration, newest first).
 
 ---
 

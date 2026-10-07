@@ -89,7 +89,7 @@ Only validate statements from these sections: **What they meant**, **Emotional r
 For each interpretive claim:
 1. Find source text in `raw.md` — GROUNDED or NOT GROUNDED
 2. Assess directness — EXPLICIT, INFERRED, or SPECULATIVE
-3. Check cross-stakeholder — read existing synthesis files for this person in `[PROJECT_ROOT]/intelligence/meetings/`. Flag contradictions or position shifts.
+3. Check cross-stakeholder — read existing synthesis files for this person in `[PROJECT_ROOT]/context/meetings/`. Flag contradictions or position shifts.
 
 **Decisions:** NOT GROUNDED → REMOVE. EXPLICIT → KEEP. INFERRED → KEEP, soften overconfident language. SPECULATIVE → REMOVE or add explicit caveat.
 
@@ -150,7 +150,7 @@ Thanks for your time [on [date]]. Here's a quick summary.
 [User's name]
 ```
 
-If `[PROJECT_ROOT]/intelligence/comms-style.md` exists, follow that style instead.
+If `[PROJECT_ROOT]/context/comms-style.md` exists, follow that style instead.
 
 ---
 

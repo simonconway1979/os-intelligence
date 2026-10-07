@@ -64,7 +64,7 @@ Source: `product-roadmap-q1-q2-2026.md` (Marcus Webb interim, 2026-04-19), recon
 
 ## Sources
 
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
-- `intelligence/docs/raw/conference-brief-htr-europe-2026.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/conference-brief-htr-europe-2026.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`

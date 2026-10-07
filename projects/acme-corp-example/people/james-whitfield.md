@@ -40,14 +40,14 @@ His professional identity: navigating a serious data breach at Aurelia Financial
 
 ## Sources
 
-- `intelligence/docs/raw/james-whitfield-linkedin.md`
-- `intelligence/docs/raw/predecessor-handoff-memo.md`
-- `intelligence/docs/raw/customer-escalation-northwind-bank.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/conference-brief-htr-europe-2026.md`
-- `intelligence/docs/raw/org-chart.md`
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/james-whitfield-linkedin.md`
+- `context/docs/raw/predecessor-handoff-memo.md`
+- `context/docs/raw/customer-escalation-northwind-bank.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/conference-brief-htr-europe-2026.md`
+- `context/docs/raw/org-chart.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`
 
 ---
 
@@ -71,13 +71,13 @@ James chose the kitchen deliberately — away from open-plan floors. He used the
 
 **Character note:** He decided in real time to make the governance disclosure. Long pause, "(decides)" visible in transcript. This is consistent with the documented "right out loud" instinct — he flagged it because it was right, not because he was forced to.
 
-Source: `intelligence/meetings/2026-05-04-1100-james-whitfield/`
+Source: `context/meetings/2026-05-04-1100-james-whitfield/`
 
 ---
 
 ## 2026-04-09_2026-05-01 — #london-senior Slack (observed retrospectively)
 
-Source: `intelligence/chats/london-senior-slack/2026-04-09_2026-05-01/`
+Source: `context/chats/london-senior-slack/2026-04-09_2026-05-01/`
 
 **What this source added:**
 

@@ -35,6 +35,6 @@ Both decisions are hard for opposite reasons:
 
 ## Sources
 
-- `intelligence/docs/raw/org-chart.md`
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/org-chart.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/q1-2026-board-update.md`

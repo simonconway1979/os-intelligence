@@ -15,7 +15,7 @@ How OS-Intelligence is put together, and how the pieces talk to each other.
 
 Three things, in order:
 
-1. **Capture** raw context (meetings, documents, notes, chats) into a project's `intelligence/` folder.
+1. **Capture** raw context (meetings, documents, notes, chats) into a project's `context/` folder.
 2. **Synthesise** across captured context into a living read of where things stand.
 3. **Retrieve** that synthesis at the start of every session, so the agent works with full context from minute zero.
 
@@ -52,18 +52,18 @@ A **project** is one ongoing piece of work with its own stakeholders, meetings, 
 
 A **portfolio** is a container for many smaller items that share a shape but live independently. Examples: a job-search pipeline (each opportunity is an item), an ideas list (each idea is an item), a sales pipeline (each deal is an item).
 
-Both types live under `projects/`. `projects.md` declares the type. Portfolios add a `TRACKER.md` that lists items; each item has its own folder with the same `intelligence/` + `memory/` shape as a project.
+Both types live under `projects/`. `projects.md` declares the type. Portfolios add a `TRACKER.md` that lists items; each item has its own folder with the same `context/` + `memory/` shape as a project.
 
 `/os-start` handles the difference. For a project it loads context directly. For a portfolio it asks which item you're working on first, then loads that item.
 
 ---
 
-## The `intelligence/` folder
+## The `context/` folder
 
 Every project has one. Four subfolders, one per shape of input:
 
 ```
-intelligence/
+context/
 ├── meetings/    ← /ctx-transcript writes here
 ├── docs/raw/    ← /ctx-doc reads from here, writes synthesis alongside
 ├── notes/       ← /ctx-note writes here
@@ -72,7 +72,7 @@ intelligence/
 
 Each subfolder follows the same file convention: raw input is append-only and never edited; LLM synthesis sits next to it with `status/synthesised` in frontmatter; once you've reviewed it, change to `status/validated`.
 
-`/ctx-synthesise` reads across all four subfolders and updates `context/current-state.md` with the cross-cutting picture: who said what, what tensions are open, what's in flight.
+`context/` is what went in. `state/` is what we hold now: `current-state.md` and the synthesised topic files. `/ctx-synthesise` reads across all four `context/` subfolders and updates `state/current-state.md` with the cross-cutting picture: who said what, what tensions are open, what's in flight.
 
 ---
 
@@ -179,7 +179,7 @@ os-intelligence/
 ├── docs/
 │   └── addons.md            ← how to drop in your own skills + frameworks
 ├── projects/
-│   └── acme-corp-example/   ← example project, full intelligence/ shape
+│   └── acme-corp-example/   ← example project, full context/ shape
 ├── people/                  ← global identity (one file per person)
 ├── companies/               ← global company files
 ├── CLAUDE.md                ← root working context (this is what Claude reads)

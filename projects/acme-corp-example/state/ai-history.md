@@ -67,7 +67,7 @@ See `governance.md` for full policy gap detail.
 
 ## Sources
 
-- `intelligence/docs/raw/predecessor-handoff-memo.md`
-- `intelligence/docs/raw/priya-360-review-2025.md`
-- `intelligence/docs/raw/customer-escalation-northwind-bank.md`
-- `intelligence/docs/raw/ceo-ai-first-memo.md`
+- `context/docs/raw/predecessor-handoff-memo.md`
+- `context/docs/raw/priya-360-review-2025.md`
+- `context/docs/raw/customer-escalation-northwind-bank.md`
+- `context/docs/raw/ceo-ai-first-memo.md`

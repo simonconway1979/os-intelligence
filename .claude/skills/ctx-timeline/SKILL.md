@@ -54,9 +54,9 @@ Spawn background agent (`run_in_background: true`). Pass:
 - `PROJECT_NAME` — from CLAUDE.md
 - `MODE` — `summary` or `detailed`
 - `FROM_DATE` — YYYY-MM-DD or null (full history)
-- `SI_DIR` — `[PROJECT_ROOT]/intelligence/`
+- `SI_DIR` — `[PROJECT_ROOT]/context/`
 - `EVENTS_DIR` — `[PROJECT_ROOT]/events/` (may not exist)
 - `MEMORY_DIR` — `[PROJECT_ROOT]/memory/`
-- `OUTPUT_PATH` — `[PROJECT_ROOT]/intelligence/timeline.md`
+- `OUTPUT_PATH` — `[PROJECT_ROOT]/context/timeline.md`
 
 Tell the agent: **Read `.claude/skills/ctx-timeline/BACKGROUND.md` for full instructions. Do not ask questions — proceed through all steps.**

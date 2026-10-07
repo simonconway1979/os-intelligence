@@ -41,6 +41,6 @@ Source: strategy deck (2026-02-06) + product roadmap (2026-04-19). Reconcile the
 
 ## Sources
 
-- `intelligence/docs/raw/strategy-deck-2026.md`
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/strategy-deck-2026.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/q1-2026-board-update.md`

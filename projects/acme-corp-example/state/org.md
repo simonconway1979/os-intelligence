@@ -79,7 +79,7 @@ Standard FP&A, accounting, revenue ops.
 
 ## Sources
 
-- `intelligence/docs/raw/org-chart.md`
-- `intelligence/docs/raw/engineering-tech-stack.md`
-- `intelligence/docs/raw/ceo-ai-first-memo.md`
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/org-chart.md`
+- `context/docs/raw/engineering-tech-stack.md`
+- `context/docs/raw/ceo-ai-first-memo.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`

@@ -36,6 +36,27 @@ Simple language (8th grade reading level). Benefits before features. Concrete ex
 
 ---
 
+## Simple English
+
+For pages people read cold, often in a second language: Confluence pages, onboarding guides, FAQs, status updates, announcements. Not for chat messages to named people, meeting notes, or working files. Those follow the Voice section in `CLAUDE.md`.
+
+Based on ASD-STE100 Simplified Technical English, rewritten as house rules. The core rules and the self-check below are the working version.
+
+Core rules:
+
+- Two kinds of text. Procedure: imperative, one instruction per sentence, 20 words max, condition before command. Description: present or past simple, 25 words max, one topic per paragraph, name the actor.
+- One word, one meaning. No synonym rotation. The short common word: "use" not "utilise", "start" not "initiate".
+- Verbs over noun phrases. "We decided", not "a decision was made".
+- Define a concept term at first use, in under ten words, in the same sentence.
+- Modals: can, will, must. Never should, would, may, might, could. Keep uncertainty in plain words; never upgrade a hedge to a fact.
+- No contractions. No semicolons. No em dashes. No "-ing" clause after a comma. No sets of three for rhythm.
+- Headings are a noun phrase or a question, one line. Lists for three or more items only. No bold lead-ins, no emoji.
+- British spelling. Numbers as digits. Dates as "15 September 2026".
+
+Self-check before publishing: split the three longest sentences over the limit; search for `'`, `has been`, `should`, `may`, `might`, `could`, `;`, `—`, `, making`, `, allowing`, `, ensuring`; check every heading; read the first sentence as a stranger.
+
+---
+
 ## Anti-AI patterns to avoid
 
 Independent of audience, generated text tends to drift into recognisable AI patterns. Watch for:

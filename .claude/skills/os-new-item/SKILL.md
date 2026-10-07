@@ -74,13 +74,13 @@ Populate the main `[item-name].md` file with:
 - Body sections from the template, with what's known filled in and blanks left rather than guessed
 
 Ensure these subfolders exist (create with `.gitkeep` if the template didn't include them):
-- `intelligence/meetings/`
-- `intelligence/docs/raw/`
-- `intelligence/chats/`
-- `intelligence/notes/`
+- `context/meetings/`
+- `context/docs/raw/`
+- `context/chats/`
+- `context/notes/`
 - `memory/`
 - `people/`
-- `context/`
+- `state/`
 
 ---
 
@@ -116,9 +116,9 @@ When `**On create:**` includes `tailor-cv`, immediately tailor Simon's CV to the
 
 1. **Capture the full JD.** The opportunity needs the complete job description, not the 500-char screener excerpt.
    - Ask: `Paste the full JD for [company] — [role] (or type "fetch" to try the source URL).`
-   - **On paste:** save it to `[items-folder]/[slug]/intelligence/docs/raw/jd.md` with frontmatter (`type: job-description`, company, role, location, `source` URL, `captured` date). Preserve the body as received; note any OCR/transcription artefacts in frontmatter rather than silently rewriting.
+   - **On paste:** save it to `[items-folder]/[slug]/context/docs/raw/jd.md` with frontmatter (`type: job-description`, company, role, location, `source` URL, `captured` date). Preserve the body as received; note any OCR/transcription artefacts in frontmatter rather than silently rewriting.
    - **On "fetch":** try WebFetch on the JD/`source` URL from the candidate file or frontmatter. If it returns the full JD, save as above. If it's blocked (LinkedIn and Greenhouse commonly block automated fetches), say so and fall back to asking for a paste. **Never tailor from the screener excerpt** — the swaps need the full JD to find truthful verbatim terms.
-2. **Run the tailoring.** Apply `/cv-tailored-to-job` with `projects/job-opportunities/context/cv.md` as the base and the saved `jd.md` as the target. Write `[items-folder]/[slug]/cv-[company].md` per that skill's structure (Tailoring Summary table + per-change Before/After blocks, character-neutral-or-shorter swaps, surplus routed to the cover-letter section).
+2. **Run the tailoring.** Apply `/cv-tailored-to-job` with `projects/job-opportunities/state/cv.md` as the base and the saved `jd.md` as the target. Write `[items-folder]/[slug]/cv-[company].md` per that skill's structure (Tailoring Summary table + per-change Before/After blocks, character-neutral-or-shorter swaps, surplus routed to the cover-letter section).
 3. **This is a draft for review, not a silent final.** Auto-running skips the per-swap approval gate, so surface the Tailoring Summary table in the Step 9 confirmation and tell the user to review it before submitting. 
 4. **Never block item creation on the CV step.** If the base CV or the JD can't be obtained, skip tailoring, create the opportunity anyway, and flag exactly what's missing so the user can finish it manually.
 
@@ -132,7 +132,7 @@ Show the user:
 [Item name] added: [Display name]
 Folder: [items-folder]/[slug]/
 Active session: updated → [Portfolio Name] / [Item Display Name]
-[if tailor-cv ran: JD saved → intelligence/docs/raw/jd.md · CV tailored → cv-[company].md (N swaps — review the Tailoring Summary before submitting)]
+[if tailor-cv ran: JD saved → context/docs/raw/jd.md · CV tailored → cv-[company].md (N swaps — review the Tailoring Summary before submitting)]
 
 Next: [most logical first action based on next_action field or Step 3 answer]
 ```

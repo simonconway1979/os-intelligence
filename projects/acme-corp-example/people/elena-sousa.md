@@ -41,12 +41,12 @@ Engage early on AI product milestones — she will be selling against them befor
 
 ## Sources
 
-- `intelligence/docs/raw/elena-sousa-linkedin.md`
-- `intelligence/docs/raw/predecessor-handoff-memo.md`
-- `intelligence/docs/raw/conference-brief-htr-europe-2026.md`
-- `intelligence/docs/raw/org-chart.md`
-- `intelligence/docs/raw/strategy-deck-2026.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/elena-sousa-linkedin.md`
+- `context/docs/raw/predecessor-handoff-memo.md`
+- `context/docs/raw/conference-brief-htr-europe-2026.md`
+- `context/docs/raw/org-chart.md`
+- `context/docs/raw/strategy-deck-2026.md`
+- `context/docs/raw/q1-2026-board-update.md`
 
 ---
 
@@ -72,7 +72,7 @@ Elena confirmed on-record what prior docs implied: the gap between sales narrati
 
 ## 2026-04-09_2026-05-01 — #london-senior Slack (observed retrospectively)
 
-Source: `intelligence/chats/london-senior-slack/2026-04-09_2026-05-01/`
+Source: `context/chats/london-senior-slack/2026-04-09_2026-05-01/`
 
 **What this source added:**
 

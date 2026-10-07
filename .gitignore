@@ -20,10 +20,13 @@ Thumbs.db
 # Local activity log (per-user, never committed)
 .os-intel-log/
 
+# Migration dry-run output (may hold real user data, never committed)
+_dryrun/
+
 # Per-user runtime state (anywhere in tree)
 **/memory/
 **/outputs/
-**/intelligence/
+**/context/
 
 # Obsidian (per-device)
 .obsidian/workspace.json
@@ -50,8 +53,8 @@ node_modules/
 /companies/*
 !/companies/.gitkeep
 
-# Acme example: ship the intelligence/ skeleton, ignore any content a user drops in
-!/projects/acme-corp-example/intelligence/
-/projects/acme-corp-example/intelligence/**/*
-!/projects/acme-corp-example/intelligence/**/
-!/projects/acme-corp-example/intelligence/**/.gitkeep
+# Acme example: ship the context/ skeleton, ignore any content a user drops in
+!/projects/acme-corp-example/context/
+/projects/acme-corp-example/context/**/*
+!/projects/acme-corp-example/context/**/
+!/projects/acme-corp-example/context/**/.gitkeep

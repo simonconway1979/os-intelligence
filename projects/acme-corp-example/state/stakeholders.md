@@ -103,12 +103,12 @@ Synthesised across LinkedIn bios, predecessor handoff, all-hands transcript, boa
 
 ## Sources
 
-- `intelligence/docs/raw/predecessor-handoff-memo.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/conference-brief-htr-europe-2026.md`
-- `intelligence/docs/raw/priya-360-review-2025.md`
-- `intelligence/docs/raw/customer-escalation-northwind-bank.md`
-- `intelligence/docs/raw/ceo-ai-first-memo.md`
-- `intelligence/docs/raw/org-chart.md`
-- All 6 LinkedIn bios in `intelligence/docs/raw/`
+- `context/docs/raw/predecessor-handoff-memo.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/conference-brief-htr-europe-2026.md`
+- `context/docs/raw/priya-360-review-2025.md`
+- `context/docs/raw/customer-escalation-northwind-bank.md`
+- `context/docs/raw/ceo-ai-first-memo.md`
+- `context/docs/raw/org-chart.md`
+- All 6 LinkedIn bios in `context/docs/raw/`

@@ -28,7 +28,7 @@ Syncs with Sarah Mensah (COO) on policy review timelines. Works closely with Mar
 
 ## Sources
 
-- `intelligence/chats/london-senior-slack/2026-04-09_2026-05-01/`
+- `context/chats/london-senior-slack/2026-04-09_2026-05-01/`
 
 ---
 

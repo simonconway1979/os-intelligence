@@ -46,9 +46,9 @@ This is the part to keep if you replace this `CLAUDE.md` with your own. The `ctx
 ```
 projects/[project]/
 ├── CLAUDE.md           ← project-level context, inherits from this file
-├── context/
+├── state/
 │   └── current-state.md ← living synthesis, loaded at /os-start
-├── intelligence/
+├── context/
 │   ├── meetings/        ← /ctx-transcript output
 │   ├── docs/raw/        ← /ctx-doc input + output
 │   ├── notes/           ← /ctx-note output
@@ -57,7 +57,7 @@ projects/[project]/
 └── memory/              ← /os-save session files
 ```
 
-`current-state.md` is the live read. Session files are archives. The `ctx-` skills write into `intelligence/`; `os-save` and `ctx-synthesise` keep `current-state.md` updated.
+`current-state.md` is the live read. Session files are archives. The `ctx-` skills write into `context/`; `os-save` and `ctx-synthesise` keep `current-state.md` updated.
 
 If you swap in your own `CLAUDE.md`, preserve this folder shape and these conventions so the skills keep working.
 

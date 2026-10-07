@@ -66,7 +66,7 @@ Marcus is covering one PM seat on interim basis. Boundary between CPO scope and 
 
 ## Sources
 
-- `intelligence/docs/raw/job-description-head-of-product.md`
-- `intelligence/docs/raw/conference-brief-htr-europe-2026.md`
-- `intelligence/docs/raw/predecessor-handoff-memo.md`
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/job-description-head-of-product.md`
+- `context/docs/raw/conference-brief-htr-europe-2026.md`
+- `context/docs/raw/predecessor-handoff-memo.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`

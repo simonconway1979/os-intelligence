@@ -43,19 +43,19 @@ Making AI-First real, not theatre. Stated rationale for the commitment:
 
 ## Sources
 
-- `intelligence/docs/raw/ceo-ai-first-memo.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/series-c-investor-update-q4-2025.md`
-- `intelligence/docs/raw/conference-brief-htr-europe-2026.md`
-- `intelligence/docs/raw/strategy-deck-2026.md`
-- `intelligence/docs/raw/org-chart.md`
+- `context/docs/raw/ceo-ai-first-memo.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/series-c-investor-update-q4-2025.md`
+- `context/docs/raw/conference-brief-htr-europe-2026.md`
+- `context/docs/raw/strategy-deck-2026.md`
+- `context/docs/raw/org-chart.md`
 
 ---
 
 ## 2026-04-09_2026-05-01 — #london-senior Slack (observed retrospectively)
 
-Source: `intelligence/chats/london-senior-slack/2026-04-09_2026-05-01/`
+Source: `context/chats/london-senior-slack/2026-04-09_2026-05-01/`
 
 **What this source added:**
 

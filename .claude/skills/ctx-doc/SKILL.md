@@ -1,6 +1,6 @@
 ---
 name: ctx-doc
-description: Add a document to the project and update synthesised context. Run this whenever new source material arrives — calls, transcripts, documents, briefs. Walks through adding frontmatter, updating context files, and syncing people records.
+description: Add a document to the project and update synthesised context. Run this whenever new source material arrives — calls, transcripts, documents, briefs. Walks through adding frontmatter, updating state files, and syncing people records.
 ---
 
 # Add Document to Project Context
@@ -9,7 +9,7 @@ Run this when a new document arrives for a project. Output: raw files with front
 
 > **Tip:** `/add-context` auto-detects type — you can route through it next time instead of `/ctx-doc`.
 
-**Cost note:** This skill is designed to be context-efficient. The preferred path is to copy files into `intelligence/docs/raw/` yourself first, then run this skill. That way long transcripts and documents never sit in the conversation window — they're read by tool as needed and processed one at a time. Pasting content directly into chat is the expensive path and should be avoided for long files.
+**Cost note:** This skill is designed to be context-efficient. The preferred path is to copy files into `context/docs/raw/` yourself first, then run this skill. That way long transcripts and documents never sit in the conversation window — they're read by tool as needed and processed one at a time. Pasting content directly into chat is the expensive path and should be avoided for long files.
 
 ---
 
@@ -28,8 +28,8 @@ Run this when a new document arrives for a project. Output: raw files with front
 Read `[workspace-root]/.current-session`. Parse left of ` / ` if portfolio. Look up the project name in `projects.md` to get the folder path. Load that project's `CLAUDE.md`.
 
 Note:
-- The raw files directory: `[project]/intelligence/docs/raw/`
-- The context directory: `[project]/context/`
+- The raw files directory: `[project]/context/docs/raw/`
+- The context directory: `[project]/state/`
 - The people directory: `[project]/people/`
 
 ---
@@ -38,11 +38,11 @@ Note:
 
 Check two locations:
 
-**A. `[project]/intelligence/docs/raw/`** — For each file, check whether its frontmatter contains an `enriched:` field.
+**A. `[project]/context/docs/raw/`** — For each file, check whether its frontmatter contains an `enriched:` field.
 - **Has `enriched:`** — already processed, skip
 - **Missing `enriched:`** — include in this run
 
-**B. `[project]/intelligence/meetings/*/synthesis.md`** — For each synthesis file, check whether its frontmatter contains a `context_enriched:` field.
+**B. `[project]/context/meetings/*/synthesis.md`** — For each synthesis file, check whether its frontmatter contains a `context_enriched:` field.
 - **Has `context_enriched:`** — already pulled into context, skip
 - **Missing `context_enriched:`** — include in this run
 
@@ -52,10 +52,10 @@ Show the user:
 ```
 Found [N] unprocessed file(s):
 
-intelligence/docs/raw/:
+context/docs/raw/:
   — filename.md
 
-intelligence/ (meeting synthesis):
+context/ (meeting synthesis):
   — meetings/[slug]/synthesis.md
 
 [M] file(s) already processed (skipping).
@@ -73,7 +73,7 @@ If both locations are empty or fully processed, say so and ask if they want to a
 In parallel mode I spawn one sub-agent per file to do the heavy reading
 and analysis simultaneously. The merged context updates are then applied
 here in the main thread, sequentially, so there are no conflicts on
-shared files (context/*, people/*). Faster for batches; same result.
+shared files (state/*, people/*). Faster for batches; same result.
 ```
 
 - If **yes** (default for N ≥ 3): go to **Step 2.5 — Parallel mode**
@@ -93,7 +93,7 @@ In a single message, spawn one `general-purpose` sub-agent per file via the Task
 
 **Per-agent prompt template** (substitute placeholders):
 
-> You are analysing a single document for OS-Intelligence context enrichment. Do NOT modify any files in `context/` or `people/`. The main thread will apply those changes after all analyses come back. You MAY add YAML frontmatter to the raw file itself (the file you are analysing) if it lacks one, but do not add `informs` or `enriched` fields yet — the main thread will fill those in.
+> You are analysing a single document for OS-Intelligence context enrichment. Do NOT modify any files in `state/` or `people/`. The main thread will apply those changes after all analyses come back. You MAY add YAML frontmatter to the raw file itself (the file you are analysing) if it lacks one, but do not add `informs` or `enriched` fields yet — the main thread will fill those in.
 >
 > **File to analyse:** `[FILE_PATH]`
 > **Project:** `[PROJECT_NAME]` (slug: `[PROJECT_SLUG]`)
@@ -109,7 +109,7 @@ In a single message, spawn one `general-purpose` sub-agent per file via the Task
 >    - People mentioned (full names — main thread will resolve to slugs)
 >    - Decisions, commitments, or facts the project should know
 >    - Tensions, contradictions, or risks worth flagging
->    - Which `context/*` files this document should inform (project.md, business.md, current-state.md, or new ones)
+>    - Which `state/*` files this document should inform (project.md, business.md, current-state.md, or new ones)
 >    - Which `people/*` files this document should inform (one per person meaningfully present)
 > 4. Return a structured report in this exact format:
 >
@@ -131,10 +131,10 @@ In a single message, spawn one `general-purpose` sub-agent per file via the Task
 >   - [item]
 >
 > CONTEXT FILES TO UPDATE:
->   - target: context/project.md
+>   - target: state/project.md
 >     content: |
 >       [proposed addition or update — be specific, write the actual text]
->   - target: context/business.md
+>   - target: state/business.md
 >     content: |
 >       [...]
 >
@@ -155,7 +155,7 @@ Spawn all agents in a single message with multiple Agent tool calls so they run 
 When all sub-agents have returned:
 
 1. Collect every report into memory (keep them in main-thread context — they're summaries, not full documents).
-2. **Build a target-update map.** For each unique `context/*` file mentioned across all reports, gather the list of `(source_file, proposed_content)` pairs that target it. Same for each unique person.
+2. **Build a target-update map.** For each unique `state/*` file mentioned across all reports, gather the list of `(source_file, proposed_content)` pairs that target it. Same for each unique person.
 3. Resolve any people-name ambiguities to slugs (use `people/[slug].md` matching by full name or first name + initial).
 
 ### C. Apply context updates (main thread, sequential)
@@ -180,24 +180,24 @@ For each unique person target:
 
 For each file analysed:
 
-1. Determine which context/people files ended up being updated as a result of this raw file's report.
+1. Determine which state/people files ended up being updated as a result of this raw file's report.
 2. Update the raw file's frontmatter:
-   - `informs: [list of context/people paths]`
+   - `informs: [list of state/people paths]`
    - `enriched: [today's ISO date]`
 
 ### F. Continue to Step 8
 
-After E completes, skip the remaining sequential steps (Step 3 through Step 7 are already covered) and continue to **Step 8 — Update CLAUDE.md** with the full list of new raw files added and context/people files updated.
+After E completes, skip the remaining sequential steps (Step 3 through Step 7 are already covered) and continue to **Step 8 — Update CLAUDE.md** with the full list of new raw files added and state/people files updated.
 
 ---
 
 ## Step 3 — Identify and accept new material
 
-**Preferred path (cheaper):** Copy files into `[project]/intelligence/docs/raw/` yourself first, then tell me the filenames. Files are read by tool as needed — long content never sits in the conversation window.
+**Preferred path (cheaper):** Copy files into `[project]/context/docs/raw/` yourself first, then tell me the filenames. Files are read by tool as needed — long content never sits in the conversation window.
 
 **If the user wants to paste something:** Only accept pasted content for short items (under ~300 words). For anything longer, redirect:
 ```
-That's a long file — better to save it to intelligence/docs/raw/ directly and I'll read it from there.
+That's a long file — better to save it to context/docs/raw/ directly and I'll read it from there.
 This keeps it out of the conversation window and saves context cost.
 ```
 
@@ -210,18 +210,18 @@ Process files one at a time through Steps 4–7. Do not read all files upfront.
 
 ---
 
-## Step 3 — Save to intelligence/docs/raw/
+## Step 3 — Save to context/docs/raw/
 
 For each new file:
 
-**If content was pasted directly:** Write to `[project]/intelligence/docs/raw/[date]-[descriptive-name].md`
+**If content was pasted directly:** Write to `[project]/context/docs/raw/[date]-[descriptive-name].md`
 
 Filename conventions:
 - Dated files: `YYYYMMDD-description.md` (e.g. `20260416-post-event-notes.md`)
 - Undated reference docs: `descriptive-name.md` (e.g. `speaker-intro-brief-generic.md`)
 - Transcripts: `YYYYMMDD-[person]-[type].md` (e.g. `20260416-alex-chen-call.md`)
 
-**If file is already in intelligence/docs/raw/:** Confirm it exists, read it, proceed.
+**If file is already in context/docs/raw/:** Confirm it exists, read it, proceed.
 
 **Add YAML frontmatter** to every raw file (at the top, before any content):
 
@@ -268,21 +268,21 @@ For each file, extract the key information:
 - What do we learn about the project (timeline, structure, goals)?
 - What do we learn about the people involved?
 - Does this contradict or update anything we already know?
-- What context files does this touch? (project.md, business.md, event-format.md, etc.)
+- What state files does this touch? (project.md, business.md, event-format.md, etc.)
 - What people files does this touch?
 
-**If the source is an SI synthesis file (`intelligence/meetings/*/synthesis.md`):**
+**If the source is an SI synthesis file (`context/meetings/*/synthesis.md`):**
 - Focus on project-level facts: company info, product direction, role scope, decisions, open questions
 - Skip people file updates — SI already handled the people layer when the transcript was processed
-- Extract only what belongs in `context/` files
+- Extract only what belongs in `state/` files
 
 Write a short analysis (internal — do not show to user unless asked). You'll use this in Step 5 and 6.
 
 ---
 
-## Step 5 — Update context files
+## Step 5 — Update state files
 
-For each context file that needs updating:
+For each state file that needs updating:
 
 1. Read the existing file
 2. Identify what's new from the raw material
@@ -291,28 +291,28 @@ For each context file that needs updating:
 
 **Do not duplicate information.** If a fact is already captured, only update it if the new source refines or corrects it.
 
-**If a needed context file doesn't exist yet:** Create it.
+**If a needed state file doesn't exist yet:** Create it.
 
-Standard context files for most projects:
-- `context/project.md` — team, cadence, financial model, success metrics, key decisions
-- `context/business.md` — company/concept, operating model, brand voice
-- `context/event-format.md` — for event projects: general format, timeline, roles, moderation
+Standard state files for most projects:
+- `state/project.md` — team, cadence, financial model, success metrics, key decisions
+- `state/business.md` — company/concept, operating model, brand voice
+- `state/event-format.md` — for event projects: general format, timeline, roles, moderation
 
 For other project types, create semantically named files as needed:
-- `context/product.md`, `context/research.md`, `context/strategy.md`, etc.
+- `state/product.md`, `state/research.md`, `state/strategy.md`, etc.
 
 **Project-type-specific folders** (not all projects will have these):
 - `events/[date-slug]/event.md` — for event series: one subfolder per event with overview, host guide refs, pre-event checklist, post-event notes. The `events/` folder doesn't exist in product or research projects.
 
-If you encounter raw material that's specific to a single event (e.g. a post-event debrief), put the synthesised version in `events/[event-slug]/` rather than the general `context/` folder.
+If you encounter raw material that's specific to a single event (e.g. a post-event debrief), put the synthesised version in `events/[event-slug]/` rather than the general `state/` folder.
 
-**After updating:** Go back to the raw file and fill in the `informs:` frontmatter with the paths of context files updated (e.g. `informs: [context/project.md, context/event-format.md]`).
+**After updating:** Go back to the raw file and fill in the `informs:` frontmatter with the paths of state files updated (e.g. `informs: [state/project.md, state/event-format.md]`).
 
 ---
 
 ## Step 6 — Update people files
 
-**Skip this step entirely if the source file is an SI synthesis file.** SI already updated people files when the transcript was processed. Only update people files for sources in `intelligence/docs/raw/`.
+**Skip this step entirely if the source file is an SI synthesis file.** SI already updated people files when the transcript was processed. Only update people files for sources in `context/docs/raw/`.
 
 For each person meaningfully present in the new material:
 
@@ -358,13 +358,13 @@ Do not add project-specific context (relationship dynamics, event role) to the r
 
 After completing Steps 4–6 for a file, update its frontmatter:
 
-**For `intelligence/docs/raw/` files:**
-1. Fill in `informs:` with the context files that were updated (e.g. `informs: [context/project.md, people/alex-chen.md]`)
+**For `context/docs/raw/` files:**
+1. Fill in `informs:` with the state files that were updated (e.g. `informs: [state/project.md, people/alex-chen.md]`)
 2. Add `enriched: YYYY-MM-DD` (today's date)
 
-**For SI synthesis files (`intelligence/meetings/*/synthesis.md`):**
+**For SI synthesis files (`context/meetings/*/synthesis.md`):**
 1. Add `context_enriched: YYYY-MM-DD` to the existing frontmatter
-2. Add a `context_informs:` field listing the context files updated (e.g. `context_informs: [context/company.md, context/product.md]`)
+2. Add a `context_informs:` field listing the state files updated (e.g. `context_informs: [state/company.md, state/product.md]`)
 
 These fields are the signal that context enrichment is complete. On the next `/ctx-doc` run, files with the relevant enriched field will be skipped automatically.
 
@@ -376,7 +376,7 @@ Open the project's `CLAUDE.md` and update the **Raw Files** table to include any
 
 Format:
 ```
-| `intelligence/docs/raw/filename.md` | type | context files it informs |
+| `context/docs/raw/filename.md` | type | state files it informs |
 ```
 
 If the project CLAUDE.md doesn't have a Raw Files table, add one.
@@ -385,11 +385,11 @@ If the project CLAUDE.md doesn't have a Raw Files table, add one.
 
 ## Step 9 — Update current-state.md
 
-Check if `[project-root]/context/current-state.md` exists.
+Check if `[project-root]/current-state.md` or `[project-root]/state/current-state.md` exists (a pre-migration-0003 workspace has it at `[project-root]/context/current-state.md`; treat that the same).
 
 **If it doesn't exist:** Skip — no current-state to update yet.
 
-**If it exists:** Update the **What We Know From Documents** section with the key facts extracted from this enrichment run. Replace or extend — do not duplicate information already there. Summarise what the documents told us in bullet form. Update the Sources reference to include the context files updated.
+**If it exists:** Update the **What We Know From Documents** section with the key facts extracted from this enrichment run. Replace or extend — do not duplicate information already there. Summarise what the documents told us in bullet form. Update the Sources reference to include the state files updated.
 
 Update the section's `_Last updated:_` line and the file frontmatter:
 ```yaml
@@ -424,8 +424,8 @@ If nothing needed updating (file was already fully captured), say so clearly.
 
 ## Notes on judgment calls
 
-**When to create a new context file vs update an existing one:**
-Create new if: the information is a distinct domain that will grow over time (e.g. a separate `context/speakers.md` for an event series with many speakers). Update existing if: it's the same domain with more detail.
+**When to create a new state file vs update an existing one:**
+Create new if: the information is a distinct domain that will grow over time (e.g. a separate `state/speakers.md` for an event series with many speakers). Update existing if: it's the same domain with more detail.
 
 **When to update root vs project people file only:**
 - New identity/contact info → root only
@@ -433,7 +433,7 @@ Create new if: the information is a distinct domain that will grow over time (e.
 - Both → both
 
 **When raw content contradicts existing context:**
-Trust the newer raw file. Update the context file and note the change. Do not silently overwrite — add a note if the change is significant (e.g. date moved, person left project).
+Trust the newer raw file. Update the state file and note the change. Do not silently overwrite — add a note if the change is significant (e.g. date moved, person left project).
 
 **When the user provides partial information:**
 Capture what you have. Leave fields blank rather than guessing. Better to have accurate partial records than inaccurate complete ones.

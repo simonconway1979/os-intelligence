@@ -59,7 +59,8 @@ Recommended: create your own private repo and repoint the remote so commits go t
 
 OS-Intelligence has its own vocabulary. Worth a quick pass before you dig in:
 
-- **`intelligence/`** — your project's source-of-truth folder. Meetings, docs, chats, notes all live here. Synthesis reads from this.
+- **`context/`** — what went in. Meetings, docs, chats, notes, each with its raw file and its own synthesis beside it. `/add-context` fills it; synthesis reads from it.
+- **`state/`** — what we hold now. `current-state.md`, decisions, the synthesised topic files. Written by `/synthesise`, `/os-save` and `/ctx-doc`, never by hand-pasting sources.
 - **`current-state.md`** — the living context summary for a project. Updated by `/os-save`, `/ctx-doc`, `/ctx-synthesise`. Read at the start of every session.
 - **`/os-*` skills** — operating the system itself. Start a session, save a session, switch project, add a project.
 - **`/ctx-*` skills** — adding to context. Documents, transcripts, notes, chat threads, cross-synthesis.

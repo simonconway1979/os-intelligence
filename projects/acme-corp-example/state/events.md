@@ -58,7 +58,7 @@ The Q1 board update has an internal inconsistency: product section says "June" d
 
 ## Sources
 
-- `intelligence/docs/raw/conference-brief-htr-europe-2026.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/strategy-deck-2026.md`
+- `context/docs/raw/conference-brief-htr-europe-2026.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/strategy-deck-2026.md`

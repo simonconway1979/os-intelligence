@@ -48,7 +48,7 @@ Offer to create stubs for unmatched names.
 **Step 5 — Thread name.** Ask: `Thread name (used for deduplication):`
 Suggest a slug based on participants or platform (e.g. `acme-launch-team-whatsapp`). User can edit.
 
-**Step 6 — Deduplication check.** Check if `[PROJECT_ROOT]/intelligence/chats/[thread-slug]/index.md` exists.
+**Step 6 — Deduplication check.** Check if `[PROJECT_ROOT]/context/chats/[thread-slug]/index.md` exists.
 - If yes: show last processed date range. Ask: `Last import covered [date range]. Process from [end date] onwards? [Y/N]`
 - If no: first import — process all.
 
@@ -82,7 +82,7 @@ Spawn background agent (`run_in_background: true`). Pass:
 - `PARTICIPANTS` — `[{full_name, role, people_file_path}]`
 - `CONTEXT` — optional context string
 - `DATE_RANGE` — e.g. "2026-04-10_2026-04-17"
-- `CHAT_FOLDER` — `[PROJECT_ROOT]/intelligence/chats/[thread-slug]/[DATE_RANGE]/`
+- `CHAT_FOLDER` — `[PROJECT_ROOT]/context/chats/[thread-slug]/[DATE_RANGE]/`
 
 Tell the agent: **Read `.claude/skills/ctx-chat/BACKGROUND.md` for processing instructions. Do not ask questions — proceed through all steps.**
 
@@ -91,7 +91,7 @@ Tell the agent: **Read `.claude/skills/ctx-chat/BACKGROUND.md` for processing in
 ## File structure
 
 ```
-[PROJECT_ROOT]/intelligence/chats/
+[PROJECT_ROOT]/context/chats/
 
   [thread-slug]/
     index.md                    ← thread identity + import history (deduplication record)

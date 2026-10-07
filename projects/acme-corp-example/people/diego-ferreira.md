@@ -26,8 +26,8 @@ Factual and logistics-focused in the channel. Did not push back on Tom's "we don
 
 ## Sources
 
-- `intelligence/docs/raw/conference-brief-htr-europe-2026.md`
-- `intelligence/chats/london-senior-slack/2026-04-09_2026-05-01/`
+- `context/docs/raw/conference-brief-htr-europe-2026.md`
+- `context/chats/london-senior-slack/2026-04-09_2026-05-01/`
 
 ---
 

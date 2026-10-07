@@ -72,8 +72,8 @@ The 2024 skills-extraction CV screening feature shipped without bias audit, was 
 
 ## Sources
 
-- `intelligence/docs/raw/data-governance-policy-2024.md`
-- `intelligence/docs/raw/ceo-ai-first-memo.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
-- `intelligence/docs/raw/predecessor-handoff-memo.md`
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/data-governance-policy-2024.md`
+- `context/docs/raw/ceo-ai-first-memo.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/predecessor-handoff-memo.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`

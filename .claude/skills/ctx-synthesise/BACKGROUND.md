@@ -234,7 +234,7 @@ After all writes complete, return **only** this closing message. Do NOT add head
 
 [N] meetings into one cross-cutting picture. Standing briefs updated for each person involved. Stakeholder Dynamics in current-state.md refreshed.
 
-→ Read the picture: projects/[slug]/intelligence/cross-synthesis.md
+→ Read the picture: projects/[slug]/context/cross-synthesis.md
 → Save the session:  /os-save
 
 (/os-start in future sessions loads the briefing automatically.)

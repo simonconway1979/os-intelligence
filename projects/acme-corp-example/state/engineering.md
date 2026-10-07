@@ -75,7 +75,7 @@ What does NOT exist:
 
 ## Sources
 
-- `intelligence/docs/raw/engineering-tech-stack.md`
-- `intelligence/docs/raw/org-chart.md`
-- `intelligence/docs/raw/ceo-ai-first-memo.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/engineering-tech-stack.md`
+- `context/docs/raw/org-chart.md`
+- `context/docs/raw/ceo-ai-first-memo.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`

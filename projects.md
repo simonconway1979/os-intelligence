@@ -11,23 +11,13 @@ Two types: **project** (one ongoing piece of work) or **portfolio** (a container
 ### Acme Corp Example
 - **Type:** project
 - **Status:** Active
-- **One-liner:** Demo project showing the OS-Intelligence folder shape, intelligence/ subfolders, and what a synthesised current-state.md looks like.
+- **One-liner:** Demo project showing the OS-Intelligence folder shape, context/ subfolders, and what a synthesised current-state.md looks like.
 - **Goal:** Help new users see the system populated with realistic content before they set up their own projects.
 - **Folders:** `projects/acme-corp-example/`
 - **Company:** [Acme Corp](companies/acme-corp.md)
 - **Key people:** —
 - **Started:** 2026-04-29
 - **Last session:**
-
-### Sobremesa BCN
-- **Type:** project
-- **Status:** Active
-- **One-liner:** A Barcelona supper-club series pairing a curated guest list with a provocative dinner-table question and a guest speaker.
-- **Goal:** Run memorable monthly events that grow a warm community and a credible host reputation.
-- **Folders:** `_dryrun/sobremesa/`
-- **Current-state:** `_dryrun/sobremesa/current-state.md` · updated 2026-06-17
-- **Started:** 2026-06-17
-- **Last session:** 2026-06-17
 
 ---
 

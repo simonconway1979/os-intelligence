@@ -34,14 +34,14 @@ Read `[workspace-root]/.current-session` to identify the active project and its 
 
 If `--batch` flag passed: skip to **Batch Mode** section below.
 
-Otherwise, check `[PROJECT_ROOT]/intelligence/meetings/` for any subdirectories containing a `synthesis.md` file (i.e. processed meetings).
+Otherwise, check `[PROJECT_ROOT]/context/meetings/` for any subdirectories containing a `synthesis.md` file (i.e. processed meetings).
 
 - **No processed meetings found** → print:
   ```
   No meetings processed yet for this project.
 
   Want to load several transcripts at once? Drop your files into:
-    [PROJECT_ROOT]/intelligence/meetings/inbox/
+    [PROJECT_ROOT]/context/meetings/inbox/
 
   Then press Enter and I'll process them all together.
   Or paste a single transcript now to get started.
@@ -56,12 +56,12 @@ Otherwise, check `[PROJECT_ROOT]/intelligence/meetings/` for any subdirectories 
 
 ## Batch Mode
 
-**B1 — Create inbox.** Create `[PROJECT_ROOT]/intelligence/meetings/inbox/` if it doesn't exist.
+**B1 — Create inbox.** Create `[PROJECT_ROOT]/context/meetings/inbox/` if it doesn't exist.
 
 **B2 — Wait for files.** If the user selected batch mode, print:
 ```
 Ready. Drop your transcript files (.md or .txt) into:
-  [PROJECT_ROOT]/intelligence/meetings/inbox/
+  [PROJECT_ROOT]/context/meetings/inbox/
 
 Press Enter when ready.
 ```
@@ -73,7 +73,7 @@ Wait for confirmation.
 
 1. Read the first 40 lines to extract: date, time, attendee names, topic.
 2. Match attendees against root `people/` and `[PROJECT_ROOT]/people/`. Note any unmatched names.
-3. Build `MEETING_FOLDER`: `[PROJECT_ROOT]/intelligence/meetings/[DATE]-[TIME]-[slug]/`
+3. Build `MEETING_FOLDER`: `[PROJECT_ROOT]/context/meetings/[DATE]-[TIME]-[slug]/`
 4. Copy file content verbatim to `[MEETING_FOLDER]/raw.md`.
 5. Delete the source file from `inbox/`.
 
@@ -152,7 +152,7 @@ Spawn background agent (`run_in_background: true`). Pass:
 - `ATTENDEES` — list of `{full_name, role, company, people_file_path}`
 - `MENTIONED` — names referenced but not attending
 - `DATE`, `TIME`, `DURATION`
-- `MEETING_FOLDER` — `[PROJECT_ROOT]/intelligence/meetings/[DATE]-[TIME]-[attendee-slug]/`
+- `MEETING_FOLDER` — `[PROJECT_ROOT]/context/meetings/[DATE]-[TIME]-[attendee-slug]/`
 
 Slug = attendee names joined by hyphens (exclude user), max 40 chars.
 
@@ -163,7 +163,7 @@ Tell the agent: **Read `.claude/skills/ctx-transcript/BACKGROUND.md` for process
 ## File structure
 
 ```
-[PROJECT_ROOT]/intelligence/meetings/[DATE]-[TIME]-[slug]/
+[PROJECT_ROOT]/context/meetings/[DATE]-[TIME]-[slug]/
   raw.md          ← verbatim transcript, never modified
   synthesis.md    ← validated synthesis + YAML frontmatter
   validation.md   ← per-statement evidence audit

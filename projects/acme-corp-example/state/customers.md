@@ -60,9 +60,9 @@ Johnny called it "the central question of the year."
 
 ## Sources
 
-- `intelligence/docs/raw/customer-escalation-northwind-bank.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
-- `intelligence/docs/raw/series-c-investor-update-q4-2025.md`
-- `intelligence/docs/raw/company-about.md`
-- `intelligence/docs/raw/ceo-ai-first-memo.md`
+- `context/docs/raw/customer-escalation-northwind-bank.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/series-c-investor-update-q4-2025.md`
+- `context/docs/raw/company-about.md`
+- `context/docs/raw/ceo-ai-first-memo.md`

@@ -12,9 +12,9 @@ How files are organised and written across all projects.
 
 ## Three-Layer System (within each project)
 
-**`intelligence/docs/raw/`** — Original source documents exactly as received or written. Never edited after creation. Each file has YAML frontmatter with `informs:` tags pointing to which context files it feeds.
+**`context/docs/raw/`** — Original source documents exactly as received or written. Never edited after creation. Each file has YAML frontmatter with `informs:` tags pointing to which state files it feeds.
 
-**`context/`** — Synthesised documents built from raw sources. Always include a `## Sources` section listing which raw files they draw from. Update these when new raw files arrive, not the raw files themselves.
+**`state/`** — Synthesised documents built from raw sources. Always include a `## Sources` section listing which raw files they draw from. Update these when new raw files arrive, not the raw files themselves.
 
 **`people/`** — Project-specific profiles for people in this project. Covers: role here, what they care about, working style, relationship dynamics. Always link to root `/people/[name].md` (which holds identity, contact details, cross-project patterns).
 
@@ -36,10 +36,10 @@ How files are organised and written across all projects.
 
 ---
 
-## Intelligence (per project)
+## Context (per project)
 
 ```
-intelligence/
+context/
 ├── meetings/
 │   └── YYYYMMDD-HHMM-[person-slug]/
 │       ├── raw.md          ← verbatim transcript, never edited
@@ -68,5 +68,5 @@ intelligence/
 - Raw files are never edited after creation.
 - Context files always have a `## Sources` section.
 - Project people files always link to root `/people/`.
-- Session saves go in `memory/`, not `context/` or `outputs/`.
+- Session saves go in `memory/`, not `state/` or `outputs/`.
 - Never put project-specific content at root level.

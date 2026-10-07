@@ -51,8 +51,8 @@ Detail in `product.md`.
 
 ## Sources
 
-- `intelligence/docs/raw/company-about.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/series-c-investor-update-q4-2025.md`
-- `intelligence/docs/raw/strategy-deck-2026.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/company-about.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/series-c-investor-update-q4-2025.md`
+- `context/docs/raw/strategy-deck-2026.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`

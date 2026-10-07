@@ -111,7 +111,7 @@ If no speculative claims found, write: `No speculative claims identified.`
 
 ## Step 4 — Update thread index
 
-Write or update `[PROJECT_ROOT]/intelligence/chats/[THREAD_SLUG]/index.md`:
+Write or update `[PROJECT_ROOT]/context/chats/[THREAD_SLUG]/index.md`:
 
 ```markdown
 ---

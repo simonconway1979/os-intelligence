@@ -7,10 +7,10 @@ You are building a project timeline from stakeholder intelligence sources. All i
 ## Inputs you were given
 
 - `PROJECT_ROOT`, `PROJECT_NAME`, `MODE` (summary / detailed), `FROM_DATE` (YYYY-MM-DD or null)
-- `SI_DIR` — `[PROJECT_ROOT]/intelligence/`
+- `SI_DIR` — `[PROJECT_ROOT]/context/`
 - `EVENTS_DIR` — `[PROJECT_ROOT]/events/` (may not exist)
 - `MEMORY_DIR` — `[PROJECT_ROOT]/memory/`
-- `OUTPUT_PATH` — `[PROJECT_ROOT]/intelligence/timeline.md`
+- `OUTPUT_PATH` — `[PROJECT_ROOT]/context/timeline.md`
 
 ---
 
@@ -252,7 +252,7 @@ Sources read:
   · [N] decisions from memory
 
 File written:
-  ✓ intelligence/timeline.md
+  ✓ context/timeline.md
 
 Notable:
   · [1–2 sentences on the most interesting pattern or fact that emerged from building the timeline — something the user might not have noticed]

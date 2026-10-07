@@ -65,13 +65,13 @@ Consolidated risk register from CEO memo, board update, predecessor handoff, eng
 
 ## Sources
 
-- `intelligence/docs/raw/predecessor-handoff-memo.md`
-- `intelligence/docs/raw/engineering-tech-stack.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
-- `intelligence/docs/raw/conference-brief-htr-europe-2026.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
-- `intelligence/docs/raw/data-governance-policy-2024.md`
-- `intelligence/docs/raw/strategy-deck-2026.md`
-- `intelligence/docs/raw/customer-escalation-northwind-bank.md`
-- `intelligence/docs/raw/priya-360-review-2025.md`
+- `context/docs/raw/predecessor-handoff-memo.md`
+- `context/docs/raw/engineering-tech-stack.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/conference-brief-htr-europe-2026.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/data-governance-policy-2024.md`
+- `context/docs/raw/strategy-deck-2026.md`
+- `context/docs/raw/customer-escalation-northwind-bank.md`
+- `context/docs/raw/priya-360-review-2025.md`

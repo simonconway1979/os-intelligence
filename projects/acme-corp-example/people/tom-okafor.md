@@ -57,22 +57,22 @@ Per Sam Reilly: **"Not a blocker — a quality filter. Treat as partner; going a
 
 ## Sources
 
-- `intelligence/docs/raw/tom-okafor-linkedin.md`
-- `intelligence/docs/raw/predecessor-handoff-memo.md`
-- `intelligence/docs/raw/engineering-tech-stack.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/job-description-head-of-product.md`
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
-- `intelligence/docs/raw/customer-escalation-northwind-bank.md`
-- `intelligence/docs/raw/org-chart.md`
-- `intelligence/meetings/2026-05-04-1500-tom-okafor/raw.md` (direct interview, 2026-05-04)
+- `context/docs/raw/tom-okafor-linkedin.md`
+- `context/docs/raw/predecessor-handoff-memo.md`
+- `context/docs/raw/engineering-tech-stack.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/job-description-head-of-product.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/customer-escalation-northwind-bank.md`
+- `context/docs/raw/org-chart.md`
+- `context/meetings/2026-05-04-1500-tom-okafor/raw.md` (direct interview, 2026-05-04)
 
 ---
 
 ## 2026-04-09_2026-05-01 — #london-senior Slack (observed retrospectively)
 
-Source: `intelligence/chats/london-senior-slack/2026-04-09_2026-05-01/`
+Source: `context/chats/london-senior-slack/2026-04-09_2026-05-01/`
 
 **What this source added:**
 

@@ -24,8 +24,8 @@ Brief but consistent. Added institutional weight to Esme's governance escalation
 
 ## Sources
 
-- `intelligence/docs/raw/org-chart.md`
-- `intelligence/chats/london-senior-slack/2026-04-09_2026-05-01/`
+- `context/docs/raw/org-chart.md`
+- `context/chats/london-senior-slack/2026-04-09_2026-05-01/`
 
 ---
 

@@ -57,7 +57,7 @@ Check whether `.claude/settings.local.json` at the workspace root already grants
 Read(projects/**)
 Read(people/**)
 Read(companies/**)
-Read(**/intelligence/**)
+Read(**/context/**)
 Edit(projects.md)
 Edit(projects/**)
 Edit(people/**)
@@ -68,7 +68,7 @@ Write(projects/**)
 Write(people/**)
 Write(companies/**)
 Write(.current-session)
-Write(**/intelligence/**)
+Write(**/context/**)
 ```
 
 **How to detect "already configured":** read `.claude/settings.local.json` if it exists. Compute the set of expected entries above that are MISSING from `permissions.allow`.
@@ -86,7 +86,7 @@ An admin change to make...
 
 OS-Intelligence creates and updates structural files as you work —
 projects.md, project folders, people files, current-state.md,
-intelligence/ inputs, and so on. By default, Claude Code will ask
+context/ inputs, and so on. By default, Claude Code will ask
 you to approve each edit. That gets noisy fast.
 
 Want me to add an auto-approve rule to your local settings so the
@@ -98,7 +98,7 @@ Scope (OS-Intelligence-managed paths only):
   ✓ people/**               (people files)
   ✓ companies/**            (company files)
   ✓ .current-session        (which project you're working on)
-  ✓ **/intelligence/**      (meetings, docs, chats, notes — bulk import)
+  ✓ **/context/**      (meetings, docs, chats, notes — bulk import)
 
 NOT auto-approved:
   ✗ .claude/skills/         (skill code stays explicit)
@@ -124,7 +124,7 @@ Show the missing entries explicitly so the user sees what's new:
 Quick check — your permissions are partially configured from an
 earlier OS-Intelligence run, but [N] new entries have been added
 since then. They cover [short human-readable summary, e.g. "the
-intelligence/ folders for bulk-importing meetings, docs, chats,
+context/ folders for bulk-importing meetings, docs, chats,
 and notes"].
 
 Missing from your current settings:
@@ -152,7 +152,7 @@ Merge the following into `.claude/settings.local.json` at the workspace root:
       "Read(projects/**)",
       "Read(people/**)",
       "Read(companies/**)",
-      "Read(**/intelligence/**)",
+      "Read(**/context/**)",
       "Edit(projects.md)",
       "Edit(projects/**)",
       "Edit(people/**)",
@@ -163,7 +163,7 @@ Merge the following into `.claude/settings.local.json` at the workspace root:
       "Write(people/**)",
       "Write(companies/**)",
       "Write(.current-session)",
-      "Write(**/intelligence/**)"
+      "Write(**/context/**)"
     ]
   }
 }
@@ -352,10 +352,10 @@ Substitute `[Project Name]` with the project's name from Step 5. Substitute `[Co
 
 ```bash
 mkdir -p \
-  projects/[slug]/intelligence/docs/raw \
-  projects/[slug]/intelligence/meetings/inbox \
-  projects/[slug]/intelligence/chats \
-  projects/[slug]/intelligence/notes
+  projects/[slug]/context/docs/raw \
+  projects/[slug]/context/meetings/inbox \
+  projects/[slug]/context/chats \
+  projects/[slug]/context/notes
 ```
 
 `/os-new-project` already creates these, but the explicit `mkdir -p` is idempotent and guards against any case where it didn't (older project, manual creation, partial failure).
@@ -408,15 +408,15 @@ If **Y**, print:
 
 ```
 Drop your documents at:
-  projects/[slug]/intelligence/docs/raw/
+  projects/[slug]/context/docs/raw/
 
 On macOS:
-  open projects/[slug]/intelligence/docs/raw/
+  open projects/[slug]/context/docs/raw/
 
 Type Y when you've added them, and I'll process them before we move on.
 ```
 
-Wait for the user's `Y`. Then invoke `/ctx-doc` — it scans `intelligence/docs/raw/` for unprocessed files and handles them. After the skill confirms processing has started or completed, continue to the next capture type.
+Wait for the user's `Y`. Then invoke `/ctx-doc` — it scans `context/docs/raw/` for unprocessed files and handles them. After the skill confirms processing has started or completed, continue to the next capture type.
 
 If **n**, just say `Skipping documents.` and continue.
 
@@ -435,10 +435,10 @@ If **Y**, print:
 
 ```
 Drop your transcripts at:
-  projects/[slug]/intelligence/meetings/inbox/
+  projects/[slug]/context/meetings/inbox/
 
 On macOS:
-  open projects/[slug]/intelligence/meetings/inbox/
+  open projects/[slug]/context/meetings/inbox/
 
 Type Y when you've added them, and I'll process them before we move on.
 ```
@@ -462,15 +462,15 @@ If **Y**, print:
 
 ```
 Export each thread to .md or .txt and drop them at:
-  projects/[slug]/intelligence/chats/
+  projects/[slug]/context/chats/
 
 On macOS:
-  open projects/[slug]/intelligence/chats/
+  open projects/[slug]/context/chats/
 
 Type Y when you've added them, and I'll process them before we move on.
 ```
 
-Wait for the user's `Y`. Then invoke `/ctx-chat` for each file in `intelligence/chats/`. The skill walks through participants and thread name interactively per thread — let it complete for each one. After all chats are processed, continue to the next capture type.
+Wait for the user's `Y`. Then invoke `/ctx-chat` for each file in `context/chats/`. The skill walks through participants and thread name interactively per thread — let it complete for each one. After all chats are processed, continue to the next capture type.
 
 If **n**, say `Skipping chats.` and continue.
 
@@ -489,15 +489,15 @@ If **Y**, print:
 
 ```
 Drop your notes at:
-  projects/[slug]/intelligence/notes/
+  projects/[slug]/context/notes/
 
 On macOS:
-  open projects/[slug]/intelligence/notes/
+  open projects/[slug]/context/notes/
 
 Type Y when you've added them, and I'll process them before we move on.
 ```
 
-Wait for the user's `Y`. Then invoke `/ctx-note` for each file in `intelligence/notes/`. The skill walks through person-linking interactively per note — let it complete for each one. After all notes are processed, continue.
+Wait for the user's `Y`. Then invoke `/ctx-note` for each file in `context/notes/`. The skill walks through person-linking interactively per note — let it complete for each one. After all notes are processed, continue.
 
 If **n**, say `Skipping notes.` and continue.
 

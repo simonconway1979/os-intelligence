@@ -62,7 +62,7 @@ Spawn background agent (`run_in_background: true`). Pass:
 - `ABOUT_PERSON` — person slug if linked, else null
 - `CONTEXT` — optional context string
 - `DATE` — e.g. "2026-04-17"
-- `NOTE_FOLDER` — `[PROJECT_ROOT]/intelligence/notes/[DATE]-[slug]/`
+- `NOTE_FOLDER` — `[PROJECT_ROOT]/context/notes/[DATE]-[slug]/`
 
 Tell the agent: **Read `.claude/skills/ctx-note/BACKGROUND.md` for processing instructions. Do not ask questions — proceed through all steps.**
 
@@ -71,7 +71,7 @@ Tell the agent: **Read `.claude/skills/ctx-note/BACKGROUND.md` for processing in
 ## File structure
 
 ```
-[PROJECT_ROOT]/intelligence/notes/
+[PROJECT_ROOT]/context/notes/
 
   [DATE]-[slug]/
     raw.md

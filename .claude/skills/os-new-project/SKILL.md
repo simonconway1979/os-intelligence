@@ -163,20 +163,20 @@ Create the directory tree (one `mkdir -p` with explicit paths — no brace expan
 ```bash
 mkdir -p \
   projects/[project-name]/context \
-  projects/[project-name]/intelligence/chats \
-  projects/[project-name]/intelligence/docs/raw \
-  projects/[project-name]/intelligence/meetings/inbox \
-  projects/[project-name]/intelligence/notes \
+  projects/[project-name]/context/chats \
+  projects/[project-name]/context/docs/raw \
+  projects/[project-name]/context/meetings/inbox \
+  projects/[project-name]/context/notes \
   projects/[project-name]/memory \
   projects/[project-name]/outputs \
   projects/[project-name]/people
 ```
 
 Add `.gitkeep` files to the empty folders so they survive cloning and git operations:
-- `intelligence/chats/.gitkeep`
-- `intelligence/docs/raw/.gitkeep`
-- `intelligence/meetings/inbox/.gitkeep`
-- `intelligence/notes/.gitkeep`
+- `context/chats/.gitkeep`
+- `context/docs/raw/.gitkeep`
+- `context/meetings/inbox/.gitkeep`
+- `context/notes/.gitkeep`
 - `memory/.gitkeep`
 - `people/.gitkeep`
 
@@ -196,7 +196,7 @@ This mirrors `/os-start` Step 2 and ensures any subsequent `/os-save`, `/ctx-doc
 
 Tell the user: `Switched active session to [Project Name].`
 
-Write `projects/[project-name]/context/README.md`:
+Write `projects/[project-name]/state/README.md`:
 ```markdown
 # Context
 
@@ -213,10 +213,10 @@ Write `projects/[project-name]/outputs/README.md`:
 
 Active work in progress. Flat structure — no subfolders.
 
-**Rule:** If it's being edited, it lives here. When stable, move to `context/`.
+**Rule:** If it's being edited, it lives here. When stable, move to `state/`.
 ```
 
-Write `projects/[project-name]/context/current-state.md` using this template (substitute `[Project Name]` from Step 1, `[One-liner]` and `[Goal]` from the projects.md entry written in Step 9c, and `[today]` as YYYY-MM-DD). Mirrors the `/os-save` create-from-scratch template so future os-save runs find the expected structure.
+Write `projects/[project-name]/state/current-state.md` using this template (substitute `[Project Name]` from Step 1, `[One-liner]` and `[Goal]` from the projects.md entry written in Step 9c, and `[today]` as YYYY-MM-DD). Mirrors the `/os-save` create-from-scratch template so future os-save runs find the expected structure.
 
 ```markdown
 ---
@@ -317,7 +317,7 @@ Write `projects/[project-name]/CLAUDE.md` using this template, substituting fiel
 - **Status:** Active
 - **Started:** [today YYYY-MM-DD]
 
-See `context/current-state.md` for description, goal, and current state (synced from `projects.md`).
+See `state/current-state.md` for description, goal, and current state (synced from `projects.md`).
 
 ---
 
@@ -331,7 +331,7 @@ See `context/current-state.md` for description, goal, and current state (synced 
 ## Key People
 
 See `people/` for project-level stakeholder profiles (auto-maintained by `/ctx-transcript` and `/ctx-doc`).
-Current dynamics: `context/current-state.md` → Stakeholder Dynamics (auto-maintained by `/ctx-synthesise`).
+Current dynamics: `state/current-state.md` → Stakeholder Dynamics (auto-maintained by `/ctx-synthesise`).
 
 ---
 
@@ -343,9 +343,9 @@ Current dynamics: `context/current-state.md` → Stakeholder Dynamics (auto-main
 
 ## Key Paths
 
-- `context/` — project knowledge (flat, named semantically); `current-state.md` is the live read
+- `state/` — project knowledge (flat, named semantically); `current-state.md` is the live read
 - `outputs/` — work in progress
-- `intelligence/` — meetings, docs, notes, chats (bulk import targets)
+- `context/` — meetings, docs, notes, chats (bulk import targets)
 - `memory/` — session saves (`YYYYMMDD-HHMM.md`)
 ```
 

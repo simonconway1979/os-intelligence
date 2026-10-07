@@ -23,14 +23,14 @@ Two phases:
 
 **Step 2 — Project.** Read `[workspace-root]/.current-session` to identify the active project (parse left of ` / ` if portfolio). Look up the folder path in `projects.md`. Show the project name. Confirm with user (Y/N or just Enter).
 
-**Step 3 — Check for prior synthesis.** Look for `[PROJECT_ROOT]/intelligence/cross-synthesis.md`.
+**Step 3 — Check for prior synthesis.** Look for `[PROJECT_ROOT]/context/cross-synthesis.md`.
 
 - **Found:** Read its frontmatter. Extract `last-synthesised`. Show:
   `Last synthesis: [date]. Running in delta mode — only new meetings will be re-read; prior synthesis used as baseline.`
 - **Not found:** Show:
   `No prior synthesis found. First run — all meetings will be processed.`
 
-**Step 4 — Scope meetings.** Glob all subdirectories under `[PROJECT_ROOT]/intelligence/meetings/`. For each, check for a `synthesis.md` and read only its frontmatter (first 20 lines) to get the `date` field.
+**Step 4 — Scope meetings.** Glob all subdirectories under `[PROJECT_ROOT]/context/meetings/`. For each, check for a `synthesis.md` and read only its frontmatter (first 20 lines) to get the `date` field.
 
 - **Delta mode:** Include only synthesis files with `date` newer than `last-synthesised`.
 - **First run:** Include all synthesis files found.
@@ -55,11 +55,11 @@ Say: `Got it. Running cross-synthesis in the background — you can keep working
 
 Spawn background agent (`run_in_background: true`). Pass:
 - `PROJECT_ROOT` — e.g. `projects/acme-corp-launch/`
-- `MEETINGS_DIR` — `[PROJECT_ROOT]/intelligence/meetings/`
+- `MEETINGS_DIR` — `[PROJECT_ROOT]/context/meetings/`
 - `NEW_MEETING_FILES` — list of full paths to synthesis.md files to process this run
 - `IS_DELTA` — true/false
 - `PRIOR_SYNTHESIS_PATH` — path to existing cross-synthesis.md if delta run, null if first run
 - `PEOPLE_DIR` — root-level `people/` directory path (e.g. `people/`)
-- `OUTPUT_PATH` — `[PROJECT_ROOT]/intelligence/cross-synthesis.md`
+- `OUTPUT_PATH` — `[PROJECT_ROOT]/context/cross-synthesis.md`
 
-Tell the agent: **Read `.claude/skills/ctx-synthesise/BACKGROUND.md` for full instructions. Do not ask questions — proceed through all steps. After writing cross-synthesis.md, also update the Stakeholder Dynamics section of `[PROJECT_ROOT]/context/current-state.md` if it exists. Use the cross-synthesis findings to populate: Current read (2-3 sentences), Key positions, Tensions, Who to watch. Update the section's `_Last updated:_` line and the file frontmatter (`last-updated`, `updated-by: ctx-synthesise`).**
+Tell the agent: **Read `.claude/skills/ctx-synthesise/BACKGROUND.md` for full instructions. Do not ask questions — proceed through all steps. After writing cross-synthesis.md, also update the Stakeholder Dynamics section of `[PROJECT_ROOT]/state/current-state.md` if it exists. Use the cross-synthesis findings to populate: Current read (2-3 sentences), Key positions, Tensions, Who to watch. Update the section's `_Last updated:_` line and the file frontmatter (`last-updated`, `updated-by: ctx-synthesise`).**

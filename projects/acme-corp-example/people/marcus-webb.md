@@ -39,24 +39,24 @@ Style: "some things should move fast and some things shouldn't." Worth quickly m
 
 ## Sources
 
-- `intelligence/docs/raw/predecessor-handoff-memo.md`
-- `intelligence/docs/raw/marcus-webb-linkedin.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/series-c-investor-update-q4-2025.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
-- `intelligence/docs/raw/job-description-head-of-product.md`
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
-- `intelligence/docs/raw/conference-brief-htr-europe-2026.md`
-- `intelligence/docs/raw/customer-escalation-northwind-bank.md`
-- `intelligence/docs/raw/priya-360-review-2025.md`
-- `intelligence/docs/raw/strategy-deck-2026.md`
-- `intelligence/docs/raw/org-chart.md`
+- `context/docs/raw/predecessor-handoff-memo.md`
+- `context/docs/raw/marcus-webb-linkedin.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/series-c-investor-update-q4-2025.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/job-description-head-of-product.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/conference-brief-htr-europe-2026.md`
+- `context/docs/raw/customer-escalation-northwind-bank.md`
+- `context/docs/raw/priya-360-review-2025.md`
+- `context/docs/raw/strategy-deck-2026.md`
+- `context/docs/raw/org-chart.md`
 
 ---
 
 ## 2026-05-04 — First 1:1 (Orientation, 45 min)
 
-`intelligence/meetings/2026-05-04-1000-marcus-webb/`
+`context/meetings/2026-05-04-1000-marcus-webb/`
 
 **Confirmed in conversation:**
 - AI programme is the strategic priority. Board-aligned and leadership-endorsed. But the real work is execution quality — layering in AI that customers actually notice, not shipping AI labels for optics.
@@ -80,7 +80,7 @@ Style: "some things should move fast and some things shouldn't." Worth quickly m
 
 ## 2026-04-09_2026-05-01 — #london-senior Slack (observed retrospectively)
 
-Source: `intelligence/chats/london-senior-slack/2026-04-09_2026-05-01/`
+Source: `context/chats/london-senior-slack/2026-04-09_2026-05-01/`
 
 **What this source added:**
 

@@ -82,11 +82,11 @@ Acme deprecated its legacy reporting suite in late 2024 when the replacement shi
 
 ## Sources
 
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
-- `intelligence/docs/raw/engineering-tech-stack.md`
-- `intelligence/docs/raw/all-hands-2026-q1-transcript.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/conference-brief-htr-europe-2026.md`
-- `intelligence/docs/raw/series-c-investor-update-q4-2025.md`
-- `intelligence/docs/raw/strategy-deck-2026.md`
-- `intelligence/docs/raw/customer-escalation-northwind-bank.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/engineering-tech-stack.md`
+- `context/docs/raw/all-hands-2026-q1-transcript.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/conference-brief-htr-europe-2026.md`
+- `context/docs/raw/series-c-investor-update-q4-2025.md`
+- `context/docs/raw/strategy-deck-2026.md`
+- `context/docs/raw/customer-escalation-northwind-bank.md`

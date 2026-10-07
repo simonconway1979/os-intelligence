@@ -228,7 +228,7 @@ For each entry in the file's `project-relevance:` frontmatter:
 - No automatic file update — the INDEX.md serves as the reference point.
 
 **Standalone project** (e.g. `pm-os`):
-- No automatic file update unless the project has a `context/inspiration-sources.md` file. If it does, add the file there.
+- No automatic file update unless the project has a `state/inspiration-sources.md` file. If it does, add the file there.
 
 ---
 

@@ -119,7 +119,7 @@ Once the user has confirmed the structure and skill plan:
 2. Create the key files:
    - `CLAUDE.md` at project root — document the structure, stages, key paths
    - `TRACKER.md` if a portfolio tracker is needed
-   - Context file stubs in `context/` (headers only, marked "— add after first session")
+   - Context file stubs in `state/` (headers only, marked "— add after first session")
    - Template files in `templates/` for any repeating unit (opportunity, contact, etc.)
 3. Update the project `CLAUDE.md` with:
    - Project-specific skills (list them under a `## Skills` section)

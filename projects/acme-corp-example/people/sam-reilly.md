@@ -52,9 +52,9 @@ The memo includes Sam's reads on Marcus, Tom, Kasia, Priya, Elena, James — cap
 
 ## Sources
 
-- `intelligence/docs/raw/predecessor-handoff-memo.md`
-- `intelligence/docs/raw/q1-2026-board-update.md`
-- `intelligence/docs/raw/product-roadmap-q1-q2-2026.md`
-- `intelligence/docs/raw/org-chart.md`
-- `intelligence/docs/raw/priya-360-review-2025.md`
-- `intelligence/docs/raw/customer-escalation-northwind-bank.md`
+- `context/docs/raw/predecessor-handoff-memo.md`
+- `context/docs/raw/q1-2026-board-update.md`
+- `context/docs/raw/product-roadmap-q1-q2-2026.md`
+- `context/docs/raw/org-chart.md`
+- `context/docs/raw/priya-360-review-2025.md`
+- `context/docs/raw/customer-escalation-northwind-bank.md`

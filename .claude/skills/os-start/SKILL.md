@@ -88,7 +88,7 @@ Pluralise the item name naturally in the tip (e.g. "events", "ideas", "opportuni
 
 ## Step 3 — Load current state
 
-Read `[project-root]/context/current-state.md` if it exists. This is the primary context source.
+Read the project's current-state file if it exists — this is the primary context source. **Resolve its location root-first:** use `[project-root]/current-state.md` (the OSI adopt-in-place location, written by `/osi-setup` and `/synthesise`); if that's absent, fall back to `[project-root]/state/current-state.md` (the richer PM-OS / `/os-new-project` shape); if that's absent too, try `[project-root]/context/current-state.md` (the pre-migration-0003 location) and suggest running `migrations/0003-rename-context-and-state-folders.py`. `[project-root]` is the **Folders:** path from `projects.md`. For a hierarchical roll-up, the parent `current-state.md` is the one to load.
 
 For each section, check `_Last updated:_`:
 - > 14 days old → flag as stale in the briefing
