@@ -1,5 +1,7 @@
 # OS-Intelligence
 
+> **V2, a team operating system for product work, is in build.** See [os-intelligence.ai](https://os-intelligence.ai). This repo is V1, open source and usable today.
+
 **A reasoning layer for AI-native product managers.**
 
 Every AI session starts cold. You re-explain the stakeholder context, re-derive the decision, hold the thread across PRDs, standups, and 1:1s in your head until you don't. What if every session built on the last, and the system held the thread for you?
