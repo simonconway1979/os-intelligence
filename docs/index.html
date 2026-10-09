@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OS-Intelligence - A team operating system for product work</title>
+<title>OS-Intelligence - a team operating system for product work</title>
 <meta name="description" content="An open-source team operating system for product work in Claude Code and Codex. One repo: every PM completes work, saves sessions and runs research in it, and every claim traces back to source.">
 <!-- Open Graph: LinkedIn, Slack, WhatsApp, iMessage, Facebook -->
 <meta property="og:site_name" content="OS-Intelligence">
@@ -431,10 +431,6 @@
     .hero-grid{ grid-template-columns: minmax(0,1.05fr) minmax(0, .95fr); gap: 4rem; }
   }
 
-  @media(min-width: 960px){
-    .hero h1.h1-two{ font-size: clamp(2.4rem, 3.6vw, 2.9rem) }
-    .hero h1.h1-two span{ display:block; white-space:nowrap }
-  }
   .hero h1 .accent-blue{ color: var(--B500) }
   .hero h1 .muted{ color: var(--N80); font-weight:500 }
   .hero-fix{
@@ -1078,11 +1074,43 @@
   /* Built-by section */
   .built .cards-3 .card h3{ margin-top:.25rem }
   .built .more{ margin-top:2rem }
+  section[id]{ scroll-margin-top: 80px }
+  @media(min-width: 960px){
+    .hero h1.h1-two{ font-size: clamp(2.4rem, 3.6vw, 2.9rem) }
+    .hero h1.h1-two span{ display:block; white-space:nowrap }
+  }
+  #features .feat-col{ display:flex; flex-direction:column; align-items:flex-start }
+  #features .feat-col ul{ align-self:stretch }
+  #features .feat-cta{ margin-top:auto; padding-top:1.5rem }
+  .vp-grid{ display:grid; grid-template-columns:1fr; gap:1.5rem; margin-top:2rem }
+  @media(min-width: 860px){ .vp-grid{ grid-template-columns:repeat(3,1fr) } }
+  .vp-col{ border:1px solid var(--N30); border-radius:var(--r-lg); padding:1.75rem; background:var(--N0) }
+  .vp-col .vp-step{ font-size:.75rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--B500) }
+  .vp-col h3{ margin:.5rem 0 .75rem }
+  .vp-col p{ margin:0 0 .75rem }
+  .vp-col ul{ margin:0; padding-left:1.1rem }
+  .vp-col li{ margin:.4rem 0 }
+  .feat-grid{ display:grid; grid-template-columns:1fr; gap:1.5rem }
+  @media(min-width:860px){ .feat-grid{ grid-template-columns:1fr 1fr } }
+  .feat-col{ border:1px solid var(--N30); border-radius:var(--r-lg); padding:1.75rem; background:var(--N0) }
+  .feat-col.v2{ background:var(--bg-soft) }
+  .feat-col h3{ margin:.4rem 0 1rem }
+  .feat-col ul{ margin:0; padding-left:1.1rem }
+  .feat-col li{ margin:.55rem 0 }
+  .tag{ display:inline-block; font-size:.72rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    padding:.2rem .5rem; border-radius:var(--r-sm); background:var(--G300); color:var(--N900) }
+  .tag.soon{ background:var(--Y300) }
+  .prose{ max-width:46rem }
+  .prose p{ margin:.9rem 0 }
+  .score{ width:100%; max-width:46rem; border-collapse:collapse; margin:1.25rem 0; font-size:.95rem }
+  .score th,.score td{ text-align:left; padding:.6rem .5rem; border-bottom:1px solid var(--N30) }
+  .skills{ display:grid; grid-template-columns:1fr; gap:1rem }
+  @media(min-width:720px){ .skills{ grid-template-columns:1fr 1fr } }
+  .skills div{ border-left:3px solid var(--B500); padding:.2rem 0 .2rem 1rem }
+  .skills strong{ display:block }
 </style>
 </head>
 <body>
-
-<!-- TOP NAV -->
 <header class="top">
   <div class="shell top-inner">
     <div class="brand">
@@ -1091,54 +1119,33 @@
       <span class="v">v0.1</span>
     </div>
     <nav class="top-nav" aria-label="Primary">
-      <a href="#what-it-does">What it does</a>
-      <a href="build.html">V2</a>
-      <a href="#get-started">Setup</a>
-      <a href="#early-access">Get started</a>
-      <a href="#proof">Proof</a>
-      <a href="#faq">FAQ</a>
+      <a href="#why">Why</a>
+      <a href="#features">What it does</a>
+      <a href="#field">In the field</a>
+      <a href="#evals">Evals</a>
+      <a href="https://github.com/simonconway1979/os-intelligence/blob/main/README.md" target="_blank" rel="noopener">V1 (open source)</a>
     </nav>
-    <a class="btn btn-cta" href="#early-access">
-      Get started
+    <a class="btn btn-cta" href="https://tally.so/r/ja0vKa">
+      Get early access
       <span class="arr" aria-hidden="true">→</span>
     </a>
   </div>
 </header>
 
-<!-- 1. HERO -->
-<section class="hero">
+<section class="hero" style="padding-bottom:3rem">
   <div class="shell">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow"><span class="dot"></span>v0.1 open source · V2 in build</span>
-        <h1 class="h1-two" style="margin-top:1.25rem">
-          <span>A team operating system</span> <span>for product work.</span>
-        </h1>
-
-        <p class="hero-body">
-          One repo for the whole product team. Everyone completes work, saves their session and runs research in it, and the AI starts each session knowing where the <strong>team</strong> left off.<br>
-          Every claim traces back to source.
-        </p>
-
+        <span class="eyebrow"><span class="dot"></span>V2 · the team operating system · in build</span>
+        <h1 class="h1-two" style="margin-top:1.25rem"><span>A team operating system</span> <span>for product management.</span></h1>
+        <p class="hero-body">One repo for the whole product team. Meetings, decisions and research become shared context your AI reasons against, and every claim traces back to a source. Every PM does their work, saves sessions and runs research in the same place. Runs in Claude Code and Codex.</p>
         <div class="cta-row">
-          <a class="btn btn-cta lg" href="#early-access">
-            Get started
-            <span class="arr" aria-hidden="true">→</span>
-          </a>
-          <a class="btn btn-secondary lg" href="build.html">See V2: the team OS</a>
-        </div>
-
-        <div class="author">
-          <span class="avatar" aria-hidden="true">SC</span>
-          Built by <span class="ink">Simon Conway</span>
-          <span class="sep">·</span> AI-native PM
-          <span class="sep">·</span> Barcelona
+          <a class="btn btn-cta lg" href="https://tally.so/r/ja0vKa" id="early-access-v2">Get early access <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-secondary lg" href="https://github.com/simonconway1979/os-intelligence/blob/main/README.md" target="_blank" rel="noopener">Try the open-source V1</a>
         </div>
       </div>
-
-      <!-- Right column: video slot. Replace .video-slot with the embed when the video is ready. -->
       <div class="hero-right">
-        <div class="video-slot" id="workflow-video">
+        <div class="video-slot">
           <div>
             <div class="play" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
             <div class="vs-title">The workflow, end to end</div>
@@ -1150,8 +1157,40 @@
   </div>
 </section>
 
-<!-- 2. WHAT IF YOU COULD -->
-<section id="what-it-does" class="what">
+<section id="why">
+  <div class="shell">
+    <div class="section-head">
+      <span class="eyebrow">Why it exists</span>
+      <h2>Your team uses AI every day. None of it adds up.</h2>
+    </div>
+    <div class="vp-grid">
+      <div class="vp-col">
+        <span class="vp-step">The problem</span>
+        <h3>Everyone uses AI their own way</h3>
+        <p>One PM keeps a folder of prompts, another pastes notes into a chat, a third has a private setup nobody else can see. What each of them learns stays in their own chats, and none of it draws on what the company already knows.</p>
+        <p>So plans reach review unchallenged, research gets repeated because nobody can find the last round, and leaders see AI use going up without seeing what it changed.</p>
+      </div>
+      <div class="vp-col">
+        <span class="vp-step">The solution</span>
+        <h3>One shared place for the team's knowledge</h3>
+        <p>OS-Intelligence is a shared folder the whole product team works in, with AI built in. Meetings, documents and decisions go in. The AI turns them into one current picture of each project, and every point links back to where it came from.</p>
+        <p>Everyone works from that same picture, in the AI tools they already use.</p>
+      </div>
+      <div class="vp-col">
+        <span class="vp-step">What your team gets</span>
+        <h3>Better answers, and plans that hold up</h3>
+        <ul>
+          <li>Answers built on what your company knows, with the source for each point.</li>
+          <li>An AI that challenges a plan with the evidence instead of telling you it looks great.</li>
+          <li>Research that's saved where the next person can find it.</li>
+          <li>Plans that stay in the PM's own words, so the PM still owns the decision.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="premise" class="what">
   <div class="shell">
     <div class="section-head">
       <span class="eyebrow">The premise</span>
@@ -1194,366 +1233,131 @@
   </div>
 </section>
 
-
-<!-- 2b. HOW IT'S BUILT -->
-<section id="built" class="built">
+<section id="features" style="background:var(--bg-soft)">
   <div class="shell">
     <div class="section-head">
-      <span class="eyebrow">How it's built</span>
-      <h2>Built by a product manager, in Claude Code.</h2>
-      <p class="lede">Skills, sub-agents, hooks and evals. Designed, built and tested on real product work.</p>
+      <span class="eyebrow">Features</span>
+      <h2>What it does.</h2>
     </div>
-    <div class="cards-3">
-      <article class="card c1">
-        <h3>Run as a team OS</h3>
-        <p>Run with a product team at a PE-backed European marketplace (Jun–Sep 2026): a seven-week pilot took two roadmap features from idea to production.</p>
-      </article>
-      <article class="card c2">
-        <h3>Agents that work on their own</h3>
-        <p>A research agent writes every finding as a sourced claim with a quote and a link. Background agents update the shared state after each session. Scheduled runs work overnight.</p>
-      </article>
-      <article class="card c3">
-        <h3>Tested, not assumed</h3>
-        <p>A 21-question, four-condition comparison of ways to give an agent company context, with the mixed result reported in full.</p>
-      </article>
-    </div>
-    <div class="more">
-      <a class="btn btn-cta" href="build.html">See V2: features, evals and early access <span class="arr" aria-hidden="true">→</span></a>
-    </div>
-  </div>
-</section>
-<!-- 3. GET STARTED -->
-<section id="get-started" class="start">
-  <div class="shell">
-    <div class="start-grid">
-      <div>
-        <div class="section-head" style="margin-bottom: 2rem">
-          <span class="eyebrow">Setup</span>
-          <h2>Get started in about 20 minutes.</h2>
-        </div>
-
-        <ol class="steps">
-          <li>
-            <div class="num">1</div>
-            <div class="body">
-              <div class="title">Clone the repo</div>
-              <div class="sub">One-line install. The whole system lives in your project.</div>
-            </div>
-          </li>
-          <li>
-            <div class="num">2</div>
-            <div class="body">
-              <div class="title">Run <code>/os-welcome</code></div>
-              <div class="sub">Guided walkthrough. From install to first synthesis on your real work in 20 minutes.</div>
-            </div>
-          </li>
-        </ol>
-      </div>
-
-      <aside class="start-aside">
-        <span class="eyebrow">Outcome</span>
-        <p class="quote" style="text-align: left; justify-content: center; gap: 0.25rem; line-height: 1.4;">
-          <span style="display: block; white-space: nowrap;">Claude <em>holds the thread.</em></span>
-          <span style="display: block;">No cold starts.</span>
-        </p>
-        <div class="meta">
-          <span class="label">Prerequisite</span>
-          Claude Code installed. That's it.
-        </div>
-        <div>
-          <a class="btn btn-cta" href="#early-access">
-            Get started
-            <span class="arr" aria-hidden="true">→</span>
-          </a>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<!-- 4. WHO THIS IS FOR -->
-<section class="who">
-  <div class="shell">
-    <div class="section-head">
-      <span class="eyebrow">Who this is for</span>
-      <h2>Built for senior PMs already living in Claude Code.</h2>
-    </div>
-
-    <div class="who-grid">
-      <article class="who-card pm">
-        <span class="role"><span class="ic"></span>Product managers</span>
-        <h3>ICs and leads who ship daily.</h3>
-        <p>Meetings, PRDs, decisions, chats, open questions - captured from everyone who contributed, surfaced when you need them, ready for your AI to reason against.</p>
-      </article>
-
-      <article class="who-card fo">
-        <span class="role"><span class="ic"></span>Mid-build PMs</span>
-        <h3>You've already started building your own context system.</h3>
-        <p>Four of six pilot users were PMs mid-build of something similar themselves. If that's you, this is the working version of what you were going to build.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- 5. EARLY ADOPTERS -->
-<section id="early-access" class="ea">
-  <div class="shell">
-    <div class="section-head">
-      <span class="eyebrow"><span class="dot"></span>Open source · free forever</span>
-      <h2>Get a working context system in about 20 minutes.</h2>
-    </div>
-
-    <p class="lede">
-      Install today. First synthesis on real PM work in one sitting.
-    </p>
-
-    <div class="ea-cta-top">
-      <a class="btn btn-cta lg" href="https://tally.so/r/ja0vKa">
-        Get started
-        <span class="arr" aria-hidden="true">→</span>
-      </a>
-    </div>
-
-    <div class="deal">
-      <div class="deal-card you" style="grid-column: 1 / -1;">
-        <h3>What you get</h3>
+    <div class="feat-grid">
+      <div class="feat-col v2">
+        <span class="tag soon">V2 · in build · coming soon</span>
+        <h3>Your whole team works from the same knowledge</h3>
         <ul>
-          <li>The full system, free, forever</li>
-          <li><span>From clone to first synthesis in about 20 minutes, via <code style="font-family:var(--mono); font-size:.9em; color:#85B8FF; white-space:nowrap;">/os-welcome</code></span></li>
-          <li>Designed to be shaped by the PMs who use it</li>
+          <li><strong>Shared team knowledge.</strong> One place for the team's meetings, decisions and research, so what one PM learns, everyone can use, and nobody starts from scratch.</li>
+          <li><strong>Knowledge layer.</strong> Meetings, documents and decisions synthesised into one current picture per project, with every claim traced to its source and stale context flagged.</li>
+          <li><strong>Sparring partner.</strong> Raises the few issues worth discussing, challenges with the evidence, and ends each conversation with a plan in the PM's own words.</li>
+          <li><strong>Autonomous research.</strong> Desk research on the riskiest assumptions, starting from "what if this is false", with a hard cap. Findings are logged as sources, never as facts.</li>
+          <li><strong>Idea to prototype.</strong> One workflow from a one-line idea to an evidence-backed PRD and a working prototype, with design and engineering setting the quality bar.</li>
+        </ul>
+        <div class="feat-cta"><a class="btn btn-cta" href="https://tally.so/r/ja0vKa">Get early access <span class="arr" aria-hidden="true">→</span></a></div>
+      </div>
+      <div class="feat-col">
+        <span class="tag">V1 · open source · May 2026</span>
+        <h3>Your AI remembers your product work</h3>
+        <ul>
+          <li><strong>Picks up where you left off.</strong> Each session is saved, so the next one starts with what you already know instead of from a blank page.</li>
+          <li><strong>One current picture per project.</strong> Meetings, documents, chats and notes become one up-to-date view: where things stand, what's decided, who's involved and what's still open.</li>
+          <li><strong>Knows what's out of date.</strong> Anything that hasn't been checked against a source for a while is flagged, so you don't act on old information.</li>
+          <li><strong>Everyday PM work, ready to run.</strong> Synthesis, meeting notes and research are ready-made workflows, so you get consistent results without writing prompts.</li>
+        </ul>
+        <div class="feat-cta"><a class="btn btn-secondary" href="https://github.com/simonconway1979/os-intelligence/blob/main/README.md" target="_blank" rel="noopener">Try V1, open source <span class="arr" aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="field">
+  <div class="shell prose">
+    <div class="section-head">
+      <span class="eyebrow">In the field</span>
+      <h2>Used with a product team.</h2>
+    </div>
+    <p>June to September 2026, at a PE-backed European marketplace, I applied OS-Intelligence to the product organisation as a team operating system.</p>
+    <p><strong>Idea to production.</strong> A seven-week pilot took two roadmap features from a one-line idea to an evidence-backed PRD, a working prototype and a live release, with product, design and engineering setting the quality bar.</p>
+    <p><strong>Research agent with sourced claims.</strong> An agent retrieved and synthesised company knowledge and wrote every finding as a sourced claim with a quote and a link. A PM ran it by hand and asked for the prompts.</p>
+  </div>
+</section>
+
+<section id="evals" style="background:var(--bg-soft)">
+  <div class="shell prose">
+    <div class="section-head">
+      <span class="eyebrow">Evals</span>
+      <h2>Tested, and the results reported as they came out.</h2>
+    </div>
+    <p>Before claiming anything worked, I measured it against simpler setups: up to 21 questions with known answers, a control page sealed before any runs, and setups compared side by side. Losses included.</p>
+    <table class="score">
+      <tr><th>Test</th><th>Result</th></tr>
+      <tr><td>Context comparison: the knowledge layer against a plain baseline</td><td>Mixed</td></tr>
+      <tr><td>Names the right people and says what it couldn't find</td><td>Held</td></tr>
+      <tr><td>Facts survive when the agent writes a summary</td><td>Didn't hold: two facts lost</td></tr>
+      <tr><td>Knowledge prepared locally beats leaving it in company tools</td><td>Held, and a re-test confirmed it</td></tr>
+    </table>
+    <p>The knowledge layer shows promise, but it didn't win on every measure. Next: more and larger datasets, starting with a public synthetic one that anyone can rerun.</p>
+  </div>
+</section>
+
+<section id="under-the-hood">
+  <div class="shell">
+    <div class="section-head">
+      <span class="eyebrow">Under the hood</span>
+      <h2>How it's built.</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-col">
+        <span class="tag">V1 · open source · May 2026</span>
+        <h3>A context layer in your repo</h3>
+        <ul>
+          <li><strong>Skills loaded on demand.</strong> Each workflow is a Claude Code skill, so the agent only loads what the task needs.</li>
+          <li><strong>Current-state synthesis.</strong> Meetings, PRDs, chats and notes become one current picture per project: position, decisions, people, open questions.</li>
+          <li><strong>Agent memory in files.</strong> Sessions are saved as plain files in the repo, so the next session starts where the last one stopped.</li>
+          <li><strong>Staleness flags.</strong> Context that hasn't been checked against a source for a while is marked, not trusted.</li>
+          <li><strong>Sub-agent fan-out.</strong> Long synthesis splits across sub-agents and reconverges.</li>
+          <li><strong>Eval harness.</strong> Answers scored against a known answer set.</li>
+        </ul>
+      </div>
+      <div class="feat-col v2">
+        <span class="tag soon">V2 · in build · coming soon</span>
+        <h3>A team operating system</h3>
+        <ul>
+          <li><strong>One repo for the team.</strong> Every PM completes work, saves their session and runs research in the same place.</li>
+          <li><strong>Hypothesis store.</strong> One agent keeps the team's open bets in date order, each with verbatim evidence for and against.</li>
+          <li><strong>Decision-maker rule.</strong> A view about how a stakeholder judges success only weakens on that person's own dated words.</li>
+          <li><strong>Two tracks, never merged.</strong> The agent's read (evidence only) sits beside the PM's own view and what would change their mind.</li>
+          <li><strong>Conversation partner.</strong> Raises the few issues worth discussing and ends each one with a plan in the PM's words.</li>
+          <li><strong>Research agent.</strong> Desk research on the riskiest assumptions, starting from "what if this is false", with a hard cap.</li>
+          <li><strong>Meeting module.</strong> Preps a meeting from a plan, then reviews the transcript and feeds the store.</li>
+          <li><strong>Save sweep.</strong> One command saves the session; background agents then update the shared state.</li>
         </ul>
       </div>
     </div>
-
-    <div class="ea-foot">
-      <p>We're building this <strong>in the open, together.</strong></p>
-      <a class="btn btn-cta lg" href="https://tally.so/r/ja0vKa">
-        Get started
-        <span class="arr" aria-hidden="true">→</span>
-      </a>
-    </div>
   </div>
 </section>
 
-<!-- 6. VISUAL PROOF -->
-<section id="proof" class="proof">
+<section id="skills">
   <div class="shell">
     <div class="section-head">
-      <span class="eyebrow">The proof</span>
-      <h2>Here's the trail. Here's what you can ask it.</h2>
+      <span class="eyebrow">What this shows</span>
+      <h2>The skills behind it.</h2>
     </div>
-
-    <div class="proof-grid">
-      <!-- Caption 1 -->
-      <p class="proof-caption proof-caption-1">
-        <strong>A real <code style="font-family:var(--mono); font-size:.92em; background:var(--N20); padding:.1em .4em; border-radius:var(--r-sm)">current-state.md</code></strong><br>
-        - the project's live context, ready when you start.
-      </p>
-
-      <!-- Frame 1 -->
-      <div class="frame proof-frame-1">
-        <div class="frame-head">
-          <div class="dots"><span></span><span></span><span></span></div>
-          <span class="name">current-state.md</span>
-          <span class="tag-sm">project / atlas</span>
-        </div>
-        <div class="frame-body">
-<pre class="md"><span class="h"># Atlas - current state</span>
-<span class="meta">updated 2026-04-22 · 14 sessions</span>
-
-<span class="hh">## Project Position</span>
-Q3 roadmap is <span class="em">contested</span>. Tom (eng) wants to defer
-"agentic flows" until v2; Maya (design) wants them
-in v1 to test the core hypothesis. Decision pending.
-
-<span class="hh">## Stakeholder Dynamics</span>
-- <span class="name">Maya Chen</span> (design lead) - pushed back Apr 14.
-  Wants stakeholder map before next sync.
-- <span class="name">Tom Reilly</span> (eng lead) - flipped Apr 18.
-  Now open to v1 if scoped to one surface.
-
-<span class="hh">## Standing Decisions</span>
-- Ship v1 to internal users only (Apr 09)
-- Defer mobile until v1 lands (Apr 11)
-
-<span class="hh">## In Flight</span>
-- Stakeholder map for Maya - owed
-- Cost estimate for agentic v1 - w/ Tom
-
-<span class="hh">## Open Questions</span>
-- Are we measuring activation or retention?
-- Who owns the v1 / v2 cut decision?
-</pre>
-        </div>
-      </div>
-
-      <!-- Caption 2 -->
-      <p class="proof-caption proof-caption-2">
-        <strong>Claude reasoning against it</strong><br>
-        - every answer traced to source.
-      </p>
-
-      <!-- Frame 2 -->
-      <div class="frame session proof-frame-2">
-        <div class="frame-head">
-          <div class="dots"><span></span><span></span><span></span></div>
-          <span class="name">claude-code · session</span>
-          <span class="tag-sm">reasoning</span>
-        </div>
-        <div class="frame-body">
-<pre class="md"><span class="prompt">›</span> <span class="you">What is Tom's objection?</span>
-
-Tom's objection isn't to agentic flows in principle -
-it's to <span class="em">scope and timing</span>. As of Apr 18
-he flipped: he'll accept v1 if it's bounded to one
-surface.
-
-The unresolved piece is <span class="em">cost</span>. He's
-working on an estimate for the scoped version; until
-that lands, he can't commit.
-
-There's also a <span class="em">second-order objection</span>:
-he wants the v1 / v2 cut decision owned by someone -
-currently it isn't, and that's blocking Maya's
-stakeholder map.
-
-If you want him on board this week, the move is to
-surface the ownership question before the cost
-estimate, not after.
-
-<span class="meta">sources · standing-decisions.md · session-2026-04-18.md · open-questions.md</span>
-<span class="meta">↳ drill into the Apr 18 session?</span></pre>
-        </div>
-      </div>
+    <div class="skills">
+      <div><strong>Context engineering</strong>Getting the right company knowledge, current and sourced, to people and their AI tools.</div>
+      <div><strong>Agent memory and retrieval</strong>File-based memory, synthesis and retrieval over meetings, docs and chats.</div>
+      <div><strong>Multi-agent orchestration</strong>Sub-agent fan-out, background agents and scheduled runs.</div>
+      <div><strong>Evals</strong>Pass bars set before testing, known answer sets, and results reported as they came out.</div>
+      <div><strong>Claude Code and Codex</strong>Skills, sub-agents, hooks and MCP, built hands-on every day.</div>
+      <div><strong>Product practice</strong>Discovery, decision records and stakeholder work, built into the tool rather than added on.</div>
     </div>
+    <p class="lede" style="margin-top:2rem">Talks: Behind the Build (Happy Operators), AI Build Club.</p>
   </div>
 </section>
 
-<!-- 7. PILOTS -->
-<section class="pilots">
-  <div class="shell">
-    <div class="section-head">
-      <span class="eyebrow">Field reports</span>
-      <h2>What pilots are saying.</h2>
-      <p class="lede">First cohort installed <strong class="ink">May 2026</strong>.</p>
-    </div>
-
-    <div class="quotes">
-      <div class="quote">
-        <div class="qmark">"</div>
-        <div class="q">This is Claude on rails. This provides the reason to chat to Claude, similar to how there should be a reason to set up a meeting.</div>
-        <div class="who">Edwin Groenendaal · CTO · v0.1 pilot</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 8. UNDER THE HOOD -->
-<section class="uh">
-  <div class="shell">
-    <div class="section-head">
-      <span class="eyebrow">For the curious</span>
-      <h2>Under the hood.</h2>
-      <p class="lede">For the dev-fluent reader who scrolls. The boring, important parts.</p>
-    </div>
-
-    <div class="uh-grid">
-      <div class="uh-item">
-        <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/><path d="M12 13v3"/></svg></span>
-        <h4>Parallel sub-agent fan-out</h4>
-        <p>Synthesis splits across specialised sub-agents and reconverges, so a 2-hour transcript doesn't block a 30-second answer.</p>
-      </div>
-      <div class="uh-item">
-        <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h6"/><path d="M15 12h6"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3"/><path d="M12 18v3"/></svg></span>
-        <h4>Sonnet / Opus model routing</h4>
-        <p>Routine reads go to Sonnet; structural reasoning escalates to Opus. You don't pay Opus prices for a name lookup.</p>
-      </div>
-      <div class="uh-item">
-        <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11l3 3v13H5z"/><path d="M9 9h6"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span>
-        <h4>Append-only reasoning trail</h4>
-        <p>Every decision is a new entry, never a rewrite. Your past selves stay legible - diffs over time, not overwrites.</p>
-      </div>
-      <div class="uh-item">
-        <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="6" rx="1"/><rect x="4" y="14" width="16" height="6" rx="1"/><path d="M8 10v4"/><path d="M16 10v4"/></svg></span>
-        <h4>Schema-aware permission migration</h4>
-        <p>When the schema evolves, your existing trail migrates forward - no re-ingest, no losing what you already wrote.</p>
-      </div>
-      <div class="uh-item">
-        <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v8"/><path d="M8 8l4-4 4 4"/><rect x="4" y="14" width="16" height="6" rx="1"/></svg></span>
-        <h4>Local activity log · zero telemetry</h4>
-        <p>The log is a file in your repo. Nothing leaves your machine unless you push it.</p>
-      </div>
-      <div class="uh-item">
-        <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8 11l8-4"/><path d="M8 13l8 4"/></svg></span>
-        <h4>Versioned via git tags + migration scripts</h4>
-        <p>Upgrades are git pulls. Breaking changes ship migration scripts. You stay in control of when, and whether, to move.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 9. FAQ -->
-<section id="faq" class="faq-section">
-  <div class="shell">
-    <div class="section-head">
-      <span class="eyebrow">Questions</span>
-      <h2>Frequently asked.</h2>
-    </div>
-
-    <div class="faq-list">
-      <details class="faq-item" open>
-        <summary>Where does my data go? Is any of this leaving my machine?</summary>
-        <div class="ans">
-          <p>No. The reasoning trail is a folder in your repo. Synthesis runs locally through your own Claude Code install - same model calls you're already making, no new endpoints, no new accounts.</p>
-          <p>If you push the repo to GitHub, that's on you and where you push it. OS-Intelligence itself adds zero telemetry.</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>Why build on Anthropic primitives specifically?</summary>
-        <div class="ans">
-          <p>Claude Code is the only environment where a long-horizon reasoning layer can sit <em>next to your work</em>, not in a separate tool. Skills, sub-agents, model routing - the primitives needed already exist. OS-Intelligence is the connective layer.</p>
-          <p>If those primitives change, OS-Intelligence changes with them. That's a feature, not a risk.</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>I don't have Claude Code installed. Can I still try this?</summary>
-        <div class="ans">
-          <p>Not yet. Claude Code is the substrate OS-Intelligence runs inside - install it first, then come back. <code>/os-welcome</code> takes you from clone to first synthesis in about 20 minutes.</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>Is this just for PMs already using Claude Code, or can I start from scratch?</summary>
-        <div class="ans">
-          <p>It's built for PMs already living in Claude Code - that's the substrate, that's where the reasoning happens. If you don't use Claude Code yet, install it first (10 minutes from <a href="https://claude.com/code" target="_blank" rel="noopener">claude.com/code</a>), then clone OS-Intelligence and run <code>/os-welcome</code>. The guided walkthrough takes about 20 minutes and lands you with your first synthesis on real work.</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>How is this different from Granola, Notion AI, or Team OS?</summary>
-        <div class="ans">
-          <p><strong>Not a memory layer. Not a retrieval tool.</strong> OS-Intelligence is a reasoning layer with structure, traceability, and governance built in.</p>
-          <p>Granola captures meetings. Notion AI summarises documents. Team OS structures shared team context. OS-Intelligence is the layer underneath: it synthesises your raw material (meetings, PRDs, stakeholder notes, chats) into a reasoning trail your AI reasons against, not a wiki you click through.</p>
-          <p>Different shape, different layer - they stack rather than replace. If you already use one of those, OS-Intelligence is what makes your AI sessions reason against that captured context instead of starting cold every time.</p>
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary>What does the system look like once it's running - can I see a real example?</summary>
-        <div class="ans">
-          <p>Scroll up to the proof section - that's a real <code>current-state.md</code> file (project name and people anonymised), and the second frame is what your Claude Code session looks like reasoning against it.</p>
-          <p>The full Acme Corp example also ships in the public repo at <code>projects/acme-corp-example/</code> - clone, browse it, see the structure on synthetic data before you bring your own.</p>
-        </div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- 9b. FINAL CTA -->
-<section class="final-cta">
-  <div class="shell">
-    <h2>Ready to fix your context?</h2>
-    <a class="btn btn-cta lg" href="https://tally.so/r/ja0vKa">
-      Get started
-      <span class="arr" aria-hidden="true">→</span>
-    </a>
+<section id="early-access-v2-section" style="background:var(--bg-navy);color:var(--N0)">
+  <div class="shell prose">
+    <h2 style="color:var(--N0)">V2 is in build.</h2>
+    <p style="color:var(--N40)">The next milestone is a short video of the workflow end to end, then the V2 code. Want to hear when it's ready, or try it with your team?</p>
+    <p><a class="btn btn-onnavy lg" href="https://tally.so/r/ja0vKa">Get early access <span class="arr" aria-hidden="true">→</span></a></p>
+    <p style="color:var(--N40)">Want to try something today? <a href="https://github.com/simonconway1979/os-intelligence" style="color:var(--B100)">The open-source V1 is on GitHub.</a></p>
   </div>
 </section>
 
@@ -1570,7 +1374,7 @@ estimate, not after.
         <p>
           Open source under <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache 2.0</a>. Built by <span class="ink">Simon Conway</span> · AI-native PM · Barcelona.
         </p>
-        <p>Hiring for AI product work? <a href="https://simon-conway.com/">See Simon's portfolio</a> or <a href="build.html">how this was built</a>.</p>
+        <p>Hiring for AI product work? <a href="https://simon-conway.com/">See Simon's portfolio</a> or <a href="index.html">how this was built</a>.</p>
       </div>
       <div class="foot-links">
         <a href="https://github.com/simonconway1979/os-intelligence" target="_blank" rel="noopener">
@@ -1597,157 +1401,5 @@ estimate, not after.
   </div>
 </footer>
 
-<script>
-  (function(){
-    var hero = document.querySelector('.hero');
-    var layer = document.getElementById('liLayer');
-    if(!hero || !layer) return;
-
-    var posts = layer.querySelectorAll('.li-post');
-
-    /* ---------- Alt-content swap on every other animation cycle ---------- */
-    /* For each post (by index), define a SECOND variant. On animationiteration
-       (which fires when the post is at opacity 0), swap to the alt; next
-       iteration, swap back to the original. Invisible during the swap. */
-    var ALT = [
-      // 0 - Daniel Mercer
-      { name:"Hugo Renard", role:"Founder & CEO · 2d", av:"a1", initials:"HR",
-        body:'Killed our entire product spec process this week. <span class="hl">The AI just does it</span>. We approve. Done.',
-        likes:'1,892', comments:'421', icons:['like','cele','bulb'] },
-      // 1 - Priya Vasanthan
-      { name:"Mira Achterberg", role:"Chief of Staff · 4h", av:"a2", initials:"MA",
-        body:"Quietly, our best ICs are <span class=\"hl\">running circles around our managers</span> with this. The org chart is the bottleneck now.",
-        likes:'4,118', comments:'687', icons:['like','cele'] },
-      // 2 - Jordan Tate
-      { name:"Felix Akerman", role:"VP Product · 9h", av:"a3", initials:"FA",
-        body:"Replaced our entire weekly planning ritual with a 6-minute prompt. <span class=\"hl\">Nobody noticed</span>. Tells you everything.",
-        likes:'1,206', comments:'274', icons:['like','bulb'] },
-      // 3 - Sara Köhler
-      { name:"Tomás Iglesias", role:"Engineering Manager · 3d", av:"a4", initials:"TI",
-        body:"Hot take: hiring senior engineers in 2026 is <span class=\"hl\">a capital allocation mistake</span>. Don't shoot the messenger.",
-        likes:'7,402', comments:'1,388', icons:['like','cele','bulb'] },
-      // 4 - Marco Olivetti
-      { name:"Anika Devraj", role:"Indie hacker · 11h", av:"a5", initials:"AD",
-        body:'Crossed $40k MRR this month. Team size: still me, <span class="hl">still my dog</span>. The future is small.',
-        likes:'3,217', comments:'512', icons:['like','cele'] },
-      // 5 - Lena Bauer
-      { name:"Caleb Whitford", role:"Head of Platform · 1d", av:"a6", initials:"CW",
-        body:"We deleted our internal docs. <span class=\"hl\">Asking the AI is faster</span> than searching Notion. Not even close.",
-        likes:'955', comments:'241', icons:['like','bulb'] },
-      // 6 - Aarav Reddy
-      { name:"Sofia Larsen", role:"Strategy Consultant · 8h", av:"a7", initials:"SL",
-        body:"Met three founders this week who let their AI <span class=\"hl\">write their board updates</span>. The board hasn't noticed. Make of that what you will.",
-        likes:'612', comments:'94', icons:['like'] },
-      // 7 - Evelyn Hart
-      { name:"Rashid Al-Mansoori", role:"Managing Partner · 2d", av:"a8", initials:"RM",
-        body:"New diligence question for every founder we meet: <span class=\"hl\">show me your prompts</span>. The good ones answer in five minutes.",
-        likes:'8,471', comments:'1,602', icons:['like','cele','bulb'] }
-    ];
-
-    function buildHTML(d){
-      var icons = d.icons.map(function(c){
-        var em = c==='like'?'👍':c==='cele'?'🎉':'💡';
-        return '<span class="ic '+c+'">'+em+'</span>';
-      }).join('');
-      return ''+
-        '<div class="li-head">'+
-          '<div class="li-avatar '+d.av+'">'+d.initials+'</div>'+
-          '<div class="li-meta">'+
-            '<span class="li-name">'+d.name+'</span>'+
-            '<span class="li-role">'+d.role+'</span>'+
-          '</div>'+
-        '</div>'+
-        '<p class="li-body">'+d.body+'</p>'+
-        '<div class="li-react">'+
-          '<span class="stack">'+icons+'</span>'+
-          '<span class="count">'+d.likes+'</span><span class="dot">·</span><span>'+d.comments+' comments</span>'+
-        '</div>';
-    }
-
-    posts.forEach(function(p, i){
-      // capture original HTML so we can restore it
-      p.dataset.original = p.innerHTML;
-      p.dataset.alt = ALT[i] ? buildHTML(ALT[i]) : p.innerHTML;
-      p.dataset.showingAlt = '0';
-      p.addEventListener('animationiteration', function(){
-        if (p.matches(':hover')) return; // don't swap while user is reading
-        var showAlt = p.dataset.showingAlt === '0';
-        p.innerHTML = showAlt ? p.dataset.alt : p.dataset.original;
-        p.dataset.showingAlt = showAlt ? '1' : '0';
-      });
-    });
-
-    /* ---------- Parallax (existing) ---------- */
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var raf = null;
-    var targetX = 0, targetY = 0;
-    var curX = 0, curY = 0;
-
-    hero.addEventListener('mousemove', function(e){
-      var r = hero.getBoundingClientRect();
-      var nx = (e.clientX - r.left) / r.width  - 0.5;
-      var ny = (e.clientY - r.top)  / r.height - 0.5;
-      targetX = nx; targetY = ny;
-      if(!raf) raf = requestAnimationFrame(tick);
-    });
-    hero.addEventListener('mouseleave', function(){
-      targetX = 0; targetY = 0;
-      if(!raf) raf = requestAnimationFrame(tick);
-    });
-
-    function tick(){
-      curX += (targetX - curX) * 0.08;
-      curY += (targetY - curY) * 0.08;
-      posts.forEach(function(p){
-        var depth = p.classList.contains('depth-back') ? 14
-                  : p.classList.contains('depth-mid')  ? 9
-                  : 5;
-        p.style.setProperty('--px', (curX * depth).toFixed(2) + 'px');
-        p.style.setProperty('--py', (curY * depth).toFixed(2) + 'px');
-      });
-      if (Math.abs(targetX - curX) > 0.001 || Math.abs(targetY - curY) > 0.001){
-        raf = requestAnimationFrame(tick);
-      } else {
-        raf = null;
-      }
-    }
-  })();
-
-  /* ---------- Scrollspy: update URL hash as user scrolls (both directions) ---------- */
-  (function(){
-    var sections = document.querySelectorAll('section[id]');
-    if (!sections.length || !window.history || !window.history.replaceState) return;
-    var activeId = null;
-    var scrollRaf = null;
-
-    function updateHash(){
-      scrollRaf = null;
-      var offset = window.innerHeight * 0.30; // section becomes active when its top crosses 30% from viewport top
-      var candidate = null;
-      for (var i = 0; i < sections.length; i++){
-        var rect = sections[i].getBoundingClientRect();
-        if (rect.top <= offset){
-          candidate = sections[i].id;
-        }
-      }
-      if (candidate !== activeId){
-        activeId = candidate;
-        var newUrl = candidate
-          ? window.location.pathname + window.location.search + '#' + candidate
-          : window.location.pathname + window.location.search;
-        window.history.replaceState(null, '', newUrl);
-      }
-    }
-
-    window.addEventListener('scroll', function(){
-      if (scrollRaf == null) scrollRaf = requestAnimationFrame(updateHash);
-    }, { passive: true });
-    window.addEventListener('resize', function(){
-      if (scrollRaf == null) scrollRaf = requestAnimationFrame(updateHash);
-    });
-    updateHash();
-  })();
-</script>
 </body>
 </html>
