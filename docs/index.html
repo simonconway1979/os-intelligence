@@ -609,10 +609,14 @@
     font-size:.92rem;
     color: var(--B600);
     font-weight:500;
-    display:flex; align-items:center; gap:.5rem;
+    line-height:1.45;
+    /* room for two lines, so the dashed rules line up across cards */
+    min-height: calc(1rem + 2.9em);
+    display:flex; align-items:flex-start; gap:.5rem;
   }
   .card .pull::before{
-    content:""; width:.4rem;height:.4rem;border-radius:50%;background:var(--B500);
+    content:""; flex-shrink:0; width:.4rem;height:.4rem;border-radius:50%;background:var(--B500);
+    margin-top:.53em; /* centre on the first line */
   }
   .card.c2 .pull{ color:#5E4DB2 }
   .card.c2 .pull::before{ background:var(--P400) }
