@@ -431,6 +431,10 @@
     .hero-grid{ grid-template-columns: minmax(0,1.05fr) minmax(0, .95fr); gap: 4rem; }
   }
 
+  @media(min-width: 960px){
+    .hero h1.h1-two{ font-size: clamp(2.4rem, 3.6vw, 2.9rem) }
+    .hero h1.h1-two span{ display:block; white-space:nowrap }
+  }
   .hero h1 .accent-blue{ color: var(--B500) }
   .hero h1 .muted{ color: var(--N80); font-weight:500 }
   .hero-fix{
@@ -1103,8 +1107,8 @@
     <div class="hero-grid">
       <div>
         <span class="eyebrow"><span class="dot"></span>v0.1 open source · V2 in build</span>
-        <h1 style="margin-top:1.25rem">
-          A team operating system<br>for product work.
+        <h1 class="h1-two" style="margin-top:1.25rem">
+          <span>A team operating system</span> <span>for product work.</span>
         </h1>
 
         <p class="hero-body">
@@ -1155,34 +1159,34 @@
         <span class="icon" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
         </span>
-        <h3>Walk into every 1:1 already knowing where you left off.</h3>
-        <p>Last time, <strong>Maya pushed back on the Q3 roadmap</strong>. You said you'd come back with the stakeholder map. She's waiting.</p>
-        <p>Your Claude Code surfaces it before she sits down - what she said, what's stuck, what she's waiting on you for.</p>
-        <div class="pull">Two minutes, not twenty.</div>
+        <h3>Spot the signal before it becomes a problem.</h3>
+        <p>Three meetings this week. <strong>A stakeholder changed position</strong>, and one open question still has no owner. Nobody saw both.</p>
+        <p>The knowledge layer reads across every meeting, document and decision your team has captured, and gives you <strong>one current picture of the project, with the source behind every point.</strong></p>
+        <div class="pull">Better answers, from what your team already knows.</div>
       </article>
 
       <article class="card c2">
         <span class="icon" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 4 3 10 9 10"/></svg>
         </span>
-        <h3>Pick up a stalled project like you closed it yesterday.</h3>
-        <p>Six weeks since you touched it. And you can't remember the details. Three decisions happened in between.</p>
-        <p>Your Claude Code rebuilds the picture in a paragraph - <strong>the position, the in-flight work, the reasoning behind every call since.</strong></p>
-        <div class="pull">You're back in the project before your coffee's cool.</div>
+        <h3>Learn what your company already knows about your project.</h3>
+        <p>Someone researched this last year. The findings are somewhere in a deck, a doc or a Slack thread, and nobody remembers where.</p>
+        <p>The research agent works through your company's knowledge for you, starting with your riskiest assumptions, and <strong>saves every finding with its source</strong> so the next person can find it too.</p>
+        <div class="pull">Research done once, not three times.</div>
       </article>
 
       <article class="card c3">
         <span class="icon" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h12"/><circle cx="20" cy="18" r="1.6" fill="currentColor"/></svg>
         </span>
-        <h3>See what no single meeting reveals.</h3>
-        <p>Three meetings this week. Two stakeholders flipped positions. One open question still nobody's answered.</p>
-        <p>Your Claude Code reads across every meeting, chat, and decision - surfaces <strong>the contradictions, the shifts, the unresolved.</strong></p>
-        <div class="pull">Tells you what the project is saying, not what any one conversation said.</div>
+        <h3>Turn what you know into a plan that holds up.</h3>
+        <p>The review is on Thursday. You asked your AI about the plan, and it said the plan looks great. It always does.</p>
+        <p>The sparring partner raises the few issues worth discussing, <strong>challenges you with the evidence</strong>, and ends with a plan in your own words, with the biggest risks named.</p>
+        <div class="pull">You walk into the review with the hard questions already answered.</div>
       </article>
     </div>
 
-    <p class="what-tagline" style="font-size: 1.15rem; font-weight: 500; line-height: 1.6;"><strong style="font-weight: 700;">OS-Intelligence</strong> is a team operating system for product work. It captures the team's meetings, PRDs, stakeholder notes, and chats, synthesises them into reference state, and surfaces the right context at the start of every session. Your stated goal becomes the lens. Every claim traces back to source.</p>
+    <p class="what-tagline" style="font-size: 1.15rem; font-weight: 500; line-height: 1.6;"><strong style="font-weight: 700;">OS-Intelligence</strong> is a team operating system for product work. It gives your team one shared store of what it knows, from meetings, documents, decisions and research, and puts it to work: better answers, research nobody has to repeat, and plans that hold up. Every claim traces back to source.</p>
   </div>
 </section>
 

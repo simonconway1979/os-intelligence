@@ -1070,6 +1070,15 @@
   /* Built-by section */
   .built .cards-3 .card h3{ margin-top:.25rem }
   .built .more{ margin-top:2rem }
+  section[id]{ scroll-margin-top: 80px }
+  .vp-grid{ display:grid; grid-template-columns:1fr; gap:1.5rem; margin-top:2rem }
+  @media(min-width: 860px){ .vp-grid{ grid-template-columns:repeat(3,1fr) } }
+  .vp-col{ border:1px solid var(--N30); border-radius:var(--r-lg); padding:1.75rem; background:var(--N0) }
+  .vp-col .vp-step{ font-size:.75rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--B500) }
+  .vp-col h3{ margin:.5rem 0 .75rem }
+  .vp-col p{ margin:0 0 .75rem }
+  .vp-col ul{ margin:0; padding-left:1.1rem }
+  .vp-col li{ margin:.4rem 0 }
   .feat-grid{ display:grid; grid-template-columns:1fr; gap:1.5rem }
   @media(min-width:860px){ .feat-grid{ grid-template-columns:1fr 1fr } }
   .feat-col{ border:1px solid var(--N30); border-radius:var(--r-lg); padding:1.75rem; background:var(--N0) }
@@ -1099,15 +1108,14 @@
       <span class="v">v0.1</span>
     </div>
     <nav class="top-nav" aria-label="Primary">
-      <a href="index.html#what-it-does">What it does</a>
-      <a href="build.html">V2</a>
-      <a href="index.html#get-started">Setup</a>
-      <a href="index.html#early-access">Get started</a>
-      <a href="index.html#proof">Proof</a>
-      <a href="index.html#faq">FAQ</a>
+      <a href="#why">Why</a>
+      <a href="#features">What it does</a>
+      <a href="#field">In the field</a>
+      <a href="#evals">Evals</a>
+      <a href="index.html">V1 (open source)</a>
     </nav>
-    <a class="btn btn-cta" href="index.html#early-access">
-      Get started
+    <a class="btn btn-cta" href="https://tally.so/r/ja0vKa">
+      Get early access
       <span class="arr" aria-hidden="true">→</span>
     </a>
   </div>
@@ -1118,10 +1126,10 @@
     <div class="hero-grid">
       <div>
         <span class="eyebrow"><span class="dot"></span>V2 · the team operating system · in build</span>
-        <h1 style="margin-top:1.25rem">One PM. Claude Code. A team operating system.</h1>
-        <p class="hero-body">I'm Simon Conway, a product manager. I designed and built OS-Intelligence myself in Claude Code and Codex, used it with a product team, and tested it against a known answer set. This page shows what it does, how it was tested, and what's coming in V2.</p>
+        <h1 style="margin-top:1.25rem">A team operating system for product management.</h1>
+        <p class="hero-body">One repo for the whole product team. Meetings, decisions and research become shared context your AI reasons against, and every claim traces back to a source. Every PM does their work, saves sessions and runs research in the same place. Runs in Claude Code and Codex.</p>
         <div class="cta-row">
-          <a class="btn btn-cta lg" href="mailto:simon.conway@condaal.com?subject=OS-Intelligence%20V2%20early%20access" id="early-access-v2">Get early access <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-cta lg" href="https://tally.so/r/ja0vKa" id="early-access-v2">Get early access <span class="arr" aria-hidden="true">→</span></a>
           <a class="btn btn-secondary lg" href="https://github.com/simonconway1979/os-intelligence" target="_blank" rel="noopener">Try the open-source V1</a>
         </div>
       </div>
@@ -1138,11 +1146,106 @@
   </div>
 </section>
 
+<section id="why">
+  <div class="shell">
+    <div class="section-head">
+      <span class="eyebrow">Why it exists</span>
+      <h2>Your team uses AI every day. None of it adds up.</h2>
+    </div>
+    <div class="vp-grid">
+      <div class="vp-col">
+        <span class="vp-step">The problem</span>
+        <h3>Everyone uses AI their own way</h3>
+        <p>One PM keeps a folder of prompts, another pastes notes into a chat, a third has a private setup nobody else can see. What each of them learns stays in their own chats, and none of it draws on what the company already knows.</p>
+        <p>So plans reach review unchallenged, research gets repeated because nobody can find the last round, and leaders see AI use going up without seeing what it changed.</p>
+      </div>
+      <div class="vp-col">
+        <span class="vp-step">The solution</span>
+        <h3>One shared place for the team's knowledge</h3>
+        <p>OS-Intelligence is a shared folder the whole product team works in, with AI built in. Meetings, documents and decisions go in. The AI turns them into one current picture of each project, and every point links back to where it came from.</p>
+        <p>Everyone works from that same picture, in the AI tools they already use.</p>
+      </div>
+      <div class="vp-col">
+        <span class="vp-step">What your team gets</span>
+        <h3>Better answers, and plans that hold up</h3>
+        <ul>
+          <li>Answers built on what your company knows, with the source for each point.</li>
+          <li>An AI that challenges a plan with the evidence instead of telling you it looks great.</li>
+          <li>Research that's saved where the next person can find it.</li>
+          <li>Plans that stay in the PM's own words, so the PM still owns the decision.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="features" style="background:var(--bg-soft)">
   <div class="shell">
     <div class="section-head">
       <span class="eyebrow">Features</span>
       <h2>What it does.</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-col">
+        <span class="tag">V1 · open source · May 2026</span>
+        <h3>Your AI remembers your product work</h3>
+        <ul>
+          <li><strong>Picks up where you left off.</strong> Each session is saved, so the next one starts with what you already know instead of from a blank page.</li>
+          <li><strong>One current picture per project.</strong> Meetings, documents, chats and notes become one up-to-date view: where things stand, what's decided, who's involved and what's still open.</li>
+          <li><strong>Knows what's out of date.</strong> Anything that hasn't been checked against a source for a while is flagged, so you don't act on old information.</li>
+          <li><strong>Everyday PM work, ready to run.</strong> Synthesis, meeting notes and research are ready-made workflows, so you get consistent results without writing prompts.</li>
+        </ul>
+      </div>
+      <div class="feat-col v2">
+        <span class="tag soon">V2 · in build · coming soon</span>
+        <h3>Your whole team works from the same knowledge</h3>
+        <ul>
+          <li><strong>Shared team knowledge.</strong> One place for the team's meetings, decisions and research, so what one PM learns, everyone can use, and nobody starts from scratch.</li>
+          <li><strong>Knowledge layer.</strong> Meetings, documents and decisions synthesised into one current picture per project, with every claim traced to its source and stale context flagged.</li>
+          <li><strong>Sparring partner.</strong> Raises the few issues worth discussing, challenges with the evidence, and ends each conversation with a plan in the PM's own words.</li>
+          <li><strong>Autonomous research.</strong> Desk research on the riskiest assumptions, starting from "what if this is false", with a hard cap. Findings are logged as sources, never as facts.</li>
+          <li><strong>Idea to prototype.</strong> One workflow from a one-line idea to an evidence-backed PRD and a working prototype, with design and engineering setting the quality bar.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="field">
+  <div class="shell prose">
+    <div class="section-head">
+      <span class="eyebrow">In the field</span>
+      <h2>Used with a product team.</h2>
+    </div>
+    <p>June to September 2026, at a PE-backed European marketplace, I applied OS-Intelligence to the product organisation as a team operating system.</p>
+    <p><strong>Idea to production.</strong> A seven-week pilot took two roadmap features from a one-line idea to an evidence-backed PRD, a working prototype and a live release, with product, design and engineering setting the quality bar.</p>
+    <p><strong>Research agent with sourced claims.</strong> An agent retrieved and synthesised company knowledge and wrote every finding as a sourced claim with a quote and a link. A PM ran it by hand and asked for the prompts.</p>
+  </div>
+</section>
+
+<section id="evals" style="background:var(--bg-soft)">
+  <div class="shell prose">
+    <div class="section-head">
+      <span class="eyebrow">Evals</span>
+      <h2>Tested, and the results reported as they came out.</h2>
+    </div>
+    <p>Before claiming anything worked, I measured it against simpler setups: up to 21 questions with known answers, a control page sealed before any runs, and setups compared side by side. Losses included.</p>
+    <table class="score">
+      <tr><th>Test</th><th>Result</th></tr>
+      <tr><td>Context comparison: the knowledge layer against a plain baseline</td><td>Mixed</td></tr>
+      <tr><td>Names the right people and says what it couldn't find</td><td>Held</td></tr>
+      <tr><td>Facts survive when the agent writes a summary</td><td>Didn't hold: two facts lost</td></tr>
+      <tr><td>Knowledge prepared locally beats leaving it in company tools</td><td>Held, and a re-test confirmed it</td></tr>
+    </table>
+    <p>The knowledge layer shows promise, but it didn't win on every measure. Next: more and larger datasets, starting with a public synthetic one that anyone can rerun.</p>
+  </div>
+</section>
+
+<section id="under-the-hood">
+  <div class="shell">
+    <div class="section-head">
+      <span class="eyebrow">Under the hood</span>
+      <h2>How it's built.</h2>
     </div>
     <div class="feat-grid">
       <div class="feat-col">
@@ -1175,38 +1278,6 @@
   </div>
 </section>
 
-<section id="field">
-  <div class="shell prose">
-    <div class="section-head">
-      <span class="eyebrow">In the field</span>
-      <h2>Used with a product team.</h2>
-    </div>
-    <p>June to September 2026, at a PE-backed European marketplace, I applied OS-Intelligence to the product organisation as a team operating system.</p>
-    <p><strong>Idea to production.</strong> A seven-week pilot took two roadmap features from a one-line idea to an evidence-backed PRD, a working prototype and a live release, with product, design and engineering setting the quality bar.</p>
-    <p><strong>Research agent with sourced claims.</strong> An agent retrieved and synthesised company knowledge and wrote every finding as a sourced claim with a quote and a link. A PM ran it by hand and asked for the prompts.</p>
-  </div>
-</section>
-
-<section id="evals" style="background:var(--bg-soft)">
-  <div class="shell prose">
-    <div class="section-head">
-      <span class="eyebrow">Evals</span>
-      <h2>Tested, and the results reported as they came out.</h2>
-    </div>
-    <p><strong>Context comparison.</strong> A 21-question, four-condition comparison of ways to give an agent company context. The result was mixed, and it's reported in full.</p>
-    <p><strong>A design that missed the bar was cut.</strong> V2 started as a multi-agent engine. It didn't pass the bar I set before testing, so V2 ships the thin version: one agent keeping one store.</p>
-    <p><strong>The partner had to pass a replay check before use.</strong> It was replayed against real past conversations and scored on four measures:</p>
-    <table class="score">
-      <tr><th>Measure</th><th>Score</th></tr>
-      <tr><td>Raised the issue that mattered (agenda)</td><td>94%</td></tr>
-      <tr><td>The conversation worked</td><td>11 / 15</td></tr>
-      <tr><td>The PM kept ownership of the plan</td><td>14 / 15</td></tr>
-      <tr><td>The plan was credible</td><td>8 / 15</td></tr>
-    </table>
-    <p>Credible plans are the weakest score, so that's where V2 work goes next.</p>
-  </div>
-</section>
-
 <section id="skills">
   <div class="shell">
     <div class="section-head">
@@ -1217,7 +1288,7 @@
       <div><strong>Context engineering</strong>Getting the right company knowledge, current and sourced, to people and their AI tools.</div>
       <div><strong>Agent memory and retrieval</strong>File-based memory, synthesis and retrieval over meetings, docs and chats.</div>
       <div><strong>Multi-agent orchestration</strong>Sub-agent fan-out, background agents and scheduled runs.</div>
-      <div><strong>Evals</strong>Pass bars set before testing, known answer sets, and designs cut when they miss.</div>
+      <div><strong>Evals</strong>Pass bars set before testing, known answer sets, and results reported as they came out.</div>
       <div><strong>Claude Code and Codex</strong>Skills, sub-agents, hooks and MCP, built hands-on every day.</div>
       <div><strong>Product practice</strong>Discovery, decision records and stakeholder work, built into the tool rather than added on.</div>
     </div>
@@ -1229,7 +1300,7 @@
   <div class="shell prose">
     <h2 style="color:var(--N0)">V2 is in build.</h2>
     <p style="color:var(--N40)">The next milestone is a short video of the workflow end to end, then the V2 code. Want to hear when it's ready, or try it with your team?</p>
-    <p><a class="btn btn-onnavy lg" href="mailto:simon.conway@condaal.com?subject=OS-Intelligence%20V2%20early%20access">Get early access <span class="arr" aria-hidden="true">→</span></a></p>
+    <p><a class="btn btn-onnavy lg" href="https://tally.so/r/ja0vKa">Get early access <span class="arr" aria-hidden="true">→</span></a></p>
     <p style="color:var(--N40)">Want to try something today? <a href="https://github.com/simonconway1979/os-intelligence" style="color:var(--B100)">The open-source V1 is on GitHub.</a></p>
   </div>
 </section>
