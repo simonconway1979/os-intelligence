@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Try V1 · OS-Intelligence</title>
+<meta name="description" content="OS-Intelligence V1: a free, open-source reasoning layer for product managers, on GitHub.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --N0:#FFFFFF; --N10:#F7F8F9; --N30:#DCDFE4; --N80:#44546F; --N200:#172B4D; --N900:#091E42;
+    --B50:#E9F2FF; --B75:#CCE0FF; --B500:#0C66E4; --B600:#0055CC;
+    --G400:#4BCE97; --G700:#216E4E;
+    --orange:#FF6B35; --orange-deep:#E5571E; --yellow:#F5CD47;
+  }
+  *{ box-sizing:border-box }
+  html,body{ margin:0 }
+  body{
+    font-family:Inter, system-ui, -apple-system, sans-serif;
+    color:var(--N200);
+    background:linear-gradient(180deg, var(--B50) 0%, var(--N0) 70%);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--B500) }
+  .top{ border-bottom:1px solid var(--N30); background:rgba(255,255,255,.92) }
+  .top-inner{ max-width:1100px; margin:0 auto; padding:1rem 1.25rem; display:flex; align-items:center; justify-content:space-between; gap:1rem }
+  .brand{ color:var(--N900); text-decoration:none; display:flex; align-items:center; gap:.6rem; font-weight:600 }
+  .logo{ width:1.6rem; height:1.6rem; border-radius:6px; background:linear-gradient(135deg, var(--B500), #8270DB); color:#fff; font-size:.7rem; font-weight:700; display:grid; place-items:center }
+  .back{ font-size:.92rem; color:var(--N80); text-decoration:none }
+  .back:hover{ color:var(--N900) }
+  main{ max-width:1100px; margin:0 auto; padding:3rem 1.25rem 4rem; display:grid; gap:2.5rem; align-items:center }
+  @media(min-width: 880px){ main{ grid-template-columns: 1.05fr .95fr; padding-top:4.5rem; gap:4rem } }
+  .tag{ display:inline-block; font-family:"JetBrains Mono", monospace; font-size:.72rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; color:var(--N900); background:var(--G400); border-radius:4px; padding:.25rem .55rem }
+  h1{ font-size:clamp(2rem, 3.2vw + .6rem, 2.9rem); line-height:1.08; letter-spacing:-.025em; color:var(--N900); margin:1rem 0 1rem }
+  p{ font-size:1.05rem; line-height:1.65; color:var(--N80); margin:0 0 1rem; max-width:34rem }
+  p strong{ color:var(--N200) }
+  ul.facts{ list-style:none; padding:0; margin:1.25rem 0 0; display:grid; gap:.55rem; max-width:34rem }
+  ul.facts li{ display:flex; gap:.6rem; align-items:flex-start; color:var(--N200); font-size:.98rem; line-height:1.5 }
+  ul.facts li::before{ content:""; flex-shrink:0; width:.45rem; height:.45rem; margin-top:.5em; border-radius:50%; background:var(--G400) }
+  .btn{ display:inline-flex; align-items:center; gap:.5rem; padding:.8rem 1.3rem; border-radius:8px; font-weight:600; text-decoration:none; transition:background .15s, border-color .15s }
+  .btn-primary{ background:var(--N900); color:#fff }
+  .btn-primary:hover{ background:#172B4D }
+  .btn-cta{ background:var(--orange); color:#fff; box-shadow:0 6px 18px rgba(255,107,53,.25) }
+  .btn-cta:hover{ background:var(--orange-deep) }
+  .go{ margin-top:1.75rem }
+  .note{ font-size:.88rem; color:var(--N80); margin-top:.6rem }
+  .alt{ margin-top:2.25rem; padding:1.25rem 1.4rem; border:1px solid var(--N30); border-radius:12px; background:var(--N0); max-width:34rem }
+  .alt h2{ font-size:1.05rem; margin:0 0 .35rem; color:var(--N900) }
+  .alt p{ font-size:.97rem; margin:0 0 1rem }
+  .by{ margin-top:2rem; font-size:.92rem; color:var(--N80) }
+  .by a{ color:var(--N200); font-weight:500 }
+  .art{ width:100%; max-width:460px; justify-self:center }
+  @media(min-width: 880px){ main{ align-items:start } .art{ margin-top:2.5rem } }
+  .art svg{ width:100%; height:auto; display:block }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html"><span class="logo" aria-hidden="true">OS</span>OS-Intelligence</a>
+    <a class="back" href="index.html">← Back to the site</a>
+  </div>
+</header>
+
+<main>
+  <div>
+    <span class="tag">V1 · open source · May 2026</span>
+    <h1>You're heading to V1 on GitHub.</h1>
+    <p>V1 is the open-source version of OS-Intelligence: <strong>a reasoning layer for one product manager</strong>. It remembers your product work between sessions and turns your meetings, documents and notes into one current picture of each project.</p>
+    <ul class="facts">
+      <li>Free and open source, under Apache 2.0.</li>
+      <li>Runs in Claude Code. Setup takes about 15 minutes, and no coding skills are needed.</li>
+      <li>Your files stay on your own machine.</li>
+      <li>The GitHub page explains it step by step, including a 60-second look at a made-up example project.</li>
+    </ul>
+    <div class="go">
+      <a class="btn btn-primary" href="https://github.com/simonconway1979/os-intelligence/blob/main/README.md" target="_blank" rel="noopener">Continue to GitHub <span aria-hidden="true">↗</span></a>
+      <p class="note">Opens in a new tab, so this site stays open here.</p>
+    </div>
+
+    <div class="alt">
+      <h2>Looking for something for your whole team?</h2>
+      <p>V2 is the team operating system for product work, and it's in build now. Register for early access and I'll let you know when it's ready.</p>
+      <a class="btn btn-cta" href="https://tally.so/r/ja0vKa">Get early access to V2 <span aria-hidden="true">→</span></a>
+    </div>
+
+    <p class="by">Built by Simon Conway · <a href="https://www.linkedin.com/in/simonconway" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://simon-conway.com/" target="_blank" rel="noopener">Portfolio</a></p>
+  </div>
+
+  <div class="art" aria-hidden="true">
+    <!-- Signpost: V1 this way, V2 that way -->
+    <svg viewBox="0 0 460 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="10" width="440" height="400" rx="20" fill="#E9F2FF"/>
+      <circle cx="380" cy="80" r="26" fill="#F5CD47" opacity=".5"/>
+      <path d="M10 340c80-18 160-18 220-6s140 14 220-4v50a20 20 0 0 1-20 20H30a20 20 0 0 1-20-20z" fill="#DCDFE4"/>
+      <!-- path -->
+      <!-- post -->
+      <rect x="222" y="90" width="16" height="262" rx="4" fill="#44546F"/>
+      <circle cx="230" cy="88" r="10" fill="#091E42"/>
+      <!-- V1 sign (pointing right, green) -->
+      <path d="M150 120h190l28 26-28 26H150a8 8 0 0 1-8-8v-36a8 8 0 0 1 8-8z" fill="#4BCE97"/>
+      <text x="168" y="152" font-family="JetBrains Mono, monospace" font-size="17" font-weight="500" fill="#091E42">V1 · GitHub</text>
+      <!-- V2 sign (pointing left, orange) -->
+      <path d="M118 196h190a8 8 0 0 1 8 8v36a8 8 0 0 1-8 8H118l-28-26z" fill="#FF6B35"/>
+      <text x="130" y="228" font-family="JetBrains Mono, monospace" font-size="17" font-weight="500" fill="#FFFFFF">V2 · early access</text>
+      <!-- small sign: back to site -->
+      <path d="M160 272h130l20 18-20 18H160a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6z" fill="#FFFFFF" stroke="#0C66E4" stroke-width="2.5"/>
+      <text x="172" y="295" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#0C66E4">You are here</text>
+      <!-- tufts -->
+      <path d="M70 352l6-14 6 14M90 350l5-12 5 12M370 344l6-14 6 14M392 346l5-12 5 12" stroke="#216E4E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</main>
+</body>
+</html>
