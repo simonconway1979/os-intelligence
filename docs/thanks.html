@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thanks · OS-Intelligence V2</title>
+<meta name="description" content="Thanks for your interest in OS-Intelligence V2, the team operating system for product work.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --N0:#FFFFFF; --N10:#F7F8F9; --N30:#DCDFE4; --N80:#44546F; --N200:#172B4D; --N900:#091E42;
+    --B50:#E9F2FF; --B400:#1D7AFC; --B500:#0C66E4; --B600:#0055CC;
+    --orange:#FF6B35; --orange-deep:#E5571E; --yellow:#F5CD47;
+    --r-lg:12px;
+  }
+  *{ box-sizing:border-box }
+  html,body{ margin:0 }
+  body{
+    font-family:Inter, system-ui, -apple-system, sans-serif;
+    color:var(--N200);
+    background:linear-gradient(180deg, var(--B50) 0%, var(--N0) 70%);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--B500) }
+  .top{ border-bottom:1px solid var(--N30); background:rgba(255,255,255,.92) }
+  .top-inner{ max-width:1100px; margin:0 auto; padding:1rem 1.25rem; display:flex; align-items:center; gap:.6rem; font-weight:600 }
+  .top-inner a{ color:var(--N900); text-decoration:none; display:flex; align-items:center; gap:.6rem }
+  .logo{ width:1.6rem; height:1.6rem; border-radius:6px; background:linear-gradient(135deg, var(--B500), #8270DB); color:#fff; font-size:.7rem; font-weight:700; display:grid; place-items:center }
+  main{ max-width:1100px; margin:0 auto; padding:3rem 1.25rem 4rem; display:grid; gap:2.5rem; align-items:center }
+  @media(min-width: 880px){ main{ grid-template-columns: 1.05fr .95fr; padding-top:5rem; gap:4rem } }
+  .eyebrow{ display:inline-flex; align-items:center; gap:.5rem; font-size:.75rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--B600); background:var(--N0); border:1px solid var(--N30); border-radius:999px; padding:.35rem .8rem }
+  .eyebrow .dot{ width:.45rem; height:.45rem; border-radius:50%; background:var(--yellow); box-shadow:0 0 0 3px rgba(245,205,71,.3) }
+  h1{ font-size:clamp(2rem, 3.4vw + .6rem, 3.1rem); line-height:1.08; letter-spacing:-.025em; color:var(--N900); margin:1.1rem 0 1rem }
+  p{ font-size:1.075rem; line-height:1.65; color:var(--N80); margin:0 0 1rem; max-width:34rem }
+  p strong{ color:var(--N200) }
+  .cta-row{ display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.75rem }
+  .btn{ display:inline-flex; align-items:center; gap:.5rem; padding:.8rem 1.3rem; border-radius:8px; font-weight:600; text-decoration:none; transition:background .15s, border-color .15s }
+  .btn-cta{ background:var(--orange); color:#fff; box-shadow:0 6px 18px rgba(255,107,53,.25) }
+  .btn-cta:hover{ background:var(--orange-deep) }
+  .btn-secondary{ background:var(--N0); color:var(--N200); border:1px solid var(--N30) }
+  .btn-secondary:hover{ background:var(--N10) }
+  .sign{ margin-top:2rem; font-size:.95rem; color:var(--N80) }
+  .art{ width:100%; max-width:480px; justify-self:center }
+  .art svg{ width:100%; height:auto; display:block }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <a href="index.html"><span class="logo" aria-hidden="true">OS</span>OS-Intelligence</a>
+  </div>
+</header>
+
+<main>
+  <div>
+    <span class="eyebrow"><span class="dot"></span>You're on the list</span>
+    <h1>Thanks for your interest in <span style="white-space:nowrap">OS-Intelligence</span> V2.</h1>
+    <p>V2 is the team operating system for product work, and it's being built right now. <strong>I'll email you when the code is live.</strong></p>
+    <p>In the meantime, V1 is open source on GitHub, and you can run it on your own product work today.</p>
+    <div class="cta-row">
+      <a class="btn btn-cta" href="https://github.com/simonconway1979/os-intelligence" target="_blank" rel="noopener">Try V1 on GitHub <span aria-hidden="true">→</span></a>
+      <a class="btn btn-secondary" href="build.html">See what's coming in V2</a>
+    </div>
+    <p class="sign">Simon Conway, OS-Intelligence</p>
+  </div>
+
+  <div class="art" aria-hidden="true">
+    <!-- Construction site: V2 in build -->
+    <svg viewBox="0 0 480 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- sky panel -->
+      <rect x="10" y="10" width="460" height="380" rx="20" fill="#E9F2FF"/>
+      <circle cx="415" cy="150" r="24" fill="#F5CD47" opacity=".55"/>
+      <!-- ground -->
+      <rect x="10" y="320" width="460" height="70" rx="0" fill="#DCDFE4"/>
+      <path d="M10 320h460v50a20 20 0 0 1-20 20H30a20 20 0 0 1-20-20z" fill="#DCDFE4"/>
+      <!-- crane mast -->
+      <g stroke="#F5CD47" stroke-width="5" stroke-linejoin="round">
+        <path d="M110 320V70M140 320V70"/>
+        <path d="M110 300l30-30M140 300l-30-30M110 270l30-30M140 270l-30-30M110 240l30-30M140 240l-30-30M110 210l30-30M140 210l-30-30M110 180l30-30M140 180l-30-30M110 150l30-30M140 150l-30-30M110 120l30-30M140 120l-30-30"/>
+        <!-- jib -->
+        <path d="M70 70h300M70 90h300M110 70l20 20M150 70l20 20M190 70l20 20M230 70l20 20M270 70l20 20M310 70l20 20"/>
+      </g>
+      <rect x="112" y="40" width="26" height="30" rx="3" fill="#091E42"/>
+      <rect x="60" y="72" width="34" height="22" rx="3" fill="#44546F"/>
+      <!-- hook line and load -->
+      <path d="M330 90v120" stroke="#44546F" stroke-width="2.5"/>
+      <path d="M322 210h16l-8 10z" fill="#44546F"/>
+      <rect x="292" y="222" width="76" height="22" rx="4" fill="#0C66E4"/>
+      <text x="330" y="237" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#fff">V2</text>
+      <!-- building frame under construction -->
+      <g>
+        <rect x="200" y="250" width="200" height="70" fill="#FFFFFF" stroke="#0C66E4" stroke-width="3"/>
+        <path d="M250 250v70M300 250v70M350 250v70" stroke="#0C66E4" stroke-width="3"/>
+        <rect x="212" y="266" width="26" height="20" rx="2" fill="#CCE0FF"/>
+        <rect x="262" y="266" width="26" height="20" rx="2" fill="#CCE0FF"/>
+        <rect x="312" y="266" width="26" height="20" rx="2" fill="#CCE0FF"/>
+        <path d="M200 250v-40M250 250v-40M300 250v-40" stroke="#0C66E4" stroke-width="3" stroke-dasharray="6 6"/>
+        <path d="M200 210h100" stroke="#0C66E4" stroke-width="3" stroke-dasharray="6 6"/>
+      </g>
+      <!-- cones -->
+      <g>
+        <path d="M60 320l12-34 12 34z" fill="#FF6B35"/><rect x="56" y="318" width="32" height="5" rx="2" fill="#E5571E"/><path d="M66 304h12" stroke="#fff" stroke-width="4"/>
+        <path d="M420 320l12-34 12 34z" fill="#FF6B35"/><rect x="416" y="318" width="32" height="5" rx="2" fill="#E5571E"/><path d="M426 304h12" stroke="#fff" stroke-width="4"/>
+      </g>
+      <!-- barrier -->
+      <g>
+        <rect x="160" y="336" width="160" height="16" rx="3" fill="#F5CD47"/>
+        <path d="M172 336l-12 16M196 336l-12 16M220 336l-12 16M244 336l-12 16M268 336l-12 16M292 336l-12 16M316 336l-12 16" stroke="#091E42" stroke-width="6"/>
+        <path d="M172 352v18M308 352v18" stroke="#44546F" stroke-width="4"/>
+      </g>
+    </svg>
+  </div>
+</main>
+</body>
+</html>
